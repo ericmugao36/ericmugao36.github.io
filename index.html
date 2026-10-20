@@ -33,6 +33,66 @@
     padding:18px 15px 28px;
   }
 }
+
+/* Sidebar layout fix: desktop */
+@media (min-width: 651px) {
+  .app {
+    display: block;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 244px;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 20;
+  }
+
+  .main {
+    margin-left: 244px !important;
+    min-width: 0;
+  }
+
+  .sidebar-collapsed .sidebar {
+    width: 76px;
+  }
+
+  .sidebar-collapsed .main {
+    margin-left: 76px !important;
+  }
+}
+
+/* Preserve the slide-out menu on mobile */
+@media (max-width: 650px) {
+  .app {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 245px;
+    height: auto;
+    transform: translateX(-100%);
+    z-index: 20;
+  }
+
+  .mobile-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .main,
+  .sidebar-collapsed .main {
+    margin-left: 0 !important;
+  }
+}
+
 </style>
 </head>
 <body>
