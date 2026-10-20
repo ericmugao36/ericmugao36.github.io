@@ -34,39 +34,6 @@
   }
 }
 
-/* Sidebar layout fix: desktop */
-@media (min-width: 651px) {
-  .app {
-    display: block;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 244px;
-    height: 100vh;
-    overflow-y: auto;
-    z-index: 20;
-  }
-
-.main {
-  margin-left: 0 !important;
-  min-width: 0;
-  width: auto;
-}
-
-  .sidebar-collapsed .sidebar {
-    width: 76px;
-  }
-
-  .sidebar-collapsed .main {
-  margin-left: 0 !important;
- }
-}
-
 /* Preserve the slide-out menu on mobile */
 @media (max-width: 650px) {
   .app {
@@ -89,6 +56,42 @@
   }
 
   .main,
+  .sidebar-collapsed .main {
+    margin-left: 0 !important;
+  }
+}
+
+/* Sticky sidebar with no extra gap */
+@media (min-width: 651px) {
+  .app {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    left: auto;
+    bottom: auto;
+    height: 100vh;
+    width: 244px;
+    flex: 0 0 244px;
+    overflow-y: auto;
+    align-self: flex-start;
+  }
+
+  .main {
+    margin-left: 0 !important;
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .sidebar-collapsed .sidebar {
+    width: 76px;
+    flex-basis: 76px;
+  }
+
   .sidebar-collapsed .main {
     margin-left: 0 !important;
   }
