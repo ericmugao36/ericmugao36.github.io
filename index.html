@@ -216,34 +216,44 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const slides = [
-    {
-      label: "ABOUT ME · ERIC MUGAO",
-      title: "I turn ideas into practical digital solutions.",
-      description: "I am a Python programmer and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make everyday tasks easier.",
-      symbol: "👨‍💻",
-      linkText: "About Me",
-      link: "#about"
-    },
-    {
-      label: "EDUTRACK KENYA · SCHOOL TECHNOLOGY",
-      title: "Every parent deserves to understand their child's progress.",
-      description: "EduTrack Kenya helps teachers record assessment results and gives parents access to their children's reports and teachers' comments, making learning progress easier to follow.",
-      symbol: "🏫",
-      linkText: "Discuss a school solution",
-      link: "#contact"
-    },
-    {
-      label: "MY PROJECTS · PRACTICAL TECHNOLOGY",
-      title: "Building useful tools, one project at a time.",
-      description: "Explore my work in school technology, Python programming, web applications, AI, and automation. I keep learning by building and improving projects that solve practical problems.",
-      symbol: "💻",
-      linkText: "Contact Me",
-      link: "#contact"
-    }
-  ];
+  
+const slides = [
+  {
+    type: "about",
+    label: "ABOUT ME · ERIC MUGAO",
+    title: "I turn ideas into practical digital solutions.",
+    description: "I am a Python programmer and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make everyday tasks easier.",
+    symbol: "👨‍💻",
+    linkText: "About Me",
+    link: "#about"
+  },
+  {
+    type: "project",
+    label: "EDUTRACK KENYA · SCHOOL TECHNOLOGY",
+    title: "Every parent deserves to understand their child's progress.",
+    description: "EduTrack Kenya helps teachers record assessment results and gives parents access to their children's reports and teachers' comments, making learning progress easier to follow.",
+    symbol: "🏫",
+    linkText: "Discuss a school solution",
+    link: "#contact",
+    projectLink: "#projects"
+  },
 
-  let current = 0;
+  // ADD NEW PROJECTS BELOW THIS LINE.
+  // Copy the example below and replace its details.
+  // {
+  //   type: "project",
+  //   label: "PROJECT NAME · CATEGORY",
+  //   title: "Your project headline goes here.",
+  //   description: "Explain what your project does and who it helps.",
+  //   symbol: "💻",
+  //   linkText: "View Project",
+  //   link: "https://example.com",
+  //   projectLink: "#projects"
+  // }
+];
+
+let current = 0;
+
 
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
