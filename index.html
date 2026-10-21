@@ -220,7 +220,32 @@
     min-height: 500px;
   }
 }
+/* Use Eric's photo as the background on project slides */
+#portfolio-showcase.project-background {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(36, 89, 224, 0.88),
+      rgba(18, 32, 58, 0.82)
+    ),
+    url("images/picture.jpg") center / cover no-repeat;
+}
+/* EduTrack project screenshots */
+.edutrack-screenshots {
+  margin-top: 16px;
+  width: 100%;
+}
 
+.edutrack-screenshots img {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 12px;
+  border: 1px solid light-dark(#e0e6f1, #29364c);
+  background: light-dark(#f3f6fc, #101827);
+}
 </style>
 </head>
 
@@ -291,6 +316,11 @@ let current = 0;
     current = (index + slides.length) % slides.length;
     const slide = slides[current];
 
+    showcase.classList.toggle(
+       "project-background",
+    slide.type === "project"
+    );
+    
     label.textContent = slide.label;
     title.textContent = slide.title;
     description.textContent = slide.description;
@@ -335,7 +365,15 @@ restartRotationTimer();
  <div class="sidebar-bottom">Building practical things, one project at a time.</div>
 </aside>
 <main class="main" id="dashboard">
- <header class="topbar"><div class="top-left"><button class="icon-btn" id="toggleSidebar" aria-label="Collapse or open sidebar" title="Collapse or open sidebar">☰</button><div><div class="eyebrow">Portfolio overview</div><h1>Dashboard</h1></div></div><div class="top-left"><button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙 Dark</button><a class="profile-pill" href="#contact"><span class="avatar">EM</span><span class="profile-name">Eric Mugao</span><span aria-hidden="true">⌄</span></a></div></header>
+ <header class="topbar"><div class="top-left"><button class="icon-btn" id="toggleSidebar" aria-label="Collapse or open sidebar" title="Collapse or open sidebar">☰</button><div><div class="eyebrow">Portfolio overview</div><h1>Dashboard</h1></div></div><div class="top-left"><button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙 Dark</button>.avatar {
+  width: 31px;
+  height: 31px;
+  flex: 0 0 31px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+ </div></header>
 
 <section class="intro" id="portfolio-showcase" aria-label="Featured introduction and projects">
   <div class="intro-copy">
@@ -391,6 +429,13 @@ restartRotationTimer();
     <h3>EduTrack Kenya — School Management Dashboard</h3>
    
 <p>EduTrack Kenya helps schools record learner assessment results and gives parents access to their children's reports and teachers' comments, making it easier for families to follow learning progress.</p>
+    <div class="edutrack-screenshots">
+  <img
+    src="images/image.png"
+    alt="EduTrack Kenya dashboard screenshot"
+    loading="lazy"
+  >
+</div>
     <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;font-weight:750">
       <a href="https://github.com/ericmugao36/jss-assessment-dashboard" target="_blank" rel="noopener noreferrer" style="color:var(--site-primary)">View Repository ↗</a>
 <a href="mailto:ericmugao36@gmail.com?subject=EduTrack%20Kenya%20Demo%20Request" style="color:var(--site-primary)">Request a Demo ↗</a>
