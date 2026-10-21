@@ -152,9 +152,148 @@
   }
 }
 
+  
+/* Rotating portfolio showcase controls */
+.showcase-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.showcase-controls button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--site-primary);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--site-primary);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.showcase-controls button:hover {
+  background: var(--site-primary);
+  color: white;
+}
+
+#showcase-counter {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.showcase-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
 
 </style>
 </head>
+
+<script>
+(function () {
+  const showcase = document.getElementById("portfolio-showcase");
+  if (!showcase) return;
+
+  const label = document.getElementById("showcase-label");
+  const title = document.getElementById("showcase-title");
+  const description = document.getElementById("showcase-description");
+  const symbol = document.getElementById("showcase-symbol");
+  const secondary = document.getElementById("showcase-secondary");
+  const counter = document.getElementById("showcase-counter");
+  const previous = document.getElementById("showcase-prev");
+  const next = document.getElementById("showcase-next");
+
+  const slides = [
+    {
+      label: "ABOUT ME · ERIC MUGAO",
+      title: "I turn ideas into practical digital solutions.",
+      description: "I am a developing Python programmer and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make everyday tasks easier.",
+      symbol: "👨‍💻",
+      linkText: "About Me",
+      link: "#about"
+    },
+    {
+      label: "EDUTRACK KENYA · SCHOOL TECHNOLOGY",
+      title: "Every parent deserves to understand their child's progress.",
+      description: "EduTrack Kenya helps teachers record assessment results and gives parents access to their children's reports and teachers' comments, making learning progress easier to follow.",
+      symbol: "🏫",
+      linkText: "Discuss a school solution",
+      link: "#contact"
+    },
+    {
+      label: "MY PROJECTS · PRACTICAL TECHNOLOGY",
+      title: "Building useful tools, one project at a time.",
+      description: "Explore my work in school technology, Python programming, web applications, AI, and automation. I keep learning by building and improving projects that solve practical problems.",
+      symbol: "💻",
+      linkText: "Contact Me",
+      link: "#contact"
+    }
+  ];
+
+  let current = 0;
+  let hoverTimer;
+  let autoTimer;
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    const slide = slides[current];
+
+    label.textContent = slide.label;
+    title.textContent = slide.title;
+    description.textContent = slide.description;
+    symbol.textContent = slide.symbol;
+    secondary.textContent = slide.linkText + " →";
+    secondary.href = slide.link;
+    counter.textContent = (current + 1) + " / " + slides.length;
+  }
+
+  function nextSlide() {
+    showSlide(current + 1);
+  }
+
+  function startAutoRotation() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(nextSlide, 6000);
+  }
+
+  function stopAutoRotation() {
+    clearInterval(autoTimer);
+  }
+
+  showcase.addEventListener("mouseenter", function () {
+    stopAutoRotation();
+    clearTimeout(hoverTimer);
+    hoverTimer = setTimeout(nextSlide, 4000);
+  });
+
+  showcase.addEventListener("mouseleave", function () {
+    clearTimeout(hoverTimer);
+    startAutoRotation();
+  });
+
+  showcase.addEventListener("focusin", stopAutoRotation);
+  showcase.addEventListener("focusout", startAutoRotation);
+
+  previous.addEventListener("click", function () {
+    clearTimeout(hoverTimer);
+    showSlide(current - 1);
+    startAutoRotation();
+  });
+
+  next.addEventListener("click", function () {
+    clearTimeout(hoverTimer);
+    showSlide(current + 1);
+    startAutoRotation();
+  });
+
+  showSlide(0);
+  startAutoRotation();
+})();
+</script>
+
 <body>
 <div class="app" id="app">
 <aside class="sidebar" aria-label="Main navigation">
@@ -165,34 +304,37 @@
 <main class="main" id="dashboard">
  <header class="topbar"><div class="top-left"><button class="icon-btn" id="toggleSidebar" aria-label="Collapse or open sidebar" title="Collapse or open sidebar">☰</button><div><div class="eyebrow">Portfolio overview</div><h1>Dashboard</h1></div></div><div class="top-left"><button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙 Dark</button><a class="profile-pill" href="#contact"><span class="avatar">EM</span><span class="profile-name">Eric Mugao</span><span aria-hidden="true">⌄</span></a></div></header>
 
-<section class="intro">
+<section class="intro" id="portfolio-showcase" aria-label="Featured introduction and projects">
   <div class="intro-copy">
-    <div class="mini-label">EduTrack Kenya · School Technology</div>
+    <div class="mini-label" id="showcase-label">ABOUT ME · ERIC MUGAO</div>
 
-    <h2>
-      Every parent deserves to understand their child's progress.
-    </h2>
+    <h2 id="showcase-title">I turn ideas into practical digital solutions.</h2>
 
-    <p>
-      I build practical digital tools for schools. EduTrack Kenya helps
-      teachers record assessment results and gives parents access to
-      their children's reports and teachers' comments — making learning
-      progress easier to follow.
+    <p id="showcase-description">
+      I am a developing Python programmer and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make everyday tasks easier.
     </p>
 
     <div class="intro-actions">
       <a class="btn btn-light" href="#projects">
-        Explore EduTrack <span>↗</span>
+        Explore Projects <span>↗</span>
       </a>
 
-      <a class="btn btn-outline" href="#contact">
-        Discuss a school solution <span>→</span>
+      <a class="btn btn-outline" id="showcase-secondary" href="#about">
+        About Me <span>→</span>
       </a>
     </div>
+
+    <div class="showcase-controls" aria-label="Showcase navigation">
+      <button type="button" id="showcase-prev" aria-label="Previous slide">←</button>
+      <span id="showcase-counter" aria-live="polite">1 / 3</span>
+      <button type="button" id="showcase-next" aria-label="Next slide">→</button>
+    </div>
+    <p class="showcase-hint">Hover for 4 seconds to explore another feature.</p>
   </div>
 
-  <div class="hero-symbol" aria-hidden="true">🏫</div>
+  <div class="hero-symbol" id="showcase-symbol" aria-hidden="true">👨‍💻</div>
 </section>
+
 
 <section id="skills">
   <div class="section-head">
