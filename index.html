@@ -257,19 +257,30 @@ document.addEventListener("DOMContentLoaded", function () {
     secondary.href = slide.link;
   }
 
-  previous.addEventListener("click", function () {
-    showSlide(current - 1);
-  });
 
-  next.addEventListener("click", function () {
+let rotationTimer;
+
+function restartRotationTimer() {
+  window.clearInterval(rotationTimer);
+
+  rotationTimer = window.setInterval(function () {
     showSlide(current + 1);
-  });
+  }, 7000);
+}
 
-  showSlide(0);
+previous.addEventListener("click", function () {
+  showSlide(current - 1);
+  restartRotationTimer();
+});
 
-  window.setInterval(function () {
-    showSlide(current + 1);
-  }, 5000);
+next.addEventListener("click", function () {
+  showSlide(current + 1);
+  restartRotationTimer();
+});
+
+showSlide(0);
+restartRotationTimer();
+
 });
 </script>
 
