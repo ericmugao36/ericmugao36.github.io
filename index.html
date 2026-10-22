@@ -464,10 +464,10 @@ primary.onclick = function (event) {
 
   const destination = slide.projectLink;
 
-  if (destination === "#project-edutrack") {
-    window.location.hash = "project-edutrack";
+  if (destination) {
+    window.location.hash = destination;
   } else {
-    window.location.hash = "projects";
+    window.location.hash = "#projects";
   }
 };
 secondary.textContent = slide.linkText + " →";
