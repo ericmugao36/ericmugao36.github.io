@@ -765,6 +765,10 @@ async function loadPublishedBlogArticles() {
       fullArticle.hidden = true;
       const article = document.createElement("article");
       article.className = "milestone";
+      article.style.cursor = "pointer";
+article.setAttribute("role", "button");
+article.setAttribute("tabindex", "0");
+article.setAttribute("aria-expanded", "false");
 
       const mark = document.createElement("div");
       mark.className = "milestone-mark";
@@ -787,8 +791,13 @@ titleButton.style.textAlign = "left";
 
 heading.appendChild(titleButton);
 
-titleButton.addEventListener("click", () => {
+const toggleArticle = () => {
   fullArticle.hidden = !fullArticle.hidden;
+
+  article.setAttribute(
+    "aria-expanded",
+    String(!fullArticle.hidden)
+  );
 
   if (!fullArticle.hidden && !fullArticle.dataset.loaded) {
     const body = markdown.replace(/^---\s*[\r\n]+[\s\S]*?[\r\n]+---\s*/, "");
@@ -800,7 +809,21 @@ titleButton.addEventListener("click", () => {
     fullArticle.replaceChildren(articleText);
     fullArticle.dataset.loaded = "true";
   }
-});    
+};
+
+article.addEventListener("click", toggleArticle);
+
+article.addEventListener("keydown", (event) => {
+  if (event.target === article && (event.key === "Enter" || event.key === " ")) {
+    event.preventDefault();
+    toggleArticle();
+  }
+});
+
+titleButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+  toggleArticle();
+});  
 
       const dateElement = document.createElement("p");
       dateElement.className = "cv-note";
@@ -809,7 +832,8 @@ titleButton.addEventListener("click", () => {
       const descriptionElement = document.createElement("p");
       descriptionElement.textContent = description;
 
-      content.append(heading, dateElement, descriptionElement); content.appendChild(fullArticle);
+      content.append(heading, dateElement, descriptionElement); 
+      content.appendChild(fullArticle);
       article.append(mark, content);
       container.appendChild(article);
     }
