@@ -393,10 +393,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const description = document.getElementById("showcase-description");
   const symbol = document.getElementById("showcase-symbol");
   const secondary = document.getElementById("showcase-secondary");
+  
   const previous = document.getElementById("showcase-prev");
   const next = document.getElementById("showcase-next");
-
-  if (!label || !title || !description || !symbol ||
+  const primary = document.getElementById("showcase-primary");
+  if (!label || !title || !description || !symbol ||     !primary || !secondary || !previous || !next) {   console.error("A portfolio showcase element is missing.");   return; }
       !secondary || !previous || !next) {
     console.error("A portfolio showcase element is missing.");
     return;
@@ -421,7 +422,7 @@ const slides = [
     symbol: "🏫",
     linkText: "Discuss a school solution",
     link: "#contact",
-    projectLink: "#projects"
+    projectLink: "projects/edutrack.html"
   },
 
   // ADD NEW PROJECTS BELOW THIS LINE.
@@ -453,9 +454,10 @@ let current = 0;
     label.textContent = slide.label;
     title.textContent = slide.title;
     description.textContent = slide.description;
-    symbol.textContent = slide.symbol;
-    secondary.textContent = slide.linkText + " →";
-    secondary.href = slide.link;
+   symbol.textContent = slide.symbol;
+   primary.href = slide.projectLink || "#projects";
+   secondary.textContent = slide.linkText + " →";
+   secondary.href = slide.link;
   }
 
 
