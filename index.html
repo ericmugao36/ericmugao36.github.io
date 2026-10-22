@@ -605,11 +605,25 @@ const themeToggle=document.getElementById('themeToggle');const savedTheme=localS
   const learning = document.getElementById("milestones");
   const footer = main.querySelector(".footer");
 
-  if (!header || !intro || !overview || !projects ||
-      !about || !contact || !cv || !learning || !footer) {
-    console.error("Portfolio page setup could not find all required sections.");
-    return;
-  }
+
+if (!header || !intro || !overview || !projects ||
+    !about || !contact || !cv || !learning || !footer) {
+
+  console.error("Missing portfolio elements:", {
+    header: !!header,
+    intro: !!intro,
+    overview: !!overview,
+    projects: !!projects,
+    about: !!about,
+    contact: !!contact,
+    cv: !!cv,
+    learning: !!learning,
+    footer: !!footer
+  });
+
+  return;
+}
+
 
   const views = {};
 
