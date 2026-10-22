@@ -840,6 +840,27 @@ restartRotationTimer();
 </main></div>
 <script>
 const app=document.getElementById('app');const toggle=document.getElementById('toggleSidebar');toggle.addEventListener('click',()=>{if(matchMedia('(max-width: 650px)').matches){app.classList.toggle('mobile-open')}else{app.classList.toggle('sidebar-collapsed')}});
+document.addEventListener('click', (event) => {
+  if (matchMedia('(max-width: 650px)').matches) return;
+
+  const sidebar = document.querySelector('.sidebar');
+
+  if (
+    app.classList.contains('sidebar-collapsed') &&
+    !sidebar.contains(event.target) &&
+    !toggle.contains(event.target)
+  ) {
+    return;
+  }
+
+  if (
+    !app.classList.contains('sidebar-collapsed') &&
+    !sidebar.contains(event.target) &&
+    !toggle.contains(event.target)
+  ) {
+    app.classList.add('sidebar-collapsed');
+  }
+});
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', event => {
     const targetId = link.getAttribute('href')?.slice(1);
