@@ -1260,6 +1260,8 @@ loadPublishedBlogArticles();
   }
 
   // Intercept internal page links before the old scroll-to-section handler.
+  
+  // Intercept internal page links and project buttons.
   document.addEventListener("click", function (event) {
     const target = event.target instanceof Element ? event.target : null;
     if (!target) return;
@@ -1276,6 +1278,23 @@ loadPublishedBlogArticles();
       return;
     }
 
+    const projectButton = target.closest(
+      ".project[onclick*='#project-']"
+    );
+
+    if (projectButton) {
+      const match = projectButton.getAttribute("onclick").match(
+        /#(project-[a-z-]+)/
+      );
+
+      if (match) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        showPage(hashToPage["#" + match[1]]);
+        return;
+      }
+    }
+
     const link = target.closest("a[href^='#']");
     if (!link) return;
 
@@ -1286,6 +1305,7 @@ loadPublishedBlogArticles();
     event.stopImmediatePropagation();
     showPage(destination);
   }, true);
+
 
   window.addEventListener("popstate", function () {
     showPage(pageFromHash(), false);
