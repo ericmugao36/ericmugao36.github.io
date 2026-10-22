@@ -399,7 +399,53 @@ document.addEventListener("DOMContentLoaded", function () {
   const primary = document.getElementById("showcase-primary");
   if (!label || !title || !description || !symbol ||     !primary || !secondary || !previous || !next) {   console.error("A portfolio showcase element is missing.");   return; }
 
-  
+ 
+const projectsData = [
+  {
+    id: "edutrack",
+    name: "EduTrack Kenya — School Management Dashboard",
+    icon: "🏫",
+    label: "EDUTRACK KENYA · SCHOOL TECHNOLOGY",
+    title: "Every parent deserves to understand their child's progress.",
+    description: "EduTrack Kenya helps teachers record assessment results and gives parents access to their children's reports and teachers' comments, making learning progress easier to follow.",
+    cardDescription: "Helps schools record learner assessment results and gives parents access to reports and teachers' comments.",
+    projectLink: "#project-edutrack",
+    technologies: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "PostgreSQL"],
+    repository: "https://github.com/ericmugao36/jss-assessment-dashboard",
+    demo: "https://jss-assessment-dashboard.onrender.com",
+    screenshot: "images/image.png"
+  },
+  {
+    id: "smp",
+    name: "SMP Performance Coach",
+    icon: "📈",
+    label: "SMP PERFORMANCE COACH · MACHINE LEARNING",
+    title: "Turn activity data into useful predictions.",
+    description: "SMP Performance Coach is a Python machine-learning practice project exploring whether daily activity data can help predict achievement of a 10,000-step goal.",
+    cardDescription: "A machine-learning practice project that explores step-goal predictions.",
+    projectLink: "#project-smp",
+    technologies: ["Python", "Pandas", "Scikit-learn"],
+    repository: "",
+    demo: "",
+    screenshot: ""
+  },
+  {
+    id: "tools",
+    name: "Python Business Tools",
+    icon: "🧰",
+    label: "PYTHON BUSINESS TOOLS · AUTOMATION",
+    title: "Make everyday tasks simpler with Python.",
+    description: "Python Business Tools is a collection of small scripts, reusable functions, and calculators designed to simplify routine tasks and explore practical business automation.",
+    cardDescription: "Small Python calculators and scripts for everyday tasks and business automation.",
+    projectLink: "#project-tools",
+    technologies: ["Python", "Automation"],
+    repository: "",
+    demo: "",
+    screenshot: ""
+  }
+];
+ 
+
 const slides = [
   {
     type: "about",
@@ -412,28 +458,42 @@ const slides = [
   },
   {
     type: "project",
+    id: "edutrack",
     label: "EDUTRACK KENYA · SCHOOL TECHNOLOGY",
     title: "Every parent deserves to understand their child's progress.",
     description: "EduTrack Kenya helps teachers record assessment results and gives parents access to their children's reports and teachers' comments, making learning progress easier to follow.",
     symbol: "🏫",
-    linkText: "Discuss a school solution",
+    linkText: "Explore EduTrack",
     link: "#contact",
     projectLink: "#project-edutrack"
   },
+  {
+    type: "project",
+    id: "smp",
+    label: "SMP PERFORMANCE COACH · MACHINE LEARNING",
+    title: "Turn activity data into useful predictions.",
+    description: "SMP Performance Coach is a Python machine-learning practice project exploring whether daily activity data can help predict achievement of a 10,000-step goal.",
+    symbol: "📈",
+    linkText: "Explore SMP",
+    link: "#project-smp",
+    projectLink: "#project-smp"
+  },
+  {
+    type: "project",
+    id: "tools",
+    label: "PYTHON BUSINESS TOOLS · AUTOMATION",
+    title: "Make everyday tasks simpler with Python.",
+    description: "Python Business Tools is a collection of small scripts, reusable functions, and calculators designed to simplify routine tasks and explore practical business automation.",
+    symbol: "🧰",
+    linkText: "Explore Python Tools",
+    link: "#project-tools",
+    projectLink: "#project-tools"
+  }
 
-  // ADD NEW PROJECTS BELOW THIS LINE.
-  // Copy the example below and replace its details.
-  // {
-  //   type: "project",
-  //   label: "PROJECT NAME · CATEGORY",
-  //   title: "Your project headline goes here.",
-  //   description: "Explain what your project does and who it helps.",
-  //   symbol: "💻",
-  //   linkText: "View Project",
-  //   link: "https://example.com",
-  //   projectLink: "#projects"
-  // }
+  // Add future projects here.
+  // Each project can appear in the slideshow automatically.
 ];
+
 
 let current = 0;
 
@@ -456,10 +516,11 @@ symbol.textContent = slide.symbol;
 primary.href = slide.projectLink || "#projects";
 
 
+
 primary.onclick = function (event) {
   event.preventDefault();
 
-  const destination = slide.projectLink || "#projects";
+  const destination = slide.projectLink || slide.link || "#projects";
   window.location.hash = destination;
 };
 
