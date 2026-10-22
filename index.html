@@ -225,15 +225,36 @@
     min-height: 500px;
   }
 }
-/* Use Eric's photo as the background on project slides */
-#portfolio-showcase.project-background {
+/* About Me background */
+#portfolio-showcase {
   background:
     linear-gradient(
       120deg,
-      rgba(36, 89, 224, 0.88),
-      rgba(18, 32, 58, 0.82)
+      rgba(18, 32, 58, 0.78),
+      rgba(18, 32, 58, 0.55)
     ),
-    url("images/picture.jpg") center / cover no-repeat;
+    url("images/picture.jpg") center 35% / cover no-repeat;
+}
+
+/* EduTrack background */
+#portfolio-showcase[data-slide="edutrack"] {
+  background:
+    linear-gradient(120deg, rgba(18, 32, 58, 0.88), rgba(18, 32, 58, 0.25)),
+    url("images/student.jpg") center / cover no-repeat;
+}
+
+/* SMP Performance Coach background */
+#portfolio-showcase[data-slide="smp"] {
+  background:
+    linear-gradient(120deg, rgba(18, 32, 58, 0.88), rgba(18, 32, 58, 0.25)),
+    url("images/gym.jpg") center / cover no-repeat;
+}
+
+/* Python Business Tools background */
+#portfolio-showcase[data-slide="tools"] {
+  background:
+    linear-gradient(120deg, rgba(18, 32, 58, 0.88), rgba(18, 32, 58, 0.25)),
+    url("images/laptop.jpg") center / cover no-repeat;
 }
 /* EduTrack project screenshots */
 .edutrack-screenshots {
@@ -524,11 +545,8 @@ let current = 0;
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
     const slide = slides[current];
-
-    showcase.classList.toggle(
-       "project-background",
-    slide.type === "project"
-    );
+showcase.classList.toggle("project-background", slide.type === "project");
+showcase.dataset.slide = slide.id || "about";
     
     label.textContent = slide.label;
     title.textContent = slide.title;
