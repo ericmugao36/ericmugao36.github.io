@@ -444,7 +444,53 @@ const projectsData = [
     screenshot: ""
   }
 ];
- 
+
+  function renderProjectCards() {
+  const container = document.getElementById("project-list");
+  if (!container) return;
+
+  container.innerHTML = projectsData.map(project => `
+    <div class="project" data-project-id="${project.id}">
+      <div class="project-icon">${project.icon}</div>
+      <div class="project-info">
+        <h3>${project.name}</h3>
+        <p>${project.cardDescription}</p>
+        ${project.screenshot ? `
+          <div class="edutrack-screenshots">
+            <img src="${project.screenshot}"
+                 alt="${project.name} screenshot"
+                 loading="lazy">
+          </div>
+        ` : ""}
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;font-weight:750">
+          ${project.repository ? `
+            <a href="${project.repository}" target="_blank"
+               rel="noopener noreferrer"
+               style="color:var(--site-primary)">View Repository ↗</a>
+          ` : ""}
+          ${project.demo ? `
+            <a href="${project.demo}" target="_blank"
+               rel="noopener noreferrer"
+               style="color:var(--site-primary)">Live Demo ↗</a>
+          ` : ""}
+          ${project.id === "edutrack" ? `
+            <a href="mailto:ericmugao36@gmail.com?subject=EduTrack%20Kenya%20Demo%20Request"
+               style="color:var(--site-primary)">Request a Demo ↗</a>
+          ` : ""}
+        </div>
+      </div>
+      <span class="open">↗</span>
+    </div>
+  `).join("");
+
+  container.querySelectorAll("[data-project-id]").forEach(card => {
+    card.style.cursor = "pointer";
+    card.addEventListener("click", event => {
+      if (event.target.closest("a")) return;
+      window.location.hash = "#project-" + card.dataset.projectId;
+    });
+  });
+}
 
 const slides = [
   {
