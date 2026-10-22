@@ -403,6 +403,41 @@
   height: auto;
 }
 
+
+/* Keep the profile visible on mobile */
+@media (max-width: 700px) {
+  .sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 4px;
+    min-width: 0;
+  }
+
+  .sidebar .brand-mark {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .sidebar .brand-name,
+  .sidebar .brand-sub {
+    display: block;
+    visibility: visible;
+    white-space: normal;
+  }
+
+  .sidebar .brand-name {
+    font-size: 14px;
+  }
+
+  .sidebar .brand-sub {
+    font-size: 11px;
+  }
+}
   
 </style>
 </head>
