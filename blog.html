@@ -1,1 +1,141 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Eric Mugao</title>
+  <meta name="description" content="Articles by Eric Mugao about Python, AI, automation, and practical digital solutions.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fc;
+      color: #17233b;
+      line-height: 1.7;
+    }
+    header {
+      background: #12203a;
+      color: white;
+      padding: 24px;
+    }
+    header nav, main, footer {
+      max-width: 900px;
+      margin: auto;
+    }
+    header a { color: white; text-decoration: none; }
+    header nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    main { padding: 35px 20px; }
+    .intro { margin-bottom: 30px; }
+    .article {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px #17233b12;
+    }
+    .article h2 { margin-top: 0; }
+    .article a { color: #2459e0; }
+    .date { color: #667085; font-size: 14px; }
+    footer { padding: 20px; color: #667085; }
+    #status { color: #667085; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">← Portfolio</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>My Blog</h1>
+      <p>My journey in Python, artificial intelligence, automation, and building practical digital solutions.</p>
+    </section>
+
+    <section id="articles">
+      <p id="status">Loading published articles…</p>
+    </section>
+  </main>
+
+  <footer>
+    © Eric Mugao · <a href="index.html">Back to portfolio</a>
+  </footer>
+
+  <script>
+    const articlesContainer = document.getElementById("articles");
+    const statusMessage = document.getElementById("status");
+
+    async function loadArticles() {
+      try {
+        const response = await fetch(
+          "https://api.github.com/repos/ericmugao36/ericmugao36.github.io/contents/_posts"
+        );
+
+        if (!response.ok) {
+          throw new Error("Could not retrieve the published articles.");
+        }
+
+        const files = await response.json();
+        const posts = files.filter(file => file.name.endsWith(".md"));
+
+        articlesContainer.innerHTML = "";
+
+        if (posts.length === 0) {
+          articlesContainer.innerHTML = "<p>No published articles yet.</p>";
+          return;
+        }
+
+        for (const file of posts.reverse()) {
+          const fileResponse = await fetch(file.download_url);
+          const markdown = await fileResponse.text();
+
+          const titleMatch = markdown.match(/^title:\s*["']?(.+?)["']?\s*$/m);
+          const dateMatch = markdown.match(/^date:\s*["']?(.+?)["']?\s*$/m);
+          const descriptionMatch = markdown.match(/^description:\s*["']?(.+?)["']?\s*$/m);
+
+          const title = titleMatch ? titleMatch[1] : file.name.replace(".md", "");
+          const date = dateMatch ? dateMatch[1] : "";
+          const description = descriptionMatch ? descriptionMatch[1] : "";
+
+          const card = document.createElement("article");
+          card.className = "article";
+
+          const heading = document.createElement("h2");
+          heading.textContent = title;
+
+          const dateElement = document.createElement("p");
+          dateElement.className = "date";
+          dateElement.textContent = date;
+
+          const descriptionElement = document.createElement("p");
+          descriptionElement.textContent = description;
+
+          const bodyElement = document.createElement("p");
+          const body = markdown
+            .replace(/^---[\s\S]*?---\s*/, "")
+            .replace(/!\[([^\]]*)\]\([^)]+\)/g, "")
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+            .replace(/[#>*_`]/g, "")
+            .trim();
+
+          bodyElement.textContent = body.slice(0, 500) +
+            (body.length > 500 ? "…" : "");
+
+          card.append(heading, dateElement, descriptionElement, bodyElement);
+          articlesContainer.appendChild(card);
+        }
+      } catch (error) {
+        statusMessage.textContent =
+          "Articles could not be loaded. Please try again later.";
+      }
+    }
+
+    loadArticles();
+  </script>
+</body>
+</html>
+
