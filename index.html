@@ -745,73 +745,97 @@ loadPortfolioBlog();
   contactPanel.appendChild(contact);
   contactView.appendChild(contactPanel);
    
-  const blogView = makeView("blog", []);
 
-  blogView.innerHTML = `
-    <section class="panel">
-      <div class="eyebrow">Eric Mugao · Blog</div>
-      <h2 style="font-size:26px;margin:8px 0">Ideas, projects and lessons learned</h2>
-      <p class="cv-note">
-        Notes from my journey in Python, AI, web development, and building
-        practical digital solutions.
-      </p>
+const blogView = makeView("blog", []);
 
-      <div class="milestone-list">
-        <article class="milestone">
-          <div class="milestone-mark">🐍</div>
-          <div>
-            <h3>Learning Python by Building Real Projects</h3>
-            <p>
-              Reflections on learning programming, solving errors, and
-              turning small exercises into useful tools.
-            </p>
-            <span class="tag">Python · Learning journey</span>
-          </div>
-        </article>
+blogView.innerHTML = `
+  <section class="panel">
+    <div class="eyebrow">Eric Mugao · Blog</div>
+    <h2 style="font-size:26px;margin:8px 0">Ideas, projects and lessons learned</h2>
+    <p class="cv-note">
+      Notes from my journey in Python, AI, web development, and practical digital solutions.
+    </p>
+    <div id="published-blog-articles" class="milestone-list">
+      <p class="cv-note">Loading published articles…</p>
+    </div>
+  </section>
+`;
 
-        <article class="milestone">
-          <div class="milestone-mark">🤖</div>
-          <div>
-            <h3>My Journey into AI and Machine Learning</h3>
-            <p>
-              What I'm learning about data, predictions, AI APIs, and
-              building my SMP Performance Coach prototype.
-            </p>
-            <span class="tag">AI · Machine learning</span>
-          </div>
-        </article>
+async function loadPublishedBlogArticles() {
+  const container = document.getElementById("published-blog-articles");
 
-        <article class="milestone">
-          <div class="milestone-mark">🏫</div>
-          <div>
-            <h3>Building EduTrack Kenya</h3>
-            <p>
-              Why I want to make school assessment information easier
-              for teachers to manage and parents to understand.
-            </p>
-            <span class="tag">EduTrack · Education technology</span>
-          </div>
-        </article>
+  if (!container) return;
 
-        <article class="milestone">
-          <div class="milestone-mark">💻</div>
-          <div>
-            <h3>Designing and Improving My Portfolio</h3>
-            <p>
-              Lessons from HTML, CSS, JavaScript, GitHub Pages,
-              responsive layouts, and debugging.
-            </p>
-            <span class="tag">Web development · Projects</span>
-          </div>
-        </article>
-      </div>
+  try {
+    const response = await fetch(
+      "https://api.github.com/repos/ericmugao36/ericmugao36.github.io/contents/_posts"
+    );
 
-      <p class="cv-note">
-        These are starter topics. You can replace them with your own
-        published articles as you write them.
-      </p>
-    </section>
-  `;
+    if (!response.ok) {
+      throw new Error("Could not retrieve blog articles.");
+    }
+
+    const files = await response.json();
+    const posts = files
+      .filter(file => file.name.endsWith(".md"))
+      .sort((a, b) => b.name.localeCompare(a.name));
+
+    container.replaceChildren();
+
+    if (posts.length === 0) {
+      container.textContent = "No published articles yet.";
+      return;
+    }
+
+    for (const file of posts) {
+      const fileResponse = await fetch(file.download_url);
+
+      if (!fileResponse.ok) continue;
+
+      const markdown = await fileResponse.text();
+
+      const getField = (field) => {
+        const match = markdown.match(
+          new RegExp("^" + field + ":\\\\s*[\\\"']?(.+?)[\\\"']?\\\\s*$", "m")
+        );
+        return match ? match[1] : "";
+      };
+
+      const title = getField("title") || file.name.replace(/\\.md$/, "");
+      const date = getField("date");
+      const description = getField("description");
+
+      const article = document.createElement("article");
+      article.className = "milestone";
+
+      const mark = document.createElement("div");
+      mark.className = "milestone-mark";
+      mark.textContent = "✍";
+
+      const content = document.createElement("div");
+
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+
+      const dateElement = document.createElement("p");
+      dateElement.className = "cv-note";
+      dateElement.textContent = date;
+
+      const descriptionElement = document.createElement("p");
+      descriptionElement.textContent = description;
+
+      content.append(heading, dateElement, descriptionElement);
+      article.append(mark, content);
+      container.appendChild(article);
+    }
+  } catch (error) {
+    container.textContent =
+      "Articles could not be loaded. Please try again later.";
+    console.error("Blog loading error:", error);
+  }
+}
+
+loadPublishedBlogArticles();
 
 
   const pageNames = {
