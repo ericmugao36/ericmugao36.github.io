@@ -454,10 +454,25 @@ let current = 0;
     label.textContent = slide.label;
     title.textContent = slide.title;
     description.textContent = slide.description;
-   symbol.textContent = slide.symbol;
-   primary.onclick = function (event) {   const destination = slide.projectLink;    if (destination && destination.startsWith("#")) {     event.preventDefault();     showPage(destination.slice(1));   } };  primary.href = slide.projectLink || "#projects";
-   secondary.textContent = slide.linkText + " →";
-   secondary.href = slide.link;
+   
+symbol.textContent = slide.symbol;
+
+primary.href = slide.projectLink || "#projects";
+primary.onclick = function (event) {
+  event.preventDefault();
+
+  const destination = slides[current].projectLink;
+
+  if (destination) {
+    showPage(destination.slice(1));
+  } else {
+    showPage("projects");
+  }
+};
+
+secondary.textContent = slide.linkText + " →";
+secondary.href = slide.link;
+
   }
 
 
@@ -557,7 +572,7 @@ restartRotationTimer();
     <h2 id="showcase-title">I turn ideas into practical digital solutions.</h2>
 
     <p id="showcase-description">
-      I am a developing Python programmer and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make everyday tasks easier.
+      A Python programmer, Communication Analyst, and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make your work easier.
     </p>
 
     <div class="intro-actions">
@@ -584,7 +599,7 @@ restartRotationTimer();
   <div class="section-head">
     <div>
       <h2>Quick overview</h2>
-      <p>Explore what I work on</p>
+      <p>Explore My Work</p>
     </div>
   </div>
   <div class="widget-grid">
