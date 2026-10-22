@@ -828,11 +828,6 @@ function showProjectDetails(projectId) {
   showPage("project-details");
 }
 
-document.querySelectorAll("[data-details]").forEach(button => {
-  button.addEventListener("click", () => {
-    showProjectDetails(button.dataset.details);
-  });
-});
 const themeToggle=document.getElementById('themeToggle');const savedTheme=localStorage.getItem('eric-portfolio-theme');if(savedTheme==='dark'||savedTheme==='light'){document.documentElement.style.colorScheme=savedTheme}function updateThemeButton(){const dark=document.documentElement.style.colorScheme==='dark';themeToggle.textContent=dark?'☀️ Light':'🌙 Dark';themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');themeToggle.setAttribute('aria-pressed',String(dark))}updateThemeButton();themeToggle.addEventListener('click',()=>{const dark=document.documentElement.style.colorScheme!=='dark';document.documentElement.style.colorScheme=dark?'dark':'light';localStorage.setItem('eric-portfolio-theme',dark?'dark':'light');updateThemeButton()});document.getElementById('year').textContent=new Date().getFullYear();
 
 </script>
