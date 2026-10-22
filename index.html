@@ -804,7 +804,11 @@ const toggleArticle = () => {
 
     const articleText = document.createElement("div");
     articleText.style.whiteSpace = "pre-wrap";
-    articleText.textContent = body;
+    if (typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
+  articleText.innerHTML = DOMPurify.sanitize(marked.parse(body));
+} else {
+  articleText.textContent = body;
+}
 
     fullArticle.replaceChildren(articleText);
     fullArticle.dataset.loaded = "true";
@@ -953,5 +957,6 @@ loadPublishedBlogArticles();
   showPage(pageFromHash(), false);
 })();
 </script>
-
-</body></html>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+</body>
