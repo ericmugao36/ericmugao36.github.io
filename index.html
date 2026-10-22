@@ -760,6 +760,9 @@ async function loadPublishedBlogArticles() {
       const date = getField("date");
       const description = getField("description");
 
+      const fullArticle = document.createElement("div");
+      fullArticle.className = "full-blog-article";
+      fullArticle.hidden = true;
       const article = document.createElement("article");
       article.className = "milestone";
 
@@ -769,8 +772,35 @@ async function loadPublishedBlogArticles() {
 
       const content = document.createElement("div");
 
-      const heading = document.createElement("h3");
-      heading.textContent = title;
+     const heading = document.createElement("h3");
+const titleButton = document.createElement("button");
+
+titleButton.type = "button";
+titleButton.textContent = title;
+titleButton.style.cursor = "pointer";
+titleButton.style.background = "none";
+titleButton.style.border = "none";
+titleButton.style.padding = "0";
+titleButton.style.font = "inherit";
+titleButton.style.color = "var(--site-primary)";
+titleButton.style.textAlign = "left";
+
+heading.appendChild(titleButton);
+
+titleButton.addEventListener("click", () => {
+  fullArticle.hidden = !fullArticle.hidden;
+
+  if (!fullArticle.hidden && !fullArticle.dataset.loaded) {
+    const body = markdown.replace(/^---\s*[\r\n]+[\s\S]*?[\r\n]+---\s*/, "");
+
+    const articleText = document.createElement("div");
+    articleText.style.whiteSpace = "pre-wrap";
+    articleText.textContent = body;
+
+    fullArticle.replaceChildren(articleText);
+    fullArticle.dataset.loaded = "true";
+  }
+});    
 
       const dateElement = document.createElement("p");
       dateElement.className = "cv-note";
@@ -779,7 +809,7 @@ async function loadPublishedBlogArticles() {
       const descriptionElement = document.createElement("p");
       descriptionElement.textContent = description;
 
-      content.append(heading, dateElement, descriptionElement);
+      content.append(heading, dateElement, descriptionElement); content.appendChild(fullArticle);
       article.append(mark, content);
       container.appendChild(article);
     }
