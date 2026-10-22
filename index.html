@@ -606,10 +606,11 @@ const themeToggle=document.getElementById('themeToggle');const savedTheme=localS
   const footer = main.querySelector(".footer");
 
 
+
 if (!header || !intro || !overview || !projects ||
     !about || !contact || !cv || !learning || !footer) {
 
-  console.error("Missing portfolio elements:", {
+  const missingElements = Object.entries({
     header: !!header,
     intro: !!intro,
     overview: !!overview,
@@ -619,9 +620,14 @@ if (!header || !intro || !overview || !projects ||
     cv: !!cv,
     learning: !!learning,
     footer: !!footer
-  });
+  })
+    .filter(([name, exists]) => !exists)
+    .map(([name]) => name);
 
+  console.error("Missing portfolio elements:", missingElements.join(", "));
   return;
+}
+
 }
 
 
