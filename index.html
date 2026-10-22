@@ -638,7 +638,7 @@ if (!header || !intro || !overview || !projects ||
     view.hidden = true;
 
     elements.forEach(element => view.appendChild(element));
-    main.insertBefore(view, footer);
+    main.appendChild(view);
     views[key] = view;
     return view;
   }
