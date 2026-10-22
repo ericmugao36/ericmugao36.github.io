@@ -432,7 +432,7 @@ restartRotationTimer();
 <aside class="sidebar" aria-label="Main navigation">
   <a class="brand" href="#dashboard" aria-label="Eric Mugao home">   <img class="brand-mark" src="images/passport.jpg" alt="Eric Mugao">   <div>     <div class="brand-name">Eric Mugao</div>     <div class="brand-sub">Developer portfolio</div>   </div> </a>
  <nav class="nav"><a class="active" href="#dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></a><a href="#projects"><span class="ico">▣</span><span class="nav-label">Projects</span></a><a href="#about"><span class="ico">◎</span><span class="nav-label">About me</span></a><a href="#skills"><span class="ico">⌘</span><span class="nav-label">Skills</span></a><a href="#cv"><span class="ico">↓</span><span class="nav-label">CV</span></a><a href="#milestones"><span class="ico">✓</span><span class="nav-label">Learning</span></a>
-<a href="blog.html"><span class="ico">✎</span><span class="nav-label">Blog</span></a>
+<a href="#blog"><span class="ico">✎</span><span class="nav-label">Blog</span></a>
 <a href="#contact"><span class="ico">✉</span><span class="nav-label">Contact</span></a></nav>
  <div class="sidebar-bottom">Building practical things, one project at a time.</div>
 </aside>
@@ -558,7 +558,26 @@ restartRotationTimer();
 </div>
 <div class="cv-actions"><a class="btn" style="background:var(--site-primary);color:white" href="Eric_Mugao_CV.pdf.pdf" download>⬇ Download CV (PDF)</a><a class="btn" style="background:light-dark(#edf2ff,#25365a);color:inherit" href="mailto:ericmugao36@gmail.com">Request a copy by email</a></div><p class="cv-note">Required filename: <strong>Eric_Mugao_CV.pdf.pdf</strong> in the same folder as index.html.</p></section>
  <section class="panel section-panel" id="milestones"><div class="eyebrow">Skills & learning journey</div><h2 style="font-size:19px;margin:8px 0 0">Learning by building</h2><p class="cv-note">These are current learning areas and project milestones, not claims of expert-level experience.</p><div class="milestone-list"><div class="milestone"><div class="milestone-mark">✓</div><div><h3>Published a portfolio and GitHub Pages site</h3><p>Practised HTML, CSS, page structure, and publishing a static website.</p></div></div><div class="milestone"><div class="milestone-mark">↗</div><div><h3>JSS School Management Dashboard — in development</h3><p>Building a Python/FastAPI web app with learner records and school workflows. Explore the code in the linked repository above.</p></div></div><div class="milestone"><div class="milestone-mark">⌘</div><div><h3>Python and machine-learning practice</h3><p>Practising scripts, data handling, scikit-learn classification, and a step-goal coaching prototype.</p></div></div><div class="milestone"><div class="milestone-mark">＋</div><div><h3>Next learning goals</h3><p>Improve application testing, accessibility, database workflows, and project documentation as I continue building.</p></div></div></div></section>
- <footer class="footer">© <span id="year"></span> Eric Mugao · Built with curiosity and code.</footer>
+ <section class="panel section-panel" id="blog">
+  <div class="eyebrow">Articles & insights</div>
+  <h2 style="font-size:19px;margin:8px 0 0">My Blog</h2>
+  <p class="cv-note">
+    Thoughts, lessons, and projects from my journey in Python,
+    artificial intelligence, and practical digital solutions.
+  </p>
+   
+  <div id="blog-articles">
+    <p class="cv-note">Loading published articles…</p>
+  </div>
+</section>
+
+
+  <div id="blog-articles">
+    <p class="cv-note">Loading published articles…</p>
+  </div>
+</section>
+
+<footer class="footer">© <span id="year"></span> Yuri Printers · Powered by Curiosity.</footer>
 </main></div>
 <script>
 const app=document.getElementById('app');const toggle=document.getElementById('toggleSidebar');toggle.addEventListener('click',()=>{if(matchMedia('(max-width: 650px)').matches){app.classList.toggle('mobile-open')}else{app.classList.toggle('sidebar-collapsed')}});
@@ -567,6 +586,71 @@ document.querySelectorAll('[data-target]').forEach(card=>card.addEventListener('
 function showDetail(message){const box=document.getElementById('projectDetails');box.hidden=false;box.className='tag-row';box.textContent=message;box.style.padding='12px 4px';box.style.fontSize='13px';box.style.color='var(--site-primary)';box.scrollIntoView({behavior:'smooth',block:'nearest'});}
 document.querySelectorAll('[data-details]').forEach(btn=>btn.addEventListener('click',()=>{const messages={smp:'SMP Performance Coach: a practice classifier using sleep and water inputs to estimate whether a 10,000-step goal may be reached. This is a learning project, not health advice. A public repository or demo is not linked yet; this card will be connected when the project is published.',tools:'Python Business Tools: small practice scripts and calculators. A public repository or demo is not linked yet; this card will be connected when the project is published.'};showDetail(messages[btn.dataset.details]);}));
 const themeToggle=document.getElementById('themeToggle');const savedTheme=localStorage.getItem('eric-portfolio-theme');if(savedTheme==='dark'||savedTheme==='light'){document.documentElement.style.colorScheme=savedTheme}function updateThemeButton(){const dark=document.documentElement.style.colorScheme==='dark';themeToggle.textContent=dark?'☀️ Light':'🌙 Dark';themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');themeToggle.setAttribute('aria-pressed',String(dark))}updateThemeButton();themeToggle.addEventListener('click',()=>{const dark=document.documentElement.style.colorScheme!=='dark';document.documentElement.style.colorScheme=dark?'dark':'light';localStorage.setItem('eric-portfolio-theme',dark?'dark':'light');updateThemeButton()});document.getElementById('year').textContent=new Date().getFullYear();
+
+async function loadPortfolioBlog() {
+  const container = document.getElementById("blog-articles");
+
+  if (!container) return;
+
+  try {
+    const response = await fetch(
+      "https://api.github.com/repos/ericmugao36/ericmugao36.github.io/contents/_posts"
+    );
+
+    if (!response.ok) {
+      throw new Error("Unable to load articles");
+    }
+
+    const files = await response.json();
+    const posts = files
+      .filter(file => file.name.endsWith(".md"))
+      .reverse();
+
+    container.replaceChildren();
+
+    if (posts.length === 0) {
+      container.textContent = "No articles published yet.";
+      return;
+    }
+
+    for (const file of posts) {
+      const fileResponse = await fetch(file.download_url);
+      const markdown = await fileResponse.text();
+
+      const titleMatch = markdown.match(/^title:\s*["']?(.+?)["']?\s*$/m);
+      const dateMatch = markdown.match(/^date:\s*["']?(.+?)["']?\s*$/m);
+      const descriptionMatch = markdown.match(/^description:\s*["']?(.+?)["']?\s*$/m);
+
+      const title = titleMatch ? titleMatch[1] : file.name.replace(".md", "");
+      const date = dateMatch ? dateMatch[1] : "";
+      const description = descriptionMatch ? descriptionMatch[1] : "";
+
+      const article = document.createElement("article");
+      article.className = "milestone";
+
+      const content = document.createElement("div");
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+
+      const dateElement = document.createElement("p");
+      dateElement.className = "cv-note";
+      dateElement.textContent = date;
+
+      const descriptionElement = document.createElement("p");
+      descriptionElement.textContent = description;
+
+      content.append(heading, dateElement, descriptionElement);
+      article.appendChild(content);
+      container.appendChild(article);
+    }
+  } catch (error) {
+    container.textContent =
+      "Articles could not be loaded. Please try again later.";
+  }
+}
+
+loadPortfolioBlog();
+
 </script>
 
 
