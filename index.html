@@ -455,7 +455,7 @@ let current = 0;
     title.textContent = slide.title;
     description.textContent = slide.description;
    symbol.textContent = slide.symbol;
-   primary.href = slide.projectLink || "#projects";
+   primary.onclick = function (event) {   const destination = slide.projectLink;    if (destination && destination.startsWith("#")) {     event.preventDefault();     showPage(destination.slice(1));   } };  primary.href = slide.projectLink || "#projects";
    secondary.textContent = slide.linkText + " →";
    secondary.href = slide.link;
   }
@@ -813,12 +813,11 @@ function showProjectDetails(projectId) {
   back.style.marginTop = "16px";
   back.textContent = "← Back to Projects";
   back.addEventListener("click", () => {
-    box.hidden = true;
-    window.location.hash = "projects";
-  });
+  showPage("projects");
+});
 
   box.appendChild(back);
-  box.scrollIntoView({ behavior: "smooth", block: "start" });
+  showPage("project-details");
 }
 
 document.querySelectorAll("[data-details]").forEach(button => {
@@ -891,9 +890,26 @@ if (!header || !intro || !overview || !projects ||
   contact.remove();
   about.remove();
 
-  makeView("dashboard", [intro, overview]);
-  makeView("projects", [projects]);
-  makeView("about", [about]);
+
+makeView("dashboard", [intro, overview]);
+makeView("projects", [projects]);
+
+// Give EduTrack its own page view.
+const edutrackDetails = document.getElementById("project-edutrack");
+if (edutrackDetails) {
+  edutrackDetails.hidden = false;
+  edutrackDetails.remove();
+  makeView("project-edutrack", [edutrackDetails]);
+}
+
+// Give the other projects a shared details page.
+const projectDetails = document.getElementById("projectDetails");
+if (projectDetails) {
+  projectDetails.remove();
+  makeView("project-details", [projectDetails]);
+}
+
+makeView("about", [about]);
 
   // Build a dedicated Skills view without duplicating the Dashboard IDs.
   const skillsView = makeView("skills", []);
@@ -1103,7 +1119,9 @@ loadPublishedBlogArticles();
     cv: "CV",
     learning: "Learning",
     contact: "Contact",
-    blog: "Blog"
+    blog: "Blog",
+    "project-edutrack": "EduTrack Kenya",
+    "project-details": "Project Details"
   };
 
   const hashToPage = {
@@ -1114,7 +1132,9 @@ loadPublishedBlogArticles();
     "#cv": "cv",
     "#milestones": "learning",
     "#contact": "contact",
-    "#blog": "blog"
+    "#blog": "blog",
+    "#project-edutrack": "project-edutrack",
+     "#project-details": "project-details"
   };
 
   function pageFromHash() {
