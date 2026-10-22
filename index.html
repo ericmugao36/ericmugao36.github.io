@@ -80,53 +80,54 @@
     display: block;
   }
 
-  .sidebar {
-    position: fixed;
-    z-index: 20;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 245px;
-    height: 100vh;
-    overflow-y: auto;
-    transform: translateX(-100%);
-    transition: transform .22s;
-  }
+ .sidebar {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 76px;
+  min-width: 76px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 24px 10px;
+  transform: translateX(0);
+  transition: width .22s, padding .22s;
+}
 
-  .mobile-open .sidebar {
-    transform: translateX(0);
-  }
+/* Keep the sidebar visible on phones */
+.mobile-open .sidebar {
+  width: 245px;
+  padding: 24px 15px;
+}
 
-  .sidebar-collapsed .sidebar {
-    width: 245px;
-    padding: 24px 15px;
-  }
+/* Collapsed phone sidebar: icons only */
+.sidebar-collapsed .sidebar {
+  width: 76px;
+  min-width: 76px;
+  padding: 24px 10px;
+}
 
-  .sidebar-collapsed .brand-name,
-  .sidebar-collapsed .brand-sub,
-  .sidebar-collapsed .nav-label,
-  .sidebar-collapsed .sidebar-bottom {
-    display: initial;
-  }
+.sidebar-collapsed .brand {
+  justify-content: center;
+  padding: 0;
+}
 
-  .sidebar-collapsed .brand {
-    padding: 0 8px;
-  }
+.sidebar-collapsed .brand-name,
+.sidebar-collapsed .brand-sub,
+.sidebar-collapsed .nav-label,
+.sidebar-collapsed .sidebar-bottom {
+  display: none;
+}
 
-  .sidebar-collapsed .nav a {
-    justify-content: flex-start;
-    padding: 12px;
-  }
+.sidebar-collapsed .nav a {
+  justify-content: center;
+  padding: 13px 8px;
+}
 
-  .sidebar-collapsed .nav .ico {
-    width: 22px;
-  }
-
-  .main,
-  .sidebar-collapsed .main {
-    margin-left: 0;
-    padding: 18px 15px 28px;
-  }
+.sidebar-collapsed .nav .ico {
+  width: auto;
+}
 
   .topbar {
     margin-bottom: 20px;
