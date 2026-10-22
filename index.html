@@ -861,6 +861,19 @@ document.addEventListener('click', (event) => {
     app.classList.add('sidebar-collapsed');
   }
 });
+  document.addEventListener('click', (event) => {
+  if (!matchMedia('(max-width: 650px)').matches) return;
+
+  const sidebar = document.querySelector('.sidebar');
+
+  if (
+    app.classList.contains('mobile-open') &&
+    !sidebar.contains(event.target) &&
+    !toggle.contains(event.target)
+  ) {
+    app.classList.remove('mobile-open');
+  }
+});
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', event => {
     const targetId = link.getAttribute('href')?.slice(1);
