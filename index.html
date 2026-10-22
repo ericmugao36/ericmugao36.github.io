@@ -458,18 +458,18 @@ let current = 0;
 symbol.textContent = slide.symbol;
 
 primary.href = slide.projectLink || "#projects";
+
 primary.onclick = function (event) {
   event.preventDefault();
 
-  const destination = slides[current].projectLink;
+  const destination = slide.projectLink;
 
-  if (destination) {
-    showPage(destination.slice(1));
+  if (destination === "#project-edutrack") {
+    window.location.hash = "project-edutrack";
   } else {
-    showPage("projects");
+    window.location.hash = "projects";
   }
 };
-
 secondary.textContent = slide.linkText + " →";
 secondary.href = slide.link;
 
