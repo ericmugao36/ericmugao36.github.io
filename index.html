@@ -566,7 +566,22 @@ restartRotationTimer();
 <script>
 const app=document.getElementById('app');const toggle=document.getElementById('toggleSidebar');toggle.addEventListener('click',()=>{if(matchMedia('(max-width: 650px)').matches){app.classList.toggle('mobile-open')}else{app.classList.toggle('sidebar-collapsed')}});
 document.querySelectorAll('.nav a').forEach(link=>link.addEventListener('click',event=>{const targetId=link.getAttribute('href')?.slice(1);const target=document.getElementById(targetId);if(target){event.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+targetId)}document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));link.classList.add('active');app.classList.remove('mobile-open')}));
-document.querySelectorAll('[data-target]').forEach(card=>card.addEventListener('click',()=>{const target=card.dataset.target;if(target==='projects'){document.getElementById('projects').scrollIntoView({behavior:'smooth'});return}const detailMap={python:'Python projects include scripts, data handling, and machine-learning practice.',web:'Web development includes HTML, CSS, and Python-powered applications.',automation:'Automation focuses on simplifying repeated steps with small programs.'};showDetail(detailMap[target]||'Explore my projects below.');}));
+
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', event => {
+    const targetId = link.getAttribute('href')?.slice(1);
+
+    // Let the dedicated page-navigation script handle page links.
+    if (targetId) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.location.hash = targetId;
+    }
+
+    app.classList.remove('mobile-open');
+  });
+});
+
 function showDetail(message){const box=document.getElementById('projectDetails');box.hidden=false;box.className='tag-row';box.textContent=message;box.style.padding='12px 4px';box.style.fontSize='13px';box.style.color='var(--site-primary)';box.scrollIntoView({behavior:'smooth',block:'nearest'});}
 document.querySelectorAll('[data-details]').forEach(btn=>btn.addEventListener('click',()=>{const messages={smp:'SMP Performance Coach: a practice classifier using sleep and water inputs to estimate whether a 10,000-step goal may be reached. This is a learning project, not health advice. A public repository or demo is not linked yet; this card will be connected when the project is published.',tools:'Python Business Tools: small practice scripts and calculators. A public repository or demo is not linked yet; this card will be connected when the project is published.'};showDetail(messages[btn.dataset.details]);}));
 const themeToggle=document.getElementById('themeToggle');const savedTheme=localStorage.getItem('eric-portfolio-theme');if(savedTheme==='dark'||savedTheme==='light'){document.documentElement.style.colorScheme=savedTheme}function updateThemeButton(){const dark=document.documentElement.style.colorScheme==='dark';themeToggle.textContent=dark?'☀️ Light':'🌙 Dark';themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');themeToggle.setAttribute('aria-pressed',String(dark))}updateThemeButton();themeToggle.addEventListener('click',()=>{const dark=document.documentElement.style.colorScheme!=='dark';document.documentElement.style.colorScheme=dark?'dark':'light';localStorage.setItem('eric-portfolio-theme',dark?'dark':'light');updateThemeButton()});document.getElementById('year').textContent=new Date().getFullYear();
