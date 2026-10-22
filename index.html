@@ -276,6 +276,46 @@
   }
 }
 
+/* Single-file portfolio page views */
+.page-view {
+  display: none;
+  min-width: 0;
+  animation: pageFadeIn 0.2s ease;
+}
+
+.page-view.active-page {
+  display: block;
+}
+
+.page-view[hidden] {
+  display: none !important;
+}
+
+.page-view .content-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.page-view .about-panel {
+  height: fit-content;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-view {
+    animation: none;
+  }
+}
+
 </style>
 </head>
 
@@ -391,7 +431,9 @@ restartRotationTimer();
 <div class="app" id="app">
 <aside class="sidebar" aria-label="Main navigation">
   <a class="brand" href="#dashboard" aria-label="Eric Mugao home">   <img class="brand-mark" src="images/passport.jpg" alt="Eric Mugao">   <div>     <div class="brand-name">Eric Mugao</div>     <div class="brand-sub">Developer portfolio</div>   </div> </a>
- <nav class="nav"><a class="active" href="#dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></a><a href="#projects"><span class="ico">▣</span><span class="nav-label">Projects</span></a><a href="#about"><span class="ico">◎</span><span class="nav-label">About me</span></a><a href="#skills"><span class="ico">⌘</span><span class="nav-label">Skills</span></a><a href="#cv"><span class="ico">↓</span><span class="nav-label">CV</span></a><a href="#milestones"><span class="ico">✓</span><span class="nav-label">Learning</span></a><a href="#contact"><span class="ico">✉</span><span class="nav-label">Contact</span></a></nav>
+ <nav class="nav"><a class="active" href="#dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></a><a href="#projects"><span class="ico">▣</span><span class="nav-label">Projects</span></a><a href="#about"><span class="ico">◎</span><span class="nav-label">About me</span></a><a href="#skills"><span class="ico">⌘</span><span class="nav-label">Skills</span></a><a href="#cv"><span class="ico">↓</span><span class="nav-label">CV</span></a><a href="#milestones"><span class="ico">✓</span><span class="nav-label">Learning</span></a>
+<a href="#blog"><span class="ico">✎</span><span class="nav-label">Blog</span></a>
+<a href="#contact"><span class="ico">✉</span><span class="nav-label">Contact</span></a></nav>
  <div class="sidebar-bottom">Building practical things, one project at a time.</div>
 </aside>
 <main class="main" id="dashboard">
@@ -526,4 +568,273 @@ function showDetail(message){const box=document.getElementById('projectDetails')
 document.querySelectorAll('[data-details]').forEach(btn=>btn.addEventListener('click',()=>{const messages={smp:'SMP Performance Coach: a practice classifier using sleep and water inputs to estimate whether a 10,000-step goal may be reached. This is a learning project, not health advice. A public repository or demo is not linked yet; this card will be connected when the project is published.',tools:'Python Business Tools: small practice scripts and calculators. A public repository or demo is not linked yet; this card will be connected when the project is published.'};showDetail(messages[btn.dataset.details]);}));
 const themeToggle=document.getElementById('themeToggle');const savedTheme=localStorage.getItem('eric-portfolio-theme');if(savedTheme==='dark'||savedTheme==='light'){document.documentElement.style.colorScheme=savedTheme}function updateThemeButton(){const dark=document.documentElement.style.colorScheme==='dark';themeToggle.textContent=dark?'☀️ Light':'🌙 Dark';themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');themeToggle.setAttribute('aria-pressed',String(dark))}updateThemeButton();themeToggle.addEventListener('click',()=>{const dark=document.documentElement.style.colorScheme!=='dark';document.documentElement.style.colorScheme=dark?'dark':'light';localStorage.setItem('eric-portfolio-theme',dark?'dark':'light');updateThemeButton()});document.getElementById('year').textContent=new Date().getFullYear();
 </script>
+
+
+<script>
+(function () {
+  const app = document.getElementById("app");
+  const main = document.querySelector(".main");
+
+  if (!app || !main || main.dataset.pagesReady === "true") return;
+  main.dataset.pagesReady = "true";
+
+  const header = main.querySelector(".topbar");
+  const intro = document.getElementById("portfolio-showcase");
+  const overview = document.getElementById("skills");
+  const projects = document.getElementById("projects");
+  const about = document.getElementById("about");
+  const contact = document.getElementById("contact");
+  const cv = document.getElementById("cv");
+  const learning = document.getElementById("milestones");
+  const footer = main.querySelector(".footer");
+
+  if (!header || !intro || !overview || !projects ||
+      !about || !contact || !cv || !learning || !footer) {
+    console.error("Portfolio page setup could not find all required sections.");
+    return;
+  }
+
+  const views = {};
+
+  function makeView(key, elements) {
+    const view = document.createElement("div");
+    view.className = "page-view";
+    view.dataset.page = key;
+    view.hidden = true;
+
+    elements.forEach(element => view.appendChild(element));
+    main.insertBefore(view, footer);
+    views[key] = view;
+    return view;
+  }
+
+  // Move the existing content instead of copying it.
+  contact.remove();
+  about.remove();
+
+  makeView("dashboard", [intro, overview]);
+  makeView("projects", [projects]);
+  makeView("about", [about]);
+
+  // Build a dedicated Skills view without duplicating the Dashboard IDs.
+  const skillsView = makeView("skills", []);
+  skillsView.innerHTML = `
+    <section class="panel">
+      <div class="eyebrow">Skills</div>
+      <h2 style="font-size:22px;margin:8px 0">Skills I'm developing</h2>
+      <p class="cv-note">My skills grow through practical projects and continued learning.</p>
+      <div class="milestone-list">
+        <div class="milestone">
+          <div class="milestone-mark">🐍</div>
+          <div><h3>Python programming</h3>
+          <p>Functions, scripts, data processing, and beginner-friendly applications.</p></div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-mark">⌘</div>
+          <div><h3>Web development</h3>
+          <p>HTML, CSS, JavaScript fundamentals, responsive layouts, and dashboard interfaces.</p></div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-mark">⚙</div>
+          <div><h3>Automation and data</h3>
+          <p>Practical scripts, Pandas, NumPy, and introductory machine-learning workflows.</p></div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-mark">✍</div>
+          <div><h3>Communication and documentation</h3>
+          <p>Research, professional communication, reporting, and explaining technical ideas clearly.</p></div>
+        </div>
+      </div>
+    </section>`;
+
+  makeView("cv", [cv]);
+  makeView("learning", [learning]);
+
+  const contactView = makeView("contact", []);
+  const contactPanel = document.createElement("section");
+  contactPanel.className = "panel section-panel";
+  contactPanel.innerHTML = `
+    <div class="eyebrow">Get in touch</div>
+    <h2 style="font-size:22px;margin:8px 0">Contact Eric Mugao</h2>
+    <p class="cv-note">Have a project, collaboration, or school technology idea to discuss? You can reach me here.</p>`;
+
+  contactPanel.appendChild(contact);
+  contactView.appendChild(contactPanel);
+   
+  const blogView = makeView("blog", []);
+
+  blogView.innerHTML = `
+    <section class="panel">
+      <div class="eyebrow">Eric Mugao · Blog</div>
+      <h2 style="font-size:26px;margin:8px 0">Ideas, projects and lessons learned</h2>
+      <p class="cv-note">
+        Notes from my journey in Python, AI, web development, and building
+        practical digital solutions.
+      </p>
+
+      <div class="milestone-list">
+        <article class="milestone">
+          <div class="milestone-mark">🐍</div>
+          <div>
+            <h3>Learning Python by Building Real Projects</h3>
+            <p>
+              Reflections on learning programming, solving errors, and
+              turning small exercises into useful tools.
+            </p>
+            <span class="tag">Python · Learning journey</span>
+          </div>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-mark">🤖</div>
+          <div>
+            <h3>My Journey into AI and Machine Learning</h3>
+            <p>
+              What I'm learning about data, predictions, AI APIs, and
+              building my SMP Performance Coach prototype.
+            </p>
+            <span class="tag">AI · Machine learning</span>
+          </div>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-mark">🏫</div>
+          <div>
+            <h3>Building EduTrack Kenya</h3>
+            <p>
+              Why I want to make school assessment information easier
+              for teachers to manage and parents to understand.
+            </p>
+            <span class="tag">EduTrack · Education technology</span>
+          </div>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-mark">💻</div>
+          <div>
+            <h3>Designing and Improving My Portfolio</h3>
+            <p>
+              Lessons from HTML, CSS, JavaScript, GitHub Pages,
+              responsive layouts, and debugging.
+            </p>
+            <span class="tag">Web development · Projects</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="cv-note">
+        These are starter topics. You can replace them with your own
+        published articles as you write them.
+      </p>
+    </section>
+  `;
+
+
+  const pageNames = {
+    dashboard: "Dashboard",
+    projects: "Projects",
+    about: "About Me",
+    skills: "Skills",
+    cv: "CV",
+    learning: "Learning",
+    contact: "Contact",
+    blog: "Blog"
+  };
+
+  const hashToPage = {
+    "#dashboard": "dashboard",
+    "#projects": "projects",
+    "#about": "about",
+    "#skills": "skills",
+    "#cv": "cv",
+    "#milestones": "learning",
+    "#contact": "contact",
+    "#blog": "blog"
+  };
+
+  function pageFromHash() {
+    return hashToPage[window.location.hash] || "dashboard";
+  }
+
+  function showPage(key, updateAddress = true) {
+    if (!views[key]) key = "dashboard";
+
+    Object.entries(views).forEach(([name, view]) => {
+      const isActive = name === key;
+      view.hidden = !isActive;
+      view.classList.toggle("active-page", isActive);
+    });
+
+    const heading = header.querySelector("h1");
+    if (heading) heading.textContent = pageNames[key];
+
+    document.querySelectorAll(".nav a").forEach(link => {
+      const targetPage = hashToPage[link.getAttribute("href")];
+      const isActive = targetPage === key;
+
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    app.classList.remove("mobile-open");
+
+    if (updateAddress) {
+      const pageHash = Object.keys(hashToPage).find(
+        hash => hashToPage[hash] === key
+      );
+
+      if (pageHash && window.location.hash !== pageHash) {
+        window.history.pushState(null, "", pageHash);
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+
+  // Intercept internal page links before the old scroll-to-section handler.
+  document.addEventListener("click", function (event) {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) return;
+
+    const overviewCard = target.closest("[data-target]");
+    if (overviewCard) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      const destination =
+        overviewCard.dataset.target === "projects" ? "projects" : "skills";
+
+      showPage(destination);
+      return;
+    }
+
+    const link = target.closest("a[href^='#']");
+    if (!link) return;
+
+    const destination = hashToPage[link.getAttribute("href")];
+    if (!destination) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    showPage(destination);
+  }, true);
+
+  window.addEventListener("popstate", function () {
+    showPage(pageFromHash(), false);
+  });
+
+  window.addEventListener("hashchange", function () {
+    showPage(pageFromHash(), false);
+  });
+
+  // Open the correct view when a visitor loads a direct page link.
+  showPage(pageFromHash(), false);
+})();
+</script>
+
 </body></html>
