@@ -565,8 +565,6 @@ restartRotationTimer();
 </main></div>
 <script>
 const app=document.getElementById('app');const toggle=document.getElementById('toggleSidebar');toggle.addEventListener('click',()=>{if(matchMedia('(max-width: 650px)').matches){app.classList.toggle('mobile-open')}else{app.classList.toggle('sidebar-collapsed')}});
-document.querySelectorAll('.nav a').forEach(link=>link.addEventListener('click',event=>{const targetId=link.getAttribute('href')?.slice(1);const target=document.getElementById(targetId);if(target){event.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+targetId)}document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));link.classList.add('active');app.classList.remove('mobile-open')}));
-
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', event => {
     const targetId = link.getAttribute('href')?.slice(1);
