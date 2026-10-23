@@ -89,12 +89,23 @@
 }
 
 /* Put the theme button at the upper right on phones */
+
+/* Align the theme toggle with the profile picture */
 .theme-toggle {
   position: fixed;
-  top: 16px;
+  top: 18px;
   right: 16px;
   z-index: 1003;
   margin: 0;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--site-background);
+  color: var(--site-on-background);
+  border-color: light-dark(#dce3f0, #2b3950);
 }
 
 /* Keep all navigation icons in one horizontal row */
@@ -265,9 +276,10 @@ main,
  
  
 
+
 .topbar {
-  position: sticky;
-  top: 0;
+  position: relative;
+  top: auto;
   z-index: 1000;
   width: 100%;
   box-sizing: border-box;
@@ -277,25 +289,37 @@ main,
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  background: var(--site-background);
-  padding: 10px;
+  background: transparent;
+  padding: 10px 0;
   margin: 0 0 20px;
 }
+
 
 .topbar .top-left {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
+  min-height: 42px;
 }
 
 
-
   .topbar .profile-pill,
-  .topbar .theme-toggle {
-    position: relative;
-    z-index: 1001;
-  }
+.topbar .theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1003;
+  margin: 0;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
  
   .sidebar-bottom {
     display: block;
