@@ -1420,6 +1420,9 @@ async function loadPublishedBlogArticles() {
       const title = getField("title") || file.name.replace(/\\.md$/, "");
       const date = getField("date");
       const description = getField("description");
+      const imageValue = getField("image").trim();
+      const imageMatch = imageValue.match(/https?:\/\/[^)\s]+/);
+      const imageUrl = imageMatch ? imageMatch[0].replace(/]$/, "") : "";
       const image = getField("image")
   .replace(/^["']|["']$/g, "")
   .trim();
@@ -1474,6 +1477,13 @@ const toggleArticle = () => {
 
     const articleText = document.createElement("div");
     articleText.style.whiteSpace = "pre-wrap";
+    if (typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
+  articleText.innerHTML = DOMPurify.sanitize(marked.parse(body));
+} else {
+  articleText.textContent = body;
+}
+
+    fullArticle.replaceChildren(articleText);
     if (imageUrl) {
   const featuredImage = document.createElement("img");
   featuredImage.src = imageUrl;
@@ -1485,15 +1495,8 @@ const toggleArticle = () => {
   featuredImage.style.marginBottom = "20px";
   featuredImage.style.display = "block";
 
-  fullArticle.appendChild(featuredImage);
+  fullArticle.prepend(featuredImage);
 }
-    if (typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
-  articleText.innerHTML = DOMPurify.sanitize(marked.parse(body));
-} else {
-  articleText.textContent = body;
-}
-
-    fullArticle.replaceChildren(articleText);
     fullArticle.dataset.loaded = "true";
   }
 };
