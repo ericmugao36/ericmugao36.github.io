@@ -56,9 +56,9 @@
   }
 
   .main {
-    margin-left: 180px;
-    width: calc(100% - 180px);
-    max-width: calc(100% - 180px);
+    margin-left: 160px;
+    width: calc(100% - 160px);
+    max-width: calc(100% - 160px);
     min-width: 0;
     box-sizing: border-box;
   }
@@ -84,79 +84,56 @@
   overflow: visible;
   transform: none;
   transition: none;
+ 
   border-top: 1px solid #ffffff30;
-  
-  .theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 1003;
-    margin: 0;
-  }
+}
 
-  .sidebar .nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-  }
+/* Put the theme button at the upper right on phones */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1003;
+  margin: 0;
+}
 
-  .sidebar .nav a {
-    flex: 1 1 0;
-    min-width: 0;
-    justify-content: center;
-  }
+/* Keep all navigation icons in one horizontal row */
+.sidebar .nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .sidebar .nav-label {
-    display: none;
-  }
+.sidebar .nav a {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  box-sizing: border-box;
+}
 
-  /* Make articles fit phone screens */
-  .page-view,
-  .page-view * {
-    min-width: 0;
-    box-sizing: border-box;
-  }
+.sidebar .nav .ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  font-size: 20px;
+}
 
-  .page-view article,
-  .page-view .article,
-  .page-view .post,
-  .page-view .blog-post {
-    width: 100%;
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-
-  .page-view img,
-  .page-view video,
-  .page-view iframe {
-    max-width: 100%;
-  }
-
-  .page-view pre,
-  .page-view table {
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
-  .page-view h1 {
-    font-size: 25px;
-    line-height: 1.25;
-  }
-
-  .page-view h2 {
-    font-size: 21px;
-    line-height: 1.3;
-  }
-
-  .page-view p,
-  .page-view li {
-    overflow-wrap: break-word;
-    line-height: 1.65;
-  }
-
+.sidebar .nav-label,
+.sidebar .sidebar-bottom {
+  display: none;
 }
 
 .mobile-open .sidebar {
@@ -536,6 +513,50 @@ main,
   height: auto;
 }
 
+/* Keep expanded blog articles within the phone screen */
+.full-blog-article,
+.full-blog-article > div {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.full-blog-article img,
+.full-blog-article video,
+.full-blog-article iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.full-blog-article pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.full-blog-article table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 650px) {
+  .full-blog-article {
+    padding: 12px 0;
+  }
+
+  .full-blog-article h1 {
+    font-size: 24px;
+  }
+
+  .full-blog-article h2 {
+    font-size: 20px;
+  }
+}
 
 /* Keep the profile visible on mobile */
 @media (max-width: 700px) {
@@ -811,7 +832,7 @@ restartRotationTimer();
   </a>
 </nav>
 
-<a href="#contact"><span><span class="ico">📞</span><span class="nav-label">Contact</span></a></nav>
+<a href="#contact">   <span class="ico">📞</span>   <span class="nav-label">Contact</span> </a> </nav>
  <div class="sidebar-bottom">Building One Block At a Time.</div>
 </aside>
 <main class="main" id="dashboard">
