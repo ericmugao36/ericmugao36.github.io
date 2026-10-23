@@ -274,40 +274,22 @@ main,
     gap: 12px;
   }
  
- 
-
-
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1004;
-  width: 100%;
-  min-height: 60px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  background: var(--site-background);
-  color: var(--site-on-background);
-  padding: 8px 12px;
-  margin: 0;
-  border-bottom: 1px solid var(--site-on-background);
-}
-
-.topbar .top-left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  min-height: 42px;
-}
-
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    min-height: 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    margin: 0 0 20px;
+    background: light-dark(var(--site-background), #101827);
+    color: light-dark(var(--site-on-background), #eef3ff);
+    border-bottom: 1px solid light-dark(#dce3f0, #2b3950);
+  }
 
   .topbar .profile-pill,
 .topbar .theme-toggle {
@@ -925,9 +907,12 @@ restartRotationTimer();
 
 <header class="topbar">
   <div class="top-left">
-
-  <div class="top-left">
-   <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+    <button
+      class="icon-btn theme-toggle"
+      id="themeToggle"
+      aria-label="Toggle theme"
+      title="Toggle theme"
+    >🌙</button>
   </div>
 </header>
 
