@@ -1418,9 +1418,10 @@ async function loadPublishedBlogArticles() {
 };
 
       const title = getField("title") || file.name.replace(/\\.md$/, "");
+     
       const date = getField("date");
       const description = getField("description");
-     
+
       const imageValue = getField("image")
         .replace(/^["']|["']$/g, "")
         .trim();
@@ -1428,9 +1429,6 @@ async function loadPublishedBlogArticles() {
       const imageMatch = imageValue.match(/https?:\/\/[^)\s]+/);
       const imageUrl = imageMatch ? imageMatch[0].replace(/]$/, "") : "";
 
-const imageValue = getField("image").trim();
-const imageMatch = imageValue.match(/https?:\/\/[^)\s]+/);
-const imageUrl = imageMatch ? imageMatch[0].replace(/]$/, "") : "";
 
       const fullArticle = document.createElement("div");
       fullArticle.className = "full-blog-article";
