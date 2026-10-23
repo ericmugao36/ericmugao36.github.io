@@ -95,41 +95,57 @@
   transition: width .22s, padding .22s;
 }
 
-/* Phone sidebar: display across the top */
+/* Phone navigation fixed at the bottom */
 .sidebar {
-  position: sticky;
-  top: 0;
-  left: auto;
-  bottom: auto;
-  z-index: 20;
+  position: fixed;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
   width: 100%;
   min-width: 0;
   height: auto;
-  max-height: none;
+  max-height: 85px;
   overflow: visible;
-  padding: 10px 12px;
+  padding: 8px 6px;
   transform: none;
   transition: none;
-  gap: 12px;
+  gap: 0;
+  border-top: 1px solid #ffffff30;
 }
 
 .mobile-open .sidebar,
 .sidebar-collapsed .sidebar {
   width: 100%;
   min-width: 0;
-  padding: 10px 12px;
+  padding: 8px 6px;
+}
+
+.sidebar .brand {
+  display: none;
 }
 
 .sidebar .nav {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
 }
 
 .sidebar .nav a {
+  flex: 1;
+  min-width: 0;
   justify-content: center;
-  padding: 10px;
+  padding: 10px 2px;
+}
+
+.sidebar .nav .ico {
+  width: auto;
+  margin: 0;
 }
 
 .sidebar .nav-label,
