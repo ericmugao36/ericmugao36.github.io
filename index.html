@@ -46,18 +46,21 @@
     left: 0;
     bottom: 0;
     width: 210px;
+    max-width: 210px;
     height: 100vh;
     overflow-y: auto;
+    box-sizing: border-box;
     flex: none;
   }
 
   .main {
     margin-left: 210px;
     width: calc(100% - 210px);
+    max-width: calc(100% - 210px);
     min-width: 0;
+    box-sizing: border-box;
   }
 }
-
 
 /* Mobile: slide-out navigation */
 @media(max-width:650px) {
@@ -322,11 +325,12 @@ main,
   background: light-dark(#f3f6fc, #101827);
 }
 
+
 /* CV PDF viewer */
 .cv-viewer {
   width: 100%;
-  max-width: 100%;
-  margin: 20px 0;
+  max-width: 1100px;
+  margin: 20px auto;
   overflow: hidden;
   border: 1px solid light-dark(#e0e6f1, #29364c);
   border-radius: 12px;
@@ -336,13 +340,14 @@ main,
 .cv-viewer iframe {
   display: block;
   width: 100%;
-  height: 650px;
+  height: 900px;
   border: 0;
+  background: white;
 }
 
 @media (max-width: 600px) {
   .cv-viewer iframe {
-    height: 500px;
+    height: 700px;
   }
 }
 
@@ -479,13 +484,7 @@ main,
     font-size: 11px;
   }
 }
-  /* Make the expanded desktop sidebar narrower */
-@media (min-width: 651px) {
-  .sidebar:not(.sidebar-collapsed .sidebar) {
-    width: 220px;
-    min-width: 220px;
-  }
-}
+
 </style>
 </head>
 
