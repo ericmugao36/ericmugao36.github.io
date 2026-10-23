@@ -1420,6 +1420,15 @@ async function loadPublishedBlogArticles() {
       const title = getField("title") || file.name.replace(/\\.md$/, "");
       const date = getField("date");
       const description = getField("description");
+      const image = getField("image")
+  .replace(/^["']|["']$/g, "")
+  .trim();
+
+const imageUrl = image
+  ? (image.startsWith("http")
+      ? image
+      : new URL(image.replace(/^\/+/, ""), window.location.origin).href)
+  : "";
 
       const fullArticle = document.createElement("div");
       fullArticle.className = "full-blog-article";
@@ -1465,6 +1474,19 @@ const toggleArticle = () => {
 
     const articleText = document.createElement("div");
     articleText.style.whiteSpace = "pre-wrap";
+    if (imageUrl) {
+  const featuredImage = document.createElement("img");
+  featuredImage.src = imageUrl;
+  featuredImage.alt = title;
+  featuredImage.style.width = "100%";
+  featuredImage.style.maxHeight = "400px";
+  featuredImage.style.objectFit = "cover";
+  featuredImage.style.borderRadius = "12px";
+  featuredImage.style.marginBottom = "20px";
+  featuredImage.style.display = "block";
+
+  fullArticle.appendChild(featuredImage);
+}
     if (typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
   articleText.innerHTML = DOMPurify.sanitize(marked.parse(body));
 } else {
