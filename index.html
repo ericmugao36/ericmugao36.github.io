@@ -167,7 +167,7 @@
   padding: 0;
   border-radius: 0;
   background: transparent;
-  color: var(--site-on-background);
+  color: light-dark(var(--site-on-background), #eef3ff);
   box-sizing: border-box;
   box-shadow: none;
 }
@@ -1363,9 +1363,9 @@ makeView("about", [about]);
   const contactPanel = document.createElement("section");
   contactPanel.className = "panel section-panel";
   contactPanel.innerHTML = `
-    <div class="eyebrow">Calling?</div>
-    <h2 style="font-size:22px;margin:8px 0">NewPhone Who Dis.</h2>
-    <p class="cv-note">JK, I Enjoy Your Calls. Get in Touch</p>`;
+    <div class="eyebrow">Open For Your Calls</div>
+    <h2 style="font-size:22px;margin:8px 0">Talk Ideas.</h2>
+    <p class="cv-note">Get in Touch</p>`;
 
   contactPanel.appendChild(contact);
   contactView.appendChild(contactPanel);
