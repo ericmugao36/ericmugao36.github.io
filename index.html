@@ -262,6 +262,39 @@ main,
   .content-grid {
     gap: 12px;
   }
+ 
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--site-background);
+    padding: 10px 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .topbar .profile-pill,
+  .topbar .theme-toggle {
+    position: relative;
+    z-index: 1001;
+  }
+ 
+  .sidebar-bottom {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 999;
+    text-align: center;
+    padding: 6px 8px;
+    background: var(--site-background);
+  }
+
+  body {
+    padding-bottom: 35px;
+  }
 }
 
   
@@ -833,9 +866,14 @@ restartRotationTimer();
     <span class="ico">✍️</span>
     <span class="nav-label">Blog</span>
   </a>
+
+  <a href="#contact">
+    <span class="ico">📞</span>
+    <span class="nav-label">Contact</span>
+  </a>
 </nav>
-<a href="#contact">   <span class="ico">📞</span>   <span class="nav-label">Contact</span> </a> </nav>
- <div class="sidebar-bottom">Building a Block At a Time.</div>
+
+<div class="sidebar-bottom">Building a Block At a Time.</div>
 </aside>
 <main class="main" id="dashboard">
 
