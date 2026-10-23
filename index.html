@@ -106,9 +106,9 @@
   width: 100%;
   min-width: 0;
   height: auto;
-  max-height: 85px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  max-height: none;
   overflow: visible;
-  padding: 8px 6px;
   transform: none;
   transition: none;
   gap: 0;
@@ -132,8 +132,9 @@
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   margin: 0;
+  padding: 0 4px;
 }
 
 .sidebar .nav a {
