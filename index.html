@@ -1420,18 +1420,17 @@ async function loadPublishedBlogArticles() {
       const title = getField("title") || file.name.replace(/\\.md$/, "");
       const date = getField("date");
       const description = getField("description");
-      const imageValue = getField("image").trim();
+     
+      const imageValue = getField("image")
+        .replace(/^["']|["']$/g, "")
+        .trim();
+
       const imageMatch = imageValue.match(/https?:\/\/[^)\s]+/);
       const imageUrl = imageMatch ? imageMatch[0].replace(/]$/, "") : "";
-      const image = getField("image")
-  .replace(/^["']|["']$/g, "")
-  .trim();
 
-const imageUrl = image
-  ? (image.startsWith("http")
-      ? image
-      : new URL(image.replace(/^\/+/, ""), window.location.origin).href)
-  : "";
+const imageValue = getField("image").trim();
+const imageMatch = imageValue.match(/https?:\/\/[^)\s]+/);
+const imageUrl = imageMatch ? imageMatch[0].replace(/]$/, "") : "";
 
       const fullArticle = document.createElement("div");
       fullArticle.className = "full-blog-article";
