@@ -79,23 +79,6 @@
   .app {
     display: block;
   }
-
- .sidebar {
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 76px;
-  min-width: 76px;
-  height: 100vh;
-  overflow-y: auto;
-  padding: 24px 10px;
-  transform: translateX(0);
-  transition: width .22s, padding .22s;
-}
-
-/* Phone navigation fixed at the bottom */
 .sidebar {
   position: fixed;
   top: auto;
@@ -106,12 +89,11 @@
   width: 100%;
   min-width: 0;
   height: auto;
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-  max-height: none;
-  overflow: visible;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  overflow: hidden;
   transform: none;
   transition: none;
-  gap: 0;
   border-top: 1px solid #ffffff30;
 }
 
@@ -119,9 +101,9 @@
 .sidebar-collapsed .sidebar {
   width: 100%;
   min-width: 0;
-  padding: 8px 6px;
+  padding: 8px 12px;
+  box-sizing: border-box;
 }
-
 .sidebar .brand {
   display: none;
 }
@@ -132,17 +114,21 @@
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
-  gap: 4px;
+  gap: 0;
+  width: 100%;
   margin: 0;
-  padding: 0 4px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .sidebar .nav a {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 12px 4px;
-  min-height: 54px;
+  box-sizing: border-box;
 }
 
 .sidebar .nav .ico {
