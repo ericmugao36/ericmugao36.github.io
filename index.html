@@ -278,11 +278,13 @@ main,
 
 
 .topbar {
-  position: relative;
-  top: auto;
-  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1004;
   width: 100%;
-  min-height: 54px;
+  min-height: 60px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -291,10 +293,10 @@ main,
   justify-content: flex-end;
   gap: 10px;
   background: var(--site-background);
-  padding: 10px 0;
-  margin: 0 0 30px;
-  border-bottom: 1px solid var(--site-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: var(--site-on-background);
+  padding: 8px 12px;
+  margin: 0;
+  border-bottom: 1px solid var(--site-on-background);
 }
 
 .topbar .top-left {
@@ -879,7 +881,7 @@ restartRotationTimer();
 <body>
 <div class="app" id="app">
 <aside class="sidebar" aria-label="Main navigation">
-  <a class="brand" href="#dashboard" aria-label="Eric Mugao home">   <img class="brand-mark" src="images/passport.jpg" alt="Eric Mugao">   <div>     <div class="brand-name">Eric Mugao</div>     <div class="brand-sub">Communication - AI, - Developer</div>   </div> </a>
+  <a class="brand" href="#dashboard" aria-label="Eric Mugao home">   <img class="brand-mark" src="images/passport.jpg" alt="Eric Mugao">   <div>     <div class="brand-name">Eric Mugao</div>     <div class="brand-sub">Communication - AI - Developer</div>   </div> </a>
 
 <nav class="nav">
   <a class="active" href="#dashboard">
