@@ -1,10 +1,10 @@
 ---
-title: "Graduation: What Comes Next — My 50-Day Learning Report"
+title: "Graduation: What Comes Next — Learning Report"
 date: 2026-10-24T09:00:00.000+03:00
-description: "My report on completing 50 days of AI Masterclass training, covering Python, data analysis, machine learning, web development, GitHub, portfolio development, and my next steps."
+description: My report on completing AI Masterclass training.
+image: https://1s4oyld5dc.ucarecd.net/a0f4691d-769d-4d5f-a2ab-644181131f84/-/crop/1408x502/0,139/-/preview/
 ---
 
-# Graduation: What Comes Next — My 50-Day Learning Report
 
 ## 1. Introduction
 
@@ -333,7 +333,7 @@ I learned that technical knowledge becomes more useful professionally when I can
 
 A clear service offer can follow this structure:
 
-**I help [type of client] achieve [specific outcome] using [approach or technology].**
+**I help \[type of client] achieve \[specific outcome] using \[approach or technology].**
 
 For example, I can position a Python automation service around reducing repetitive reporting tasks for small businesses.
 
@@ -353,16 +353,16 @@ Completing the programme has given me exposure to a broad set of technical conce
 
 My progress is best evaluated through the work I can demonstrate rather than through the number of lessons completed.
 
-| Area | What I explored | My next improvement |
-|---|---|---|
-| Python | Functions, logic, data structures, and files | Write cleaner, independently testable programs |
-| Data analysis | Pandas, NumPy, and data inspection | Produce more complete analytical reports |
-| APIs | Requests, responses, and AI integration | Improve validation, error handling, and fallback behavior |
-| Machine learning | Classification and evaluation | Use more representative data and stronger evaluation |
-| Web development | JavaScript and interactive interfaces | Improve reliability, accessibility, and API integration |
-| GitHub | Repositories and published projects | Improve documentation and development workflow |
-| Portfolio | Project presentation and navigation | Demonstrate outcomes and explain technical decisions |
-| Freelance preparation | Service offers and client workflows | Validate demand and improve project scoping |
+| Area                  | What I explored                              | My next improvement                                       |
+| --------------------- | -------------------------------------------- | --------------------------------------------------------- |
+| Python                | Functions, logic, data structures, and files | Write cleaner, independently testable programs            |
+| Data analysis         | Pandas, NumPy, and data inspection           | Produce more complete analytical reports                  |
+| APIs                  | Requests, responses, and AI integration      | Improve validation, error handling, and fallback behavior |
+| Machine learning      | Classification and evaluation                | Use more representative data and stronger evaluation      |
+| Web development       | JavaScript and interactive interfaces        | Improve reliability, accessibility, and API integration   |
+| GitHub                | Repositories and published projects          | Improve documentation and development workflow            |
+| Portfolio             | Project presentation and navigation          | Demonstrate outcomes and explain technical decisions      |
+| Freelance preparation | Service offers and client workflows          | Validate demand and improve project scoping               |
 
 This assessment identifies areas of exposure and development, not claims of mastery. I will need continued practice and additional project work to strengthen each area.
 
@@ -398,16 +398,16 @@ I intend to keep improving its usability and ensure that each project descriptio
 
 The following checklist identifies the evidence I need to maintain and the work I intend to complete.
 
-- [ ] Confirm that my local Python environment runs my projects correctly.
-- [ ] Organize at least three projects with clear file structures.
-- [ ] Ensure that my public repositories contain useful README files.
-- [ ] Test the navigation and functionality of my portfolio.
-- [ ] Document at least one project using the problem, solution, tools, and results format.
-- [ ] Write a clear service offer describing a specific outcome.
-- [ ] Develop a realistic approach to estimating project costs and delivery times.
-- [ ] Inform at least five relevant people about the services I am developing.
-- [ ] Send a personalized outreach message to a potential client or referrer.
-- [ ] Define a measurable goal for the next 30 days.
+* Confirm that my local Python environment runs my projects correctly.
+* Organize at least three projects with clear file structures.
+* Ensure that my public repositories contain useful README files.
+* Test the navigation and functionality of my portfolio.
+* Document at least one project using the problem, solution, tools, and results format.
+* Write a clear service offer describing a specific outcome.
+* Develop a realistic approach to estimating project costs and delivery times.
+* Inform at least five relevant people about the services I am developing.
+* Send a personalized outreach message to a potential client or referrer.
+* Define a measurable goal for the next 30 days.
 
 I will treat each item as complete only when I have evidence that it has been achieved. This will help me distinguish between skills I have studied, features I have implemented, and results I have verified.
 
