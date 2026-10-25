@@ -6,7 +6,7 @@ description: We have mastered many technologies, but have we mastered the art of
   deeply, or pursue an idea without immediately asking what it will earn us?
   Have we become so occupied with the demands of today that we have lost the
   ability to imagine what the world might need a hundred years from now
-image: https://1s4oyld5dc.ucarecd.net/6b2f70da-fb98-4584-b758-f96eeb1e85e2/-/crop/1918x634/0,212/-/preview/
+image: https://1s4oyld5dc.ucarecd.net/ae46ea7f-a702-418e-8fe0-ca06eb237896/-/crop/1920x756/0,343/-/preview/
 ---
 ***On the loss of patience, the purpose of education, and a civilization that has forgotten how to build for centuries.***
 
