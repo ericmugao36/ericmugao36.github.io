@@ -4,7 +4,7 @@ date: 2026-10-26T01:27:00.000+03:00
 description: "Why not us, Kenyans. "
 image: https://21w441513q.ucarecd.net/dcbb4b40-eca0-4282-a449-14d68dcdb9ef/-/crop/1408x596/0,0/-/preview/
 ---
-Imagine it is election season in Kenya. Your daughter is campaigning for governor. Her posters are everywhere. Her supporters are singing her praises, promising a new beginning. The family is quietly preparing for the possibilities that come with victory.
+Imagine it is election season in Kenya. Your friend is campaigning for governor. Her posters are everywhere. Her supporters are singing her praises, promising a new beginning. The family is quietly preparing for the possibilities that come with victory.
 
 Then, one evening, her mother appears on television.
 
