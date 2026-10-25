@@ -2,7 +2,7 @@
 title: "Graduation: What Comes Next — Learning Report"
 date: 2026-10-24T09:00:00.000+03:00
 description: My report on completing AI Masterclass training.
-image: https://1s4oyld5dc.ucarecd.net/a0f4691d-769d-4d5f-a2ab-644181131f84/-/crop/1408x502/0,139/-/preview/
+image: https://1s4oyld5dc.ucarecd.net/8162658e-7d18-47fe-b55a-6f091ebb41be/
 ---
 
 
