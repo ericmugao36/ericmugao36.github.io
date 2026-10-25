@@ -1579,7 +1579,18 @@ const toggleArticle = () => {
   }
 };
 
-article.addEventListener("click", toggleArticle);
+
+article.addEventListener("click", (event) => {
+  if (event.target.closest("[data-charcha], .charcha-root")) {
+    return;
+  }
+
+  if (event.target.closest("button, input, textarea, select, a, label")) {
+    return;
+  }
+
+  toggleArticle();
+});
 
 article.addEventListener("keydown", (event) => {
   if (event.target === article && (event.key === "Enter" || event.key === " ")) {
@@ -1587,6 +1598,7 @@ article.addEventListener("keydown", (event) => {
     toggleArticle();
   }
 });
+
 
 titleButton.addEventListener("click", (event) => {
   event.stopPropagation();
