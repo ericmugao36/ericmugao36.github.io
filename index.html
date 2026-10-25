@@ -401,28 +401,28 @@ main,
       rgba(18, 32, 58, 0.78),
       rgba(18, 32, 58, 0.55)
     ),
-    url("images/picture.jpg") center 35% / cover no-repeat;
+    url("https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/picture.jpg") center 35% / cover no-repeat;
 }
 
 /* EduTrack background */
 #portfolio-showcase[data-slide="edutrack"] {
   background:
     linear-gradient(120deg, rgba(18, 32, 58, 0.88), rgba(18, 32, 58, 0.25)),
-    url("images/student.jpg") center / cover no-repeat;
+    url("https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/student.jpg") center / cover no-repeat;
 }
 
 /* SMP Performance Coach background */
 #portfolio-showcase[data-slide="smp"] {
   background:
     linear-gradient(120deg, rgba(18, 32, 58, 0.88), rgba(18, 32, 58, 0.25)),
-    url("images/gym.jpg") center / cover no-repeat;
+    url("https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/gym.jpg") center / cover no-repeat;
 }
 
 /* Python Business Tools background */
 #portfolio-showcase[data-slide="tools"] {
   background:
     linear-gradient(120deg, rgba(18, 32, 58, 0.88), rgba(18, 32, 58, 0.25)),
-    url("images/laptop.jpg") center / cover no-repeat;
+    url("https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/laptop.jpg") center / cover no-repeat;
 }
 /* EduTrack project screenshots */
 .edutrack-screenshots {
@@ -695,7 +695,7 @@ const projectsData = [
     technologies: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "PostgreSQL"],
     repository: "https://github.com/ericmugao36/jss-assessment-dashboard",
     demo: "https://jss-assessment-dashboard.onrender.com",
-    screenshot: "images/image.png"
+    screenshot: "https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/image.png"
   },
   {
     id: "smp",
@@ -738,12 +738,12 @@ const projectsData = [
         <h3>${project.name}</h3>
         <p>${project.cardDescription}</p>
         ${project.screenshot ? `
-          <div class="edutrack-screenshots">
-            <img src="${project.screenshot}"
-                 alt="${project.name} screenshot"
-                 loading="lazy">
-          </div>
-        ` : ""}
+  <div class="edutrack-screenshots">
+    <img data-src="${project.screenshot}"
+         alt="${project.name} screenshot"
+         loading="lazy">
+  </div>
+` : ""}
         <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;font-weight:750">
           ${project.repository ? `
             <a href="${project.repository}" target="_blank"
@@ -863,7 +863,7 @@ restartRotationTimer();
 <body>
 <div class="app" id="app">
 <aside class="sidebar" aria-label="Main navigation">
-  <a class="brand" href="#dashboard" aria-label="Eric Mugao home">   <img class="brand-mark" src="images/passport.jpg" alt="Eric Mugao">   <div>     <div class="brand-name">Eric Mugao</div>     <div class="brand-sub">Communication - AI - Developer</div>   </div> </a>
+  <a class="brand" href="#dashboard" aria-label="Eric Mugao home">   <img class="brand-mark" src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg" alt="Eric Mugao">   <div>     <div class="brand-name">Eric Mugao</div>     <div class="brand-sub">Communication - AI - Developer</div>   </div> </a>
 
 <nav class="nav">
   <a class="active" href="#dashboard">
@@ -983,7 +983,7 @@ restartRotationTimer();
 
   <div class="edutrack-screenshots">
     <img
-      src="images/image.png"
+      src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/image.png"
       alt="EduTrack Kenya school dashboard"
       loading="lazy"
     >
@@ -1034,12 +1034,12 @@ restartRotationTimer();
   <section class="panel section-panel" id="cv"><div class="eyebrow">Résumé</div><h2 style="font-size:19px;margin:8px 0 0">The Right Choice?</h2><p class="cv-note">Explore my professional background, education, experience, and technical skills. View my CV online or download a PDF format.</p>
 <div class="cv-viewer">
   <iframe
-    src="Eric_Mugao_CV.pdf.pdf#toolbar=1&navpanes=0"
+    data-src="https://ericmugao36.github.io/Eric_Mugao_CV.pdf.pdf#toolbar=1&navpanes=0"
     title="Résumé"
     loading="lazy">
-  </iframe>
+</iframe>
 </div>
-<div class="cv-actions"><a class="btn" style="background:var(--site-primary);color:white" href="Eric_Mugao_CV.pdf.pdf" download>⬇ Download CV (PDF)</a><a class="btn" style="background:light-dark(#edf2ff,#25365a);color:inherit" href="mailto:ericmugao36@gmail.com">Request a copy by email</a></div></section>
+<div class="cv-actions"><a class="btn" style="background:var(--site-primary);color:white" href="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/Eric_Mugao_CV.pdf.pdf" download>⬇ Download CV (PDF)</a><a class="btn" style="background:light-dark(#edf2ff,#25365a);color:inherit" href="mailto:ericmugao36@gmail.com"><a class="btn" style="background:light-dark(#edf2ff,#25365a);color:inherit" href="https://mail.google.com/mail/?view=cm&fs=1&to=ericmugao36%40gmail.com&su=Request%20for%20Eric%20Mugao%27s%20CV&body=Hello%20Eric%2C%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20CV.%0A%0AThank%20you." target="_blank" rel="noopener noreferrer">Request a copy by email</a></a></div></section>
  <section class="panel section-panel" id="milestones"><div class="eyebrow">Skills & learning journey</div><h2 style="font-size:19px;margin:8px 0 0">Learning by building</h2><p class="cv-note">Learning areas and project milestones.</p><div class="milestone-list"><div class="milestone"><div class="milestone-mark">✓</div><div><h3>Published a portfolio and GitHub Pages site</h3><p>Practised HTML, CSS, page structure, and publishing a static website.</p></div></div><div class="milestone"><div class="milestone-mark">↗</div><div><h3>JSS School Management Dashboard — in development</h3><p>Building a Python/FastAPI web app with learner records and school workflows. Explore the code in the linked repository above.</p></div></div><div class="milestone"><div class="milestone-mark">⌘</div><div><h3>Python and machine-learning practice</h3><p>Practising scripts, data handling, scikit-learn classification, and a step-goal coaching prototype.</p></div></div><div class="milestone"><div class="milestone-mark">＋</div><div><h3>Next learning goals</h3><p>Improve application testing, accessibility, database workflows, and project documentation as I continue building.</p></div></div></div></section>
 </div>
 </section>
@@ -1396,18 +1396,35 @@ async function loadPublishedBlogArticles() {
   if (!container) return;
 
   try {
-    const response = await fetch(
-      "https://api.github.com/repos/ericmugao36/ericmugao36.github.io/contents/_posts"
-    );
+const response = await fetch(
+  "https://api.github.com/repos/ericmugao36/ericmugao36.github.io/contents/_posts"
+);
 
     if (!response.ok) {
       throw new Error("Could not retrieve blog articles.");
     }
 
-    const files = await response.json();
-    const posts = files
-      .filter(file => file.name.endsWith(".md"))
-      .sort((a, b) => b.name.localeCompare(a.name));
+
+const files = await response.json();
+
+const posts = files
+  .filter(file => file.name.endsWith(".md"))
+  .sort((a, b) => b.name.localeCompare(a.name));
+
+const requestedPost = new URLSearchParams(
+  window.location.search
+).get("post");
+
+if (requestedPost) {
+  const requestedIndex = posts.findIndex(
+    file => file.name.replace(/\.md$/i, "") === requestedPost
+  );
+
+  if (requestedIndex > 0) {
+    const [requestedFile] = posts.splice(requestedIndex, 1);
+    posts.unshift(requestedFile);
+  }
+}
 
     container.replaceChildren();
 
@@ -1422,6 +1439,10 @@ async function loadPublishedBlogArticles() {
       if (!fileResponse.ok) continue;
 
       const markdown = await fileResponse.text();
+      const postId = file.name.replace(/\.md$/i, "");
+      const postUrl = `${window.location.pathname}?post=${encodeURIComponent(postId)}`;
+      const isRequestedPost =
+      new URLSearchParams(window.location.search).get("post") === postId;
 
       const getField = (field) => {
   const match = markdown.match(
@@ -1476,6 +1497,18 @@ heading.appendChild(titleButton);
 
 const toggleArticle = () => {
   fullArticle.hidden = !fullArticle.hidden;
+  if (!fullArticle.hidden) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("post", postId);
+  history.pushState({ postId }, "", url);
+} else {
+  const url = new URL(window.location.href);
+
+  if (url.searchParams.get("post") === postId) {
+    url.searchParams.delete("post");
+    history.pushState({}, "", url);
+  }
+}
 
   article.setAttribute(
     "aria-expanded",
@@ -1507,7 +1540,42 @@ const toggleArticle = () => {
 
   fullArticle.prepend(featuredImage);
 }
+    
+    // Add the Charcha comments section beneath this article.
+    
+    // Add a separate Charcha thread for this article.
+    let commentsSection = fullArticle.querySelector("[data-charcha]");
+
+    if (!commentsSection) {
+      commentsSection = document.createElement("div");
+      commentsSection.setAttribute("data-charcha", "");
+      commentsSection.setAttribute("data-thread", "post-" + postId);
+      commentsSection.style.marginTop = "32px";
+      fullArticle.appendChild(commentsSection);
+    }
+
+    
+ 
+        // Load Charcha for this newly opened article.
+    const charchaScript = document.createElement("script");
+
+    charchaScript.src =
+      "https://charcha-comments.ericmugao36.workers.dev/embed.js";
+
+    charchaScript.addEventListener("load", () => {
+      // Keep existing widgets mounted when another article opens.
+      document.querySelectorAll("[data-charcha]").forEach(container => {
+        container.removeAttribute("data-charcha");
+      });
+    }, { once: true });
+
+    charchaScript.addEventListener("error", () => {
+      console.error("Charcha could not load for this article.");
+    }, { once: true });
+
+    document.head.appendChild(charchaScript);
     fullArticle.dataset.loaded = "true";
+
   }
 };
 
@@ -1526,6 +1594,9 @@ titleButton.addEventListener("click", (event) => {
 });  
 
       const dateElement = document.createElement("p");
+      if (isRequestedPost) {
+          toggleArticle();
+      }
       dateElement.className = "cv-note";
       dateElement.textContent = date;
 
@@ -1544,8 +1615,35 @@ titleButton.addEventListener("click", (event) => {
   }
 }
 
-loadPublishedBlogArticles();
+let blogArticlesLoaded = false;
+let blogLoadingPromise = null;
 
+function ensureBlogArticlesLoaded() {
+  if (blogArticlesLoaded) return Promise.resolve();
+
+  if (blogLoadingPromise) return blogLoadingPromise;
+
+  blogLoadingPromise = ensureBlogLibrariesLoaded()
+    .then(() => loadPublishedBlogArticles())
+    .then(() => {
+      const container = document.getElementById("published-blog-articles");
+
+      if (
+        container &&
+        !container.textContent.includes("Articles could not be loaded.")
+      ) {
+        blogArticlesLoaded = true;
+      }
+    })
+    .catch(error => {
+      console.error("Could not load Blog resources:", error);
+    })
+    .finally(() => {
+      blogLoadingPromise = null;
+    });
+
+  return blogLoadingPromise;
+}
 
   const pageNames = {
     dashboard: "Dashboard",
@@ -1576,14 +1674,38 @@ loadPublishedBlogArticles();
     "#project-tools": "project-tools",
     "#project-details": "project-details"
   };
+function pageFromHash() {
+  const postId = new URLSearchParams(window.location.search).get("post");
 
-  function pageFromHash() {
-    return hashToPage[window.location.hash] || "dashboard";
+  if (postId) {
+    return "blog";
   }
+
+  return hashToPage[window.location.hash] || "dashboard";
+}
 
   function showPage(key, updateAddress = true) {
     if (!views[key]) key = "dashboard";
 
+    if (key === "blog") {
+      ensureBlogArticlesLoaded();
+    }
+    if (key === "projects") {
+  views.projects.querySelectorAll("img[data-src]").forEach(image => {
+    if (!image.src || image.dataset.loaded !== "true") {
+      image.src = image.dataset.src;
+      image.dataset.loaded = "true";
+    }
+  });
+}
+    if (key === "cv") {
+  const cvFrame = views.cv.querySelector("iframe[data-src]");
+
+  if (cvFrame && !cvFrame.dataset.loaded) {
+    cvFrame.src = cvFrame.dataset.src;
+    cvFrame.dataset.loaded = "true";
+  }
+}
     Object.entries(views).forEach(([name, view]) => {
       const isActive = name === key;
       view.hidden = !isActive;
@@ -1609,14 +1731,23 @@ loadPublishedBlogArticles();
     app.classList.remove("mobile-open");
 
     if (updateAddress) {
-      const pageHash = Object.keys(hashToPage).find(
-        hash => hashToPage[hash] === key
-      );
+  const pageHash = Object.keys(hashToPage).find(
+    hash => hashToPage[hash] === key
+  );
 
-      if (pageHash && window.location.hash !== pageHash) {
-        window.history.pushState(null, "", pageHash);
-      }
+  if (pageHash) {
+    const url = new URL(window.location.href);
+    url.hash = pageHash;
+
+    if (key !== "blog") {
+      url.searchParams.delete("post");
     }
+
+    if (url.href !== window.location.href) {
+      window.history.pushState({ page: key }, "", url);
+    }
+  }
+}
 
     window.scrollTo({ top: 0, behavior: "auto" });
   }
@@ -1678,9 +1809,44 @@ loadPublishedBlogArticles();
   });
 
   // Open the correct view when a visitor loads a direct page link.
+ window.addEventListener("DOMContentLoaded", function () {
   showPage(pageFromHash(), false);
+});
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-</body>
+<script>
+let blogLibrariesPromise = null;
+
+function ensureBlogLibrariesLoaded() {
+  if (typeof marked !== "undefined" &&
+      typeof DOMPurify !== "undefined") {
+    return Promise.resolve();
+  }
+
+  if (blogLibrariesPromise) return blogLibrariesPromise;
+
+  blogLibrariesPromise = new Promise((resolve, reject) => {
+    function loadScript(src) {
+      return new Promise((scriptResolve, scriptReject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = scriptResolve;
+        script.onerror = () => scriptReject(
+          new Error("Could not load " + src)
+        );
+        document.head.appendChild(script);
+      });
+    }
+
+    loadScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js")
+      .then(() => loadScript("https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"))
+      .then(resolve)
+      .catch(error => {
+        blogLibrariesPromise = null;
+        reject(error);
+      });
+  });
+
+  return blogLibrariesPromise;
+}
+</script></body>
