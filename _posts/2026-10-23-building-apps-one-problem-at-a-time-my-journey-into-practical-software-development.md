@@ -8,7 +8,7 @@ description: That means learning how to design a feature, implement it, test it,
   recognising that accessibility, clear navigation, reliable data handling, and
   understandable interfaces are not extras to be considered after the
   programming is finished. They are part of the product.
-image: https://1s4oyld5dc.ucarecd.net/c37fef5f-1855-460b-9b00-08bcd3468de4/-/crop/1920x883/0,297/-/preview/
+image: https://21w441513q.ucarecd.net/04c472e0-a824-402d-8924-aa78f110089b/-/scale_crop/300x300/
 ---
 There is a difference between learning how to write code and learning how to build something that works.
 
