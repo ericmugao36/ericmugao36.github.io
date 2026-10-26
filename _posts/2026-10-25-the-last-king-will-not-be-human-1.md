@@ -2,7 +2,7 @@
 title: The Last King Will Not Be Human
 date: 2026-10-25T09:57:00.000+03:00
 description: Could AI Become Humanity’s Next Ruler?
-image: https://1s4oyld5dc.ucarecd.net/67c0b2ea-7f85-4a48-ac11-05d25ab58edf/-/crop/1920x765/0,328/-/preview/
+image: https://21w441513q.ucarecd.net/c4a2d7d6-83ed-47a5-a98c-8efc0ab301d0/-/crop/1401x624/0,58/-/preview/
 ---
 For most of human history, the rule was simple: the one with the greatest advantage had the best chance of ruling.
 
