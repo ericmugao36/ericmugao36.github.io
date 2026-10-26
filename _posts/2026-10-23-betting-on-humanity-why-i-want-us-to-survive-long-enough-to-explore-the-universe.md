@@ -9,7 +9,7 @@ description: "The French philosopher René Descartes famously wrote, “I think,
   everything he could think about must exist outside his mind. Yet his insight
   raises a fascinating distinction: the existence of a thought is one thing; the
   existence of what that thought describes is another."
-image: https://1s4oyld5dc.ucarecd.net/4f7fe615-ddda-4ddc-8554-a51eeee3df46/-/crop/1912x799/0,156/-/preview/
+image: https://21w441513q.ucarecd.net/432cdf25-4cb4-4c01-82d1-180d7881a8fc/-/crop/1909x706/0,0/-/preview/
 ---
 There are nights when I find myself thinking about the universe, wondering whether somewhere beyond the limits of our observation, other beings are looking at their own skies and asking questions similar to ours.
 
