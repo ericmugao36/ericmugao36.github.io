@@ -1,0 +1,978 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop | Eric Mugao</title>
+  <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+</head>
+<body>
+<div class="app" id="app">
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="index.html#dashboard" aria-label="Eric Mugao home">
+      <img class="brand-mark"
+           src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg"
+           alt="Eric Mugao">
+      <div>
+        <div class="brand-name">Eric Mugao</div>
+        <div class="brand-sub">Communication - AI - Developer</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html#dashboard">
+        <span class="ico">ðŸ </span>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="projects.html">
+        <span class="ico">ðŸ’»</span>
+        <span class="nav-label">Projects</span>
+      </a>
+      <a href="about.html">
+        <span class="ico">ðŸ‘¤</span>
+        <span class="nav-label">About me</span>
+      </a>
+      <a href="skills.html">
+        <span class="ico">ðŸ› ï¸</span>
+        <span class="nav-label">Skills</span>
+      </a>
+      <a class="active" href="cv.html">
+        <span class="ico">ðŸ›ï¸</span>
+        <span class="nav-label">Shop</span>
+     </a>
+     <a href="learning.html">
+  <span class="ico">ðŸŽ¨</span>
+  <span class="nav-label">Graphic &amp; Design</span>
+</a>
+     <a href="blog.html">
+        <span class="ico">âœï¸</span>
+        <span class="nav-label">Blog</span>
+      </a>
+      <a href="contact.html">
+        <span class="ico">ðŸ“ž</span>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">Building a Block At a Time.</div>
+  </aside>
+
+  <main class="main" id="cv">
+
+<header class="topbar">
+  <div class="top-left">
+    <button
+      class="icon-btn theme-toggle"
+      id="themeToggle"
+      aria-label="Toggle theme"
+      title="Toggle theme"
+    >ðŸŒ™</button>
+  </div>
+
+
+
+<div class="shop-heading">
+  <h1>Yuri Solutions &amp; Products</h1>
+  <p>Practical tools, automation services and digital products.</p>
+</div>
+</header>
+
+
+<section class="shop-page catalog-page">
+
+  <div class="catalog-intro">
+    <h2>Find the Right Solution for Your Business</h2>
+    <p>
+      Explore school technology, websites, automation services,
+      reporting tools and digital products designed to solve real problems.
+    </p>
+  </div>
+
+  <div class="catalog-layout">
+
+    <div class="catalog-results">
+
+  <!-- Scheduled flash sale banner -->
+<div id="flashSaleBanner" class="flash-sale-banner" hidden>
+  <div class="flash-sale-content">
+    <span class="flash-sale-badge">âš¡ FLASH SALE</span>
+    <h2 id="flashSaleHeadline">Special Flash Sale</h2>
+    <p id="flashSaleMessage"></p>
+
+    <div class="flash-sale-pricing">
+      <span id="flashSaleOriginalPrice"></span>
+      <strong id="flashSaleSalePrice"></strong>
+    </div>
+
+    <p id="flashSaleSavings" class="flash-sale-savings"></p>
+    <p id="flashSaleEndDate" class="flash-sale-end-date"></p>
+  </div>
+
+  <button id="flashSaleViewButton" type="button">
+    View offer
+  </button>
+</div>
+      <div class="catalog-toolbar">
+        <input
+          type="search"
+          id="productSearch"
+          placeholder="Search products and services..."
+          aria-label="Search products and services"
+        >
+        <p id="resultsCount">5 solutions</p>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid">
+
+<article class="catalog-card" data-category="school">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸŽ“</span>
+    <span class="catalog-category">School Technology</span>
+    <span class="catalog-card-title">EduTrack School Dashboard</span>
+    <span class="catalog-card-summary">
+      Help schools manage student results and keep parents informed.
+    </span>
+    <span class="catalog-price">Packages from KSh 15,000</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="edutrack-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="edutrack"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20the%20EduTrack%20School%20Dashboard.%20Please%20share%20more%20details%20about%20the%20packages."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about EduTrack on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+
+
+
+<!-- PRODUCT CARD: PORTFOLIO & BUSINESS WEBSITES -->
+<article class="catalog-card" data-category="websites">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸŒ</span>
+    <span class="catalog-category">Web Development</span>
+    <span class="catalog-card-title">Portfolio &amp; Business Websites</span>
+    <span class="catalog-card-summary">
+      Build a professional online presence to showcase your work,
+      services or business.
+    </span>
+    <span class="catalog-price">Contact for pricing</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="websites-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="websites"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Portfolio%20and%20Business%20Website%20service."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Websites on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+<!-- PRODUCT CARD: PYTHON AUTOMATION -->
+<article class="catalog-card" data-category="automation">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">âš™ï¸</span>
+    <span class="catalog-category">Automation</span>
+    <span class="catalog-card-title">Python Automation</span>
+    <span class="catalog-card-summary">
+      Automate repetitive tasks and reduce manual work using practical
+      Python scripts and tools.
+    </span>
+    <span class="catalog-price">Starting from KSh 3,000</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="python-automation-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="python-automation"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Python%20Automation%20service.%20My%20task%20is%3A%20%5Bdescribe%20your%20task%5D.%20Please%20share%20pricing."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Python Automation on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+<!-- PRODUCT CARD: DATA REPORTS & ANALYSIS -->
+<article class="catalog-card" data-category="reporting">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸ“Š</span>
+    <span class="catalog-category">Data &amp; Reporting</span>
+    <span class="catalog-card-title">Data Reports &amp; Analysis</span>
+    <span class="catalog-card-summary">
+      Turn spreadsheets and raw data into organized reports that are
+      easier to understand and use.
+    </span>
+    <span class="catalog-price">Starting from KSh 2,500</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="data-reports-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="data-reports"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Data%20Reports%20and%20Analysis%20service.%20I%20need%20help%20with%3A%20%5Bdescribe%20your%20data%20or%20report%5D.%20Please%20share%20pricing."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Data Reports on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+<!-- PRODUCT CARD: CODE EDITING & CUSTOMIZATION -->
+<article class="catalog-card" data-category="digital">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸ› ï¸</span>
+    <span class="catalog-category">Code Editing &amp; Customization</span>
+    <span class="catalog-card-title">Code Editing &amp; Customization</span>
+    <span class="catalog-card-summary">
+      Make your existing website, dashboard or software easier to
+      customize. Update names, school details, branding and other
+      settings without calling a developer for every small change.
+    </span>
+    <span class="catalog-price">Starting from KSh 10,000</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="code-customization-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="code-customization"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Code%20Editing%20and%20Customization%20service%20starting%20at%20KSh%2010%2C000.%20I%20want%20to%20make%20routine%20changes%20to%20my%20existing%20code%20without%20needing%20a%20developer%20every%20time.%20Please%20explain%20the%20process."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Code Editing on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+<!-- PRODUCT CARD: REPORT WRITING -->
+<article class="catalog-card" data-category="writing">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸ“</span>
+    <span class="catalog-category">Report Writing</span>
+    <span class="catalog-card-title">Report Writing Services</span>
+    <span class="catalog-card-summary">
+      Turn your information, research and findings into clear,
+      organized reports for your intended audience.
+    </span>
+    <span class="catalog-price">Contact for pricing</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="report-writing-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="report-writing"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Report%20Writing%20services.%20Please%20share%20more%20details%20and%20pricing."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Report Writing on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+
+<!-- PRODUCT CARD: MEDIA COVERAGE -->
+<article class="catalog-card" data-category="media">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸ“°</span>
+    <span class="catalog-category">Media & Content</span>
+    <span class="catalog-card-title">Media Coverage & Content Creation</span>
+    <span class="catalog-card-summary">
+      Get help with media coverage, content development,
+      and communicating your story to the right audience.
+    </span>
+    <span class="catalog-price">Contact for pricing</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="media-coverage-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="media-coverage"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Media%20Coverage%20and%20Content%20Creation%20services.%20Please%20share%20more%20details%20and%20pricing."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Media Coverage on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+<!-- PRODUCT CARD: SOCIAL MEDIA MANAGEMENT -->
+<article class="catalog-card" data-category="social-media">
+  <button class="catalog-card-toggle" type="button" aria-expanded="false">
+    <span class="catalog-card-image">ðŸ“±</span>
+    <span class="catalog-category">Social Media Management</span>
+    <span class="catalog-card-title">Social Media Management for Small Businesses</span>
+    <span class="catalog-card-summary">
+      Plan content, create branded posts and maintain a consistent
+      social media presence for your business.
+    </span>
+    <span class="catalog-price">Packages from KSh 8,000/month</span>
+    <span class="catalog-expand-hint">View details ï¼‹</span>
+  </button>
+
+  <div class="catalog-card-details" hidden>
+    <section class="catalog-details" id="social-media-management-details">
+      <div
+        class="markdown-product-content"
+        data-product-id="social-media-management"
+      ></div>
+
+      <a
+        class="catalog-contact-link"
+        href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%27m%20interested%20in%20your%20Social%20Media%20Management%20packages."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire about Social Media Management on WhatsApp
+      </a>
+            <button
+        class="catalog-close-bottom"
+        type="button"
+        onclick="closeAllProducts()"
+      >
+        Close details âˆ’
+      </button>
+    </section>
+  </div>
+</article>
+
+
+
+      </div>
+
+      <p id="catalogEmpty" hidden>
+        No matching solutions found. Try another search or clear your filters.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+
+    <footer class="footer">
+      <span>Â© <span id="year"></span> Yuri Printers. All rights reserved.</span>
+    </footer>
+  </main>
+
+</div>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('eric-portfolio-theme');
+
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    document.documentElement.style.colorScheme = savedTheme;
+  }
+
+  function updateThemeButton() {
+    const dark =
+      document.documentElement.style.colorScheme === 'dark';
+
+    themeToggle.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
+    themeToggle.setAttribute(
+      'aria-label',
+      dark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+    themeToggle.setAttribute('aria-pressed', String(dark));
+  }
+
+  updateThemeButton();
+
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme =
+    document.documentElement.style.colorScheme ||
+    localStorage.getItem('eric-portfolio-theme') ||
+    'light';
+
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.style.colorScheme = newTheme;
+
+  localStorage.setItem('eric-portfolio-theme', newTheme);
+
+  updateThemeButton();
+});
+
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+
+
+/* Load product descriptions from Markdown files. */
+async function loadMarkdownProducts() {
+  const containers = document.querySelectorAll('.markdown-product-content');
+
+  try {
+    const response = await fetch('products/products.json');
+
+    if (!response.ok) {
+      throw new Error('Could not load products.json');
+    }
+
+    const data = await response.json();
+
+    for (const container of containers) {
+      const product = data.products.find(
+        item => item.id === container.dataset.productId
+      );
+
+      if (!product) continue;
+
+      const fileResponse = await fetch('products/' + product.file);
+
+      if (!fileResponse.ok) {
+        throw new Error('Could not load ' + product.file);
+      }
+
+      const markdown = await fileResponse.text();
+
+      // Remove the optional YAML frontmatter.
+      const body = markdown.replace(
+        /^\uFEFF?\s*---[ \t]*\r?\n[\s\S]*?\r?\n---[ \t]*(?:\r?\n|$)/,
+        ''
+      );
+
+      // Convert Markdown to HTML and sanitize it before display.
+      const renderedHTML = marked.parse(body);
+      container.innerHTML = DOMPurify.sanitize(renderedHTML);
+    }
+  } catch (error) {
+    console.error('Markdown product loading error:', error);
+  }
+}
+
+loadMarkdownProducts();
+
+/* Scheduled flash sale */
+async function loadFlashSale() {
+  const banner = document.getElementById('flashSaleBanner');
+  const viewButton = document.getElementById('flashSaleViewButton');
+
+  try {
+    const response = await fetch('products/products.json');
+    if (!response.ok) throw new Error('Could not load sale settings');
+
+    const data = await response.json();
+    const sale = data.flashSale;
+
+    if (!sale || sale.enabled !== true) return;
+
+    const now = Date.now();
+    const start = new Date(sale.startDate).getTime();
+    const end = new Date(sale.endDate).getTime();
+
+    // Show only during the scheduled sale period.
+    if (
+      !Number.isFinite(start) ||
+      !Number.isFinite(end) ||
+      now < start ||
+      now > end ||
+      end < start
+    ) {
+      return;
+    }
+
+    const originalPrice = Number(sale.originalPrice);
+    const salePrice = Number(sale.salePrice);
+
+    // Prices must be valid, and the sale price must be lower.
+    if (
+      !Number.isFinite(originalPrice) ||
+      !Number.isFinite(salePrice) ||
+      originalPrice <= 0 ||
+      salePrice < 0 ||
+      salePrice >= originalPrice
+    ) {
+      console.error('Flash sale prices are invalid.');
+      return;
+    }
+
+    const productExists = data.products.some(
+      product => product.id === sale.productId
+    );
+
+    if (!productExists) {
+      console.error('Flash sale product ID was not found.');
+      return;
+    }
+
+    const money = amount =>
+      'KSh ' + amount.toLocaleString('en-KE');
+
+    const savings = originalPrice - salePrice;
+    const percentage = Math.round(
+      (savings / originalPrice) * 100
+    );
+
+    document.getElementById('flashSaleHeadline').textContent =
+      sale.headline || 'Special Flash Sale';
+
+    document.getElementById('flashSaleMessage').textContent =
+      sale.message || '';
+
+    document.getElementById('flashSaleOriginalPrice').textContent =
+      'Was ' + money(originalPrice);
+
+    document.getElementById('flashSaleSalePrice').textContent =
+      money(salePrice);
+
+    document.getElementById('flashSaleSavings').textContent =
+      'You save ' + money(savings) + ' (' + percentage + '% off)';
+
+    document.getElementById('flashSaleEndDate').textContent =
+      'Offer ends ' +
+      new Date(sale.endDate).toLocaleString('en-KE', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+        timeZone: 'Africa/Nairobi'
+      });
+
+    viewButton.addEventListener('click', () => {
+      openProduct(sale.productId);
+    });
+
+
+    banner.hidden = false;
+  } catch (error) {
+    console.error('Flash sale loading error:', error);
+  }
+}
+
+loadFlashSale();
+
+
+
+
+function closeAllProducts() {
+  document.querySelectorAll('.catalog-card-open').forEach((openCard) => {
+    openCard.classList.remove('catalog-card-open');
+
+    const openButton = openCard.querySelector('.catalog-card-toggle');
+    const openDetails = openCard.querySelector('.catalog-card-details');
+    const openHint = openCard.querySelector('.catalog-expand-hint');
+
+    if (openButton) openButton.setAttribute('aria-expanded', 'false');
+    if (openDetails) openDetails.hidden = true;
+    if (openHint) openHint.textContent = 'View details ï¼‹';
+  });
+}
+
+function openProduct(productId, updateURL = true) {
+  const container = document.querySelector(
+    `.markdown-product-content[data-product-id="${productId}"]`
+  );
+
+  if (!container) return;
+
+  const card = container.closest('.catalog-card');
+  const button = card.querySelector('.catalog-card-toggle');
+  const details = card.querySelector('.catalog-card-details');
+  const hint = button.querySelector('.catalog-expand-hint');
+
+  closeAllProducts();
+
+  card.classList.add('catalog-card-open');
+  button.setAttribute('aria-expanded', 'true');
+
+  if (details) details.hidden = false;
+  if (hint) hint.textContent = '';
+
+  if (updateURL) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('product', productId);
+  url.hash = '';
+  history.pushState({ product: productId }, '', url);
+}
+
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.querySelectorAll('.catalog-card-toggle').forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.catalog-card');
+    const isOpen = card.classList.contains('catalog-card-open');
+    const container = card.querySelector('.markdown-product-content');
+
+    if (isOpen) {
+      closeAllProducts();
+
+      const url = new URL(window.location.href);
+      url.searchParams.delete('product');
+      url.hash = '';
+      history.pushState({}, '', url);
+    } else if (container) {
+      openProduct(container.dataset.productId);
+    }
+  });
+});
+
+// Open a product when its URL contains ?product=...
+function openProductFromURL() {
+  const productId = new URLSearchParams(window.location.search)
+    .get('product');
+
+  if (productId) {
+    openProduct(productId, false);
+  } else {
+    closeAllProducts();
+  }
+}
+
+// Support browser Back and Forward buttons.
+window.addEventListener('popstate', openProductFromURL);
+
+openProductFromURL();
+
+
+
+  // Live search: filter product cards as the visitor types.
+  const productSearch = document.getElementById('productSearch');
+  const resultsCount = document.getElementById('resultsCount');
+  const catalogEmpty = document.getElementById('catalogEmpty');
+  const catalogGrid = document.getElementById('catalogGrid');
+
+  function filterProducts() {
+    const searchTerm = productSearch.value.trim().toLowerCase();
+    const cards = catalogGrid.querySelectorAll('.catalog-card');
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const cardText = card.textContent.toLowerCase();
+      const category = (card.dataset.category || '').toLowerCase();
+      const matches =
+        cardText.includes(searchTerm) ||
+        category.includes(searchTerm);
+
+      card.hidden = !matches;
+
+      if (matches) {
+        visibleCount++;
+      } else {
+        // Close a card if it no longer matches the search.
+        card.classList.remove('catalog-card-open');
+
+        const button = card.querySelector('.catalog-card-toggle');
+        const details = card.querySelector('.catalog-card-details');
+        const hint = card.querySelector('.catalog-expand-hint');
+
+        if (button) button.setAttribute('aria-expanded', 'false');
+        if (details) details.hidden = true;
+        if (hint) hint.textContent = 'View details ï¼‹';
+      }
+    });
+
+    resultsCount.textContent =
+      visibleCount + (visibleCount === 1 ? ' solution' : ' solutions');
+
+    catalogEmpty.hidden = visibleCount !== 0;
+  }
+
+  productSearch.addEventListener('input', filterProducts);
+  filterProducts();
+
+</script>
+
+<!-- Discounted offers popup -->
+<div id="discountOffersPopup" class="discount-offers-popup" hidden>
+  <button
+    id="closeDiscountPopup"
+    class="discount-popup-close"
+    type="button"
+    aria-label="Close discounted offers popup"
+  >Ã—</button>
+
+  <span class="discount-popup-badge">âš¡ SPECIAL OFFERS</span>
+
+
+<h2 id="popupSaleHeadline">Special Flash Sale</h2>
+
+<p id="popupSaleProduct">Loading current offer...</p>
+
+<div class="flash-sale-pricing">
+  <span id="popupOriginalPrice"></span>
+  <strong id="popupSalePrice"></strong>
+</div>
+
+<p id="popupSaleSavings" class="flash-sale-savings"></p>
+
+<p id="popupSaleEndDate" class="flash-sale-end-date"></p>
+
+
+  <button id="popupViewOffers" class="discount-popup-primary" type="button">
+    View discounted offers
+  </button>
+
+  <button id="dismissDiscountPopup" class="discount-popup-dismiss" type="button">
+    Don't show this again
+  </button>
+</div>
+
+<!-- Persistent lower-left offers button -->
+<button
+  id="discountOffersButton"
+  class="discount-offers-button"
+  type="button"
+  aria-controls="discountOffersPopup"
+  aria-expanded="false"
+>
+  ðŸ·ï¸ Discounted Offers
+
+</button>
+
+<script>
+/* Discounted offers popup */
+const offersPopup = document.getElementById('discountOffersPopup');
+const offersButton = document.getElementById('discountOffersButton');
+const closeOffersButton = document.getElementById('closeDiscountPopup');
+const dismissOffersButton = document.getElementById('dismissDiscountPopup');
+const viewOffersButton = document.getElementById('popupViewOffers');
+
+const offersDismissalKey = 'eric-discount-popup-dismissed';
+let currentFlashSale = null;
+
+function closeDiscountPopup() {
+  offersPopup.hidden = true;
+  offersButton.setAttribute('aria-expanded', 'false');
+}
+
+function openDiscountPopup() {
+  offersPopup.hidden = false;
+  offersButton.setAttribute('aria-expanded', 'true');
+}
+
+function showNoSaleMessage() {
+  document.getElementById('popupSaleHeadline').textContent =
+    'No active flash sale';
+
+  document.getElementById('popupSaleProduct').textContent =
+    'There are no discounted offers available right now. Please check back soon.';
+
+  document.getElementById('popupOriginalPrice').textContent = '';
+  document.getElementById('popupSalePrice').textContent = '';
+  document.getElementById('popupSaleSavings').textContent = '';
+  document.getElementById('popupSaleEndDate').textContent = '';
+  viewOffersButton.textContent = 'Close';
+}
+
+async function loadPopupSaleDetails() {
+  try {
+    const response = await fetch('products/products.json');
+    if (!response.ok) throw new Error('Could not load products.json');
+
+    const data = await response.json();
+    const sale = data.flashSale;
+
+    if (!sale || sale.enabled !== true) return;
+
+    const now = Date.now();
+    const start = new Date(sale.startDate).getTime();
+    const end = new Date(sale.endDate).getTime();
+    const original = Number(sale.originalPrice);
+    const discounted = Number(sale.salePrice);
+    const product = data.products.find(item => item.id === sale.productId);
+
+    if (
+      !product ||
+      !Number.isFinite(start) ||
+      !Number.isFinite(end) ||
+      now < start ||
+      now > end ||
+      end < start ||
+      !Number.isFinite(original) ||
+      !Number.isFinite(discounted) ||
+      original <= 0 ||
+      discounted < 0 ||
+      discounted >= original
+    ) return;
+
+    currentFlashSale = sale;
+
+    const money = value => 'KSh ' + value.toLocaleString('en-KE');
+    const saved = original - discounted;
+    const percent = Math.round(saved / original * 100);
+
+    document.getElementById('popupSaleHeadline').textContent =
+      sale.headline || 'Special Flash Sale';
+
+    document.getElementById('popupSaleProduct').textContent =
+      product.categoryLabel + ': ' + product.price;
+
+    document.getElementById('popupOriginalPrice').textContent =
+      'Was ' + money(original);
+
+    document.getElementById('popupSalePrice').textContent =
+      money(discounted);
+
+    document.getElementById('popupSaleSavings').textContent =
+      'You save ' + money(saved) + ' (' + percent + '% off)';
+
+    document.getElementById('popupSaleEndDate').textContent =
+      'Offer ends ' + new Date(sale.endDate).toLocaleString('en-KE', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+        timeZone: 'Africa/Nairobi'
+      });
+
+    viewOffersButton.textContent = 'View this product';
+
+    if (localStorage.getItem(offersDismissalKey) !== 'true') {
+      setTimeout(openDiscountPopup, 1200);
+    }
+  } catch (error) {
+    console.error('Popup sale loading error:', error);
+  }
+}
+
+offersButton.addEventListener('click', () => {
+  if (!currentFlashSale) showNoSaleMessage();
+  openDiscountPopup();
+});
+
+closeOffersButton.addEventListener('click', closeDiscountPopup);
+
+dismissOffersButton.addEventListener('click', () => {
+  localStorage.setItem(offersDismissalKey, 'true');
+  closeDiscountPopup();
+});
+
+viewOffersButton.addEventListener('click', () => {
+  if (currentFlashSale) {
+    closeDiscountPopup();
+    openProduct(currentFlashSale.productId);
+  } else {
+    closeDiscountPopup();
+  }
+});
+
+loadPopupSaleDetails();
+</script>
+
+<script src="scroll-reveal.js"></script>
+</body>
+</html>

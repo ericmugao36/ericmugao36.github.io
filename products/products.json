@@ -1,0 +1,88 @@
+﻿
+{
+  "flashSale": {
+    "enabled": false,
+    "productId": "edutrack",
+    "startDate": "2026-11-01T00:00:00+03:00",
+    "endDate": "2026-11-30T23:59:59+03:00",
+    "originalPrice": 25000,
+    "salePrice": 18000,
+    "headline": "Special Flash Sale",
+    "message": "Get more value with this limited-time offer."
+  },
+  "products": [
+    {
+      "id": "edutrack",
+      "file": "edutrack.md",
+      "icon": "ðŸŽ“",
+      "category": "school",
+      "categoryLabel": "School Technology",
+      "price": "Packages from KSh 15,000",
+      "showPackages": true
+    },
+    {
+      "id": "websites",
+      "file": "websites.md",
+      "icon": "ðŸŒ",
+      "category": "websites",
+      "categoryLabel": "Websites & Blogs",
+      "price": "Packages from KSh 6,000",
+      "showPackages": false
+    },
+    {
+      "id": "python-automation",
+      "file": "python-automation.md",
+      "icon": "âš™ï¸",
+      "category": "automation",
+      "categoryLabel": "Automation",
+      "price": "Packages from KSh 12,000",
+      "showPackages": false
+    },
+    {
+      "id": "data-reports",
+      "file": "data-reports.md",
+      "icon": "ðŸ“Š",
+      "category": "reporting",
+      "categoryLabel": "Data & Reporting",
+      "price": "Starting from as low as KSh 5,000",
+        "showPackages": false
+    },
+    {
+      "id": "code-customization",
+      "file": "code-customization.md",
+      "icon": "ðŸ› ï¸",
+      "category": "digital",
+      "categoryLabel": "Code Editing & Customization",
+      "price": "Starting at KSh 10,000",
+      "showPackages": false
+    },
+    {
+      "id": "report-writing",
+      "file": "report-writing.md",
+      "icon": "ðŸ“",
+      "category": "writing",
+      "categoryLabel": "Report Writing",
+      "price": "Contact for pricing",
+      "showPackages": false
+    },
+
+    {
+      "id": "media-coverage",
+      "file": "media-coverage.md",
+      "icon": "ðŸ“°",
+      "category": "media",
+      "categoryLabel": "Media Coverage & Content Creation",
+      "price": "Contact for pricing",
+      "showPackages": false
+    },
+    {
+      "id": "social-media-management",
+      "file": "social-media-management.md",
+      "icon": "ðŸ“±",
+      "category": "social-media",
+      "categoryLabel": "Social Media Management",
+      "price": "Packages from KSh 8,000/month",
+      "showPackages": true
+    }
+  ]
+}

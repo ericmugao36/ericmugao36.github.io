@@ -1,0 +1,197 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Eric Mugao</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="index.html#dashboard" aria-label="Eric Mugao home">
+      <img class="brand-mark"
+           src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg"
+           alt="Eric Mugao">
+      <div>
+        <div class="brand-name">Eric Mugao</div>
+        <div class="brand-sub">Communication - AI - Developer</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html#dashboard">
+        <span class="ico">ðŸ </span>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="projects.html">
+        <span class="ico">ðŸ’»</span>
+        <span class="nav-label">Projects</span>
+      </a>
+      <a href="about.html">
+        <span class="ico">ðŸ‘¤</span>
+        <span class="nav-label">About me</span>
+      </a>
+      <a href="skills.html">
+        <span class="ico">ðŸ› ï¸</span>
+        <span class="nav-label">Skills</span>
+      </a>
+      <a href="cv.html">
+  <span class="ico">ðŸ›ï¸</span>
+  <span class="nav-label">Shop</span>
+  </a>
+      <a href="learning.html">
+  <span class="ico">ðŸŽ¨</span>
+  <span class="nav-label">Graphic &amp; Design</span>
+</a>
+      <a href="blog.html">
+        <span class="ico">âœï¸</span>
+        <span class="nav-label">Blog</span>
+      </a>
+      <a class="active" href="contact.html">
+        <span class="ico">ðŸ“ž</span>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">Building a Block At a Time.</div>
+  </aside>
+
+  <main class="main" id="contact">
+    <header class="topbar">
+      <div class="top-left">
+        <button
+          class="icon-btn theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >ðŸŒ™</button>
+      </div>
+    </header>
+
+    <section class="section-head">
+      <div>
+        <h1>Let's Connect</h1>
+        <p>Have a project, an idea, or an opportunity? I'd be happy to hear from you.</p>
+      </div>
+    </section>
+
+
+<section class="content-grid contact-layout">
+
+  <div class="contact-left">
+
+    <article class="panel">
+      <h2>Get in Touch</h2>
+      <p>
+        I'm interested in practical technology, Python development,
+        automation, AI tools, and digital solutions for real-world problems.
+      </p>
+
+      <div class="project-links">
+        <a class="btn" href="mailto:ericmugao36@gmail.com">
+          âœ‰ï¸ Email Me
+        </a>
+
+        <a class="btn"
+           href="https://wa.me/254714818237?text=Hello%20Eric%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20your%20services."
+           target="_blank"
+           rel="noopener noreferrer">
+          ðŸ’¬ Chat on WhatsApp â†—
+        </a>
+
+        <a class="btn"
+           href="https://github.com/ericmugao36"
+           target="_blank"
+           rel="noopener noreferrer">
+          ðŸ’» GitHub Profile â†—
+        </a>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>My Approach</h2>
+      <p>
+        I believe useful technology starts with understanding the
+        problem, building a practical solution, testing it carefully,
+        and improving it through feedback.
+      </p>
+      <p>
+        I'm continuing to learn, build, and turn ideas into working
+        digital products.
+      </p>
+    </article>
+
+  </div>
+
+  <article class="panel">
+    <h2>What We Can Work On</h2>
+    <ul>
+      <li>School assessment and reporting solutions.</li>
+      <li>Python automation and productivity tools.</li>
+      <li>AI-assisted workflows and data projects.</li>
+      <li>Web development and portfolio projects.</li>
+      <li>Customer service and client communication solutions.</li>
+      <li>Customer support, complaint handling, and service improvement.</li>
+      <li>Communication, media, and language-related projects.</li>
+      <li>Audio transcription and conversion of spoken content into written text.</li>
+      <li>Proofreading, document preparation, and text formatting.</li>
+      <li>Research, information organisation, and content documentation.</li>
+      <li>Digital content development and multimedia communication.</li>
+      <li>Workflow improvement and practical problem-solving.</li>
+    </ul>
+  </article>
+
+</section>
+
+    <footer class="footer">
+      <span>Â© <span id="year"></span> Yuri Printers. All rights reserved.</span>
+    </footer>
+  </main>
+</div>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('eric-portfolio-theme');
+
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    document.documentElement.style.colorScheme = savedTheme;
+  }
+
+  function updateThemeButton() {
+    const dark =
+      document.documentElement.style.colorScheme === 'dark';
+
+    themeToggle.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
+    themeToggle.setAttribute(
+      'aria-label',
+      dark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+    themeToggle.setAttribute('aria-pressed', String(dark));
+  }
+
+  updateThemeButton();
+
+  themeToggle.addEventListener('click', () => {
+    const dark =
+      document.documentElement.style.colorScheme !== 'dark';
+
+    document.documentElement.style.colorScheme =
+      dark ? 'dark' : 'light';
+
+    localStorage.setItem(
+      'eric-portfolio-theme',
+      dark ? 'dark' : 'light'
+    );
+
+    updateThemeButton();
+  });
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
+<script src="scroll-reveal.js"></script>
+</body>
+</html>

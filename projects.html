@@ -1,1 +1,527 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Eric Mugao</title>
+  <link rel="stylesheet" href="styles.css">
 
+<style>
+  /* Projects page: use the full content area */
+  main.main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  main.main > section.content-grid {
+    display: block;
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Remove the large outer box around all projects */
+  main.main > section.content-grid > article.panel {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Give every project its own card */
+
+.project-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+  .project-list > .project {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 22px;
+    border: 1px solid rgba(120, 135, 160, 0.3);
+    border-radius: 16px;
+    background: var(--project-card-bg, var(--site-background, #ffffff));
+    box-shadow: 0 4px 14px rgba(20, 35, 60, 0.06);
+  }
+
+
+/* Individual project card colours for light theme */
+.project-list > .project:nth-child(1) {
+  --project-card-bg: #e3efff;
+  --project-card-text: #173e78;
+  --project-card-muted: #34577f;
+  --project-card-border: #b5d0f6;
+}
+
+.project-list > .project:nth-child(2) {
+  --project-card-bg: #e4f5e9;
+  --project-card-text: #185b39;
+  --project-card-muted: #35664c;
+  --project-card-border: #b5dfc5;
+}
+
+.project-list > .project:nth-child(3) {
+  --project-card-bg: #f0e8ff;
+  --project-card-text: #56308a;
+  --project-card-muted: #654b85;
+  --project-card-border: #d4c1f5;
+}
+
+.project-list > .project:nth-child(4) {
+  --project-card-bg: #fff0dc;
+  --project-card-text: #814b13;
+  --project-card-muted: #795a35;
+  --project-card-border: #f0d1a6;
+}
+
+/* Apply each card's own background and border */
+.project-list > .project {
+  background: var(--project-card-bg, var(--site-background, #ffffff));
+  border-color: var(--project-card-border, rgba(120, 135, 160, 0.3));
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Match headings and descriptions to each card */
+.project-list > .project .project-info,
+.project-list > .project .project-info h3,
+.project-list > .project .project-info h4 {
+  color: var(--project-card-text, var(--site-on-background, #17233b));
+}
+
+.project-list > .project .project-info p,
+.project-list > .project .project-info li {
+  color: var(--project-card-muted, var(--site-on-background, #17233b));
+}
+
+/* Dark-theme card colours */
+:root[style*="color-scheme: dark"] .project-list > .project:nth-child(1) {
+  --project-card-bg: #172b45;
+  --project-card-text: #dbeafe;
+  --project-card-muted: #c1d3ec;
+  --project-card-border: #345477;
+}
+
+:root[style*="color-scheme: dark"] .project-list > .project:nth-child(2) {
+  --project-card-bg: #19372e;
+  --project-card-text: #d1fae5;
+  --project-card-muted: #b8e4d0;
+  --project-card-border: #356b55;
+}
+
+:root[style*="color-scheme: dark"] .project-list > .project:nth-child(3) {
+  --project-card-bg: #302342;
+  --project-card-text: #eadcff;
+  --project-card-muted: #d4c1ec;
+  --project-card-border: #614581;
+}
+
+:root[style*="color-scheme: dark"] .project-list > .project:nth-child(4) {
+  --project-card-bg: #3d2b19;
+  --project-card-text: #ffebcf;
+  --project-card-muted: #e9d0ae;
+  --project-card-border: #795632;
+}
+
+
+  .project-list > .project .project-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .project-list > .project img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 760px) {
+    .project-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+/* Keep project descriptions and details visible */
+/* Keep project descriptions visible and use each card's colours */
+.project-list .project-info,
+.project-list .project-info h3,
+.project-list .project-info h4,
+.project-list .project-info p,
+.project-list .project-info ul,
+.project-list .project-info li {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.project-list .project-info {
+  color: var(--project-card-text, var(--site-on-background, #17233b));
+}
+
+.project-list .project-info h3,
+.project-list .project-info h4 {
+  color: var(--project-card-text, var(--site-on-background, #17233b));
+}
+
+.project-list .project-info p,
+.project-list .project-info li {
+  color: var(--project-card-muted, var(--site-on-background, #17233b));
+  line-height: 1.6;
+}
+
+.project-list .project-info p,
+.project-list .project-info li {
+  line-height: 1.6;
+}
+
+.project-list .project-info h3,
+.project-list .project-info h4 {
+  margin-bottom: 10px;
+}
+
+.project-list .project-info p,
+.project-list .project-info ul {
+  margin-top: 8px;
+}
+
+</style>
+</head>
+<body data-page="projects">
+  <div class="app">
+
+
+<aside class="sidebar" aria-label="Main navigation">
+
+<a class="brand" href="index.html#dashboard" aria-label="Eric Mugao home">
+  <img class="brand-mark" src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg" alt="Eric Mugao">
+  <div class="brand-details">
+    <div class="brand-name">Eric Mugao</div>
+    <div class="brand-sub">Communication - AI - Developer</div>
+  </div>
+</a>
+<nav class="nav">
+    <a href="index.html#dashboard">
+      <span class="ico">ðŸ </span>
+      <span class="nav-label">Home</span>
+    </a>
+    <a class="active" href="projects.html">
+      <span class="ico">ðŸ’»</span>
+      <span class="nav-label">Projects</span>
+    </a>
+    <a href="about.html">
+      <span class="ico">ðŸ‘¤</span>
+      <span class="nav-label">About me</span>
+    </a>
+    <a href="skills.html">
+      <span class="ico">ðŸ› ï¸</span>
+      <span class="nav-label">Skills</span>
+    </a>
+    <a href="cv.html">
+  <span class="ico">ðŸ›ï¸</span>
+  <span class="nav-label">Shop</span>
+  </a>
+    <a href="learning.html">
+  <span class="ico">ðŸŽ¨</span>
+  <span class="nav-label">Graphic &amp; Design</span>
+</a>
+    <a href="blog.html">
+      <span class="ico">âœï¸</span>
+      <span class="nav-label">Blog</span>
+    </a>
+    <a href="contact.html">
+      <span class="ico">ðŸ“ž</span>
+      <span class="nav-label">Contact</span>
+    </a>
+  </nav>
+  <div class="sidebar-bottom">Building a Block At a Time.</div>
+</aside>
+
+<div class="top-left">
+    <button
+      class="icon-btn theme-toggle"
+      id="themeToggle"
+      aria-label="Toggle theme"
+      title="Toggle theme"
+    >ðŸŒ™</button>
+  </div>
+<div class="mobile-page-title">Featured Projects</div>
+
+
+<main class="main projects-page-content">
+
+
+      <section class="content-grid">
+
+        <article class="panel">
+          <div class="project-list">
+
+
+<article class="project">
+  <div class="project-icon">ðŸŽ“</div>
+
+  <div class="project-info">
+    <h3>EduTrack Kenya â€” School Assessment Portal</h3>
+
+    <p>
+      Every parent deserves to understand their child's progress.
+      EduTrack helps teachers manage assessment results and gives
+      parents access to student reports and teachers' comments.
+    </p>
+
+    <div class="edutrack-screenshots">
+      <img
+        src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/image.png"
+        alt="EduTrack Kenya school assessment dashboard"
+        loading="lazy"
+      >
+    </div>
+
+    <h4>Key features</h4>
+    <ul>
+      <li>Assessment results and marks validation</li>
+      <li>Student reports for parents</li>
+      <li>Teachers' comments on student progress</li>
+      <li>School-specific data management</li>
+    </ul>
+
+    <div class="tag-row">
+      <span class="tag">Python</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">SQLAlchemy</span>
+      <span class="tag">PostgreSQL</span>
+    </div>
+
+    <div class="cv-actions">
+      <a class="btn"
+         style="background:var(--site-primary);color:white"
+         href="https://jss-assessment-dashboard.onrender.com"
+         target="_blank"
+         rel="noopener noreferrer">
+        Live Demo â†—
+      </a>
+
+      <a class="btn"
+         style="background:light-dark(#edf2ff,#25365a);color:inherit"
+         href="https://github.com/ericmugao36/jss-assessment-dashboard"
+         target="_blank"
+         rel="noopener noreferrer">
+        View Source Code â†—
+      </a>
+
+      <a class="btn"
+         style="background:light-dark(#edf2ff,#25365a);color:inherit"
+         href="mailto:ericmugao36@gmail.com?subject=EduTrack%20Kenya%20Demo%20Request">
+        Request a Demo â†—
+      </a>
+    </div>
+  </div>
+</article>
+
+
+<article class="project">
+  <div class="project-icon">ðŸŒ</div>
+
+  <div class="project-info">
+    <!-- EDIT: Project name -->
+    <h3>Eric Mugao â€” Developer Portfolio</h3>
+
+    <!-- EDIT: Project description -->
+    <p>
+      A personal portfolio website built to showcase my Python projects,
+      AI learning journey, software development skills, and practical
+      digital solutions. It provides visitors with a place to explore
+      my work, learn about my background, and contact me.
+    </p>
+
+    <!-- EDIT: Project features -->
+    <h4>Key features</h4>
+    <ul>
+      <li>Dedicated pages for projects, skills, CV, and contact information</li>
+      <li>Project showcase with descriptions and links</li>
+      <li>Responsive layout for different screen sizes</li>
+      <li>Dark and light appearance options</li>
+      <li>ADD ANOTHER FEATURE HERE</li>
+    </ul>
+
+    <!-- EDIT: Technologies -->
+    <div class="tag-row">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">GitHub Pages</span>
+    </div>
+
+    <!-- EDIT: Add a screenshot when available -->
+    <!-- <img src="images/portfolio-screenshot.png"
+         alt="Eric Mugao developer portfolio screenshot"> -->
+
+    <!-- EDIT: Project links -->
+    <div class="cv-actions">
+      <a class="btn"
+         href="https://ericmugao36.github.io"
+         target="_blank"
+         rel="noopener noreferrer">
+        View Live Portfolio â†—
+      </a>
+
+      <a class="btn"
+         href="https://github.com/ericmugao36/ericmugao36.github.io"
+         target="_blank"
+         rel="noopener noreferrer">
+        View Source Code â†—
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+<article class="project">
+  <div class="project-icon">ðŸ“ˆ</div>
+
+  <div class="project-info">
+    <!-- EDIT: Project name -->
+    <h3>SMP Performance Coach</h3>
+
+    <!-- EDIT: Project description -->
+    <p>
+      A Python machine-learning project exploring how daily activity
+      data can help predict whether a person achieves a 10,000-step goal.
+      ADD MORE DETAILS HERE.
+    </p>
+
+    <!-- EDIT: Project features -->
+    <h4>Key features</h4>
+    <ul>
+      <li>Daily activity data analysis</li>
+      <li>Prediction of daily step-goal achievement</li>
+      <li>Machine-learning model evaluation</li>
+    </ul>
+
+    <!-- EDIT: Technologies -->
+    <div class="tag-row">
+      <span class="tag">Python</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">Scikit-learn</span>
+      <span class="tag">Matplotlib</span>
+    </div>
+
+    <!-- EDIT: Add your screenshot when available -->
+    <!-- <img src="images/smp-screenshot.png"
+         alt="SMP Performance Coach screenshot"> -->
+
+    <!-- EDIT: Add links when available -->
+    <div class="cv-actions">
+      <!-- Repository link goes here -->
+      <!-- Live demo link goes here -->
+    </div>
+  </div>
+</article>
+
+
+<article class="project">
+  <div class="project-info">
+    <div class="project-icon">ðŸ› ï¸</div>
+
+    <h3>Portfolio Content Editor</h3>
+
+    <p>
+      A Python-powered editing tool designed to read website code,
+      identify editable text, and make wording changes without
+      unnecessarily changing the website's layout, styling, or
+      JavaScript functionality.
+    </p>
+
+    <h4>Key Features</h4>
+    <ul>
+      <li>Scans HTML and identifies editable text such as headings, paragraphs, links, buttons, and labels.</li>
+      <li>Displays detected text for easier editing through a simple interface.</li>
+      <li>Uses targeted text replacements to help preserve surrounding code.</li>
+      <li>Designed to work on a local copy of the website rather than directly changing the live website.</li>
+      <li>Planned backup support before saving code changes.</li>
+    </ul>
+
+    <h4>Technologies</h4>
+    <div class="project-tags">
+      <span>Python</span>
+      <span>FastAPI</span>
+      <span>Uvicorn</span>
+      <span>BeautifulSoup</span>
+      <span>Pydantic</span>
+      <span>HTML</span>
+    </div>
+
+    <div class="project-links">
+      <!-- Add a live demo link when one is available. -->
+      <!-- Add the source repository link when one is available. -->
+    </div>
+  </div>
+</article>
+
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        Â© <span id="year"></span> Yuri Printers. All rights reserved.
+      </footer>
+    </main>
+
+  </div>
+
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+
+  const savedTheme = localStorage.getItem('eric-portfolio-theme');
+
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    document.documentElement.style.colorScheme = savedTheme;
+  }
+
+  function updateThemeButton() {
+    const dark =
+      document.documentElement.style.colorScheme === 'dark';
+
+    themeToggle.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
+
+    themeToggle.setAttribute(
+      'aria-label',
+      dark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+
+    themeToggle.setAttribute('aria-pressed', String(dark));
+  }
+
+  updateThemeButton();
+
+  themeToggle.addEventListener('click', () => {
+    const dark =
+      document.documentElement.style.colorScheme !== 'dark';
+
+    document.documentElement.style.colorScheme =
+      dark ? 'dark' : 'light';
+
+    localStorage.setItem(
+      'eric-portfolio-theme',
+      dark ? 'dark' : 'light'
+    );
+
+    updateThemeButton();
+  });
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
+<script src="scroll-reveal.js"></script>
+</body>
+</html>

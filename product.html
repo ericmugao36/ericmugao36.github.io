@@ -1,0 +1,295 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product | Eric Mugao</title>
+  <meta name="description" content="Explore services and digital products from Eric Mugao.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="index.html#dashboard" aria-label="Eric Mugao home">
+      <img class="brand-mark"
+           src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg"
+           alt="Eric Mugao">
+      <div>
+        <div class="brand-name">Eric Mugao</div>
+        <div class="brand-sub">Communication - AI - Developer</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html"><span class="ico">ðŸ </span><span class="nav-label">Home</span></a>
+      <a href="projects.html"><span class="ico">ðŸ’»</span><span class="nav-label">Projects</span></a>
+      <a href="about.html"><span class="ico">ðŸ‘¤</span><span class="nav-label">About me</span></a>
+      <a href="skills.html"><span class="ico">ðŸ› ï¸</span><span class="nav-label">Skills</span></a>
+      <a class="active" href="cv.html"><span class="ico">ðŸ›ï¸</span><span class="nav-label">Shop</span></a>
+      <a href="learning.html">
+  <span class="ico">ðŸŽ¨</span>
+  <span class="nav-label">Graphic &amp; Design</span>
+</a>
+      <a href="blog.html"><span class="ico">âœï¸</span><span class="nav-label">Blog</span></a>
+      <a href="contact.html"><span class="ico">ðŸ“ž</span><span class="nav-label">Contact</span></a>
+    </nav>
+
+    <div class="sidebar-bottom">Building a Block At a Time.</div>
+  </aside>
+
+  <main class="main" id="product">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="icon-btn theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle theme"
+                title="Toggle theme">ðŸŒ™</button>
+      </div>
+    </header>
+
+    <section class="section-head">
+      <div>
+        <p><a href="cv.html">â† Back to Shop</a></p>
+        <h1 id="productTitle">Loading productâ€¦</h1>
+        <p id="productDescription">Please wait while the product details load.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="productPanel">
+      <p class="cv-note" id="productStatus">Loading product informationâ€¦</p>
+      <div id="productContent"></div>
+      <p id="productPrice" class="catalog-price"></p>
+      <a id="productEnquiry"
+         class="catalog-contact-link"
+         href="https://wa.me/254714818237"
+         target="_blank"
+         rel="noopener noreferrer">Enquire on WhatsApp</a>
+    </section>
+
+    <footer class="footer">
+      <span>Â© <span id="year"></span> Eric Mugao. All rights reserved.</span>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Theme control, matching the other portfolio pages.
+  const themeToggle = document.getElementById("themeToggle");
+  const savedTheme = localStorage.getItem("eric-portfolio-theme");
+
+  if (savedTheme === "dark" || savedTheme === "light") {
+    document.documentElement.style.colorScheme = savedTheme;
+  }
+
+  function updateThemeButton() {
+    const dark = document.documentElement.style.colorScheme === "dark";
+    themeToggle.textContent = dark ? "â˜€ï¸" : "ðŸŒ™";
+    themeToggle.setAttribute(
+      "aria-label",
+      dark ? "Switch to light mode" : "Switch to dark mode"
+    );
+    themeToggle.setAttribute("aria-pressed", String(dark));
+  }
+
+  updateThemeButton();
+
+  themeToggle.addEventListener("click", () => {
+    const dark = document.documentElement.style.colorScheme !== "dark";
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    localStorage.setItem("eric-portfolio-theme", dark ? "dark" : "light");
+    updateThemeButton();
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Read product information from Markdown files listed in products.json.
+  async function loadProduct() {
+    const status = document.getElementById("productStatus");
+    const titleElement = document.getElementById("productTitle");
+    const descriptionElement = document.getElementById("productDescription");
+    const contentElement = document.getElementById("productContent");
+    const priceElement = document.getElementById("productPrice");
+    const enquiryElement = document.getElementById("productEnquiry");
+
+    const productId = new URLSearchParams(window.location.search).get("id");
+
+    if (!productId) {
+      titleElement.textContent = "Choose a product";
+      descriptionElement.textContent = "Return to the Shop to explore available services.";
+      status.textContent = "No product was selected.";
+      enquiryElement.hidden = true;
+      return;
+    }
+
+    try {
+      const indexResponse = await fetch("products/products.json");
+
+      if (!indexResponse.ok) {
+        throw new Error("Could not load the product index.");
+      }
+
+      const indexData = await indexResponse.json();
+      const product = indexData.products.find(item => item.id === productId);
+
+      if (!product) {
+        throw new Error("That product could not be found.");
+      }
+
+      const fileResponse = await fetch("products/" + product.file);
+
+      if (!fileResponse.ok) {
+        throw new Error("Could not load the product details.");
+      }
+
+      const markdown = await fileResponse.text();
+
+      function getField(field) {
+        const match = markdown.match(
+          new RegExp("^" + field + ":\\s*[\"']?(.+?)[\"']?\\s*$", "m")
+        );
+        return match ? match[1].replace(/[\"']$/, "") : "";
+      }
+
+      const title = getField("title") || product.title || product.id;
+      const description = getField("description");
+      const price = getField("price") || product.price || "Contact for pricing";
+      const body = markdown.replace(/^---\s*[\r\n]+[\s\S]*?[\r\n]+---\s*/, "");
+
+      titleElement.textContent = title;
+      descriptionElement.textContent = description;
+      document.title = title + " | Eric Mugao";
+      priceElement.textContent = price;
+
+
+
+      // Display product content, with optional package cards.
+      const paragraphs = body.split(/\n\s*\n/);
+      const packageNames = [
+        "Pilot Package",
+        "Standard Package",
+        "Maintenance and Support"
+      ];
+
+      let packageGrid = null;
+      let currentPackage = null;
+
+      for (const paragraph of paragraphs) {
+        const text = paragraph.trim();
+        if (!text) continue;
+
+        const lines = text.split("\n").map(line => line.trim());
+        const headingLine = lines.find(line => line.startsWith("#"));
+        const headingText = headingLine
+          ? headingLine.replace(/^#+\s*/, "")
+          : "";
+
+        // Only create package cards when enabled for this product.
+        if (product.showPackages === true && packageNames.includes(headingText)) {
+          if (!packageGrid) {
+            packageGrid = document.createElement("div");
+            packageGrid.className = "catalog-package-grid";
+            contentElement.appendChild(packageGrid);
+          }
+
+          currentPackage = document.createElement("div");
+          currentPackage.className = "catalog-package-card";
+
+          const heading = document.createElement("h3");
+          heading.textContent = headingText;
+          currentPackage.appendChild(heading);
+          packageGrid.appendChild(currentPackage);
+
+          const remainingText = lines
+            .filter(line => !line.startsWith("#"))
+            .join("\n")
+            .trim();
+
+          if (remainingText) {
+            addFormattedContent(remainingText, currentPackage);
+          }
+
+          continue;
+        }
+
+        // When package cards are disabled, render the headings normally.
+        if (lines.some(line => line.startsWith("#"))) {
+          currentPackage = null;
+        }
+
+        const target = currentPackage || contentElement;
+
+        if (text.startsWith("### ")) {
+          const heading = document.createElement("h3");
+          heading.textContent = text.slice(4);
+          target.appendChild(heading);
+        } else if (text.startsWith("## ")) {
+          const heading = document.createElement("h2");
+          heading.textContent = text.slice(3);
+          target.appendChild(heading);
+        } else if (lines.every(line => line.startsWith("- "))) {
+          const list = document.createElement("ul");
+
+          for (const line of lines) {
+            const item = document.createElement("li");
+            item.textContent = line.slice(2);
+            list.appendChild(item);
+          }
+
+          target.appendChild(list);
+        } else {
+          const paragraphElement = document.createElement("p");
+          paragraphElement.textContent = text.replace(/\*\*(.*?)\*\*/g, "$1");
+          target.appendChild(paragraphElement);
+        }
+      }
+
+
+      function addFormattedContent(text, target) {
+        const lines = text.split("\n").map(line => line.trim());
+        const listLines = lines.filter(line => line.startsWith("- "));
+
+        if (listLines.length === lines.length) {
+          const list = document.createElement("ul");
+
+          for (const line of listLines) {
+            const item = document.createElement("li");
+            item.textContent = line.slice(2);
+            list.appendChild(item);
+          }
+
+          target.appendChild(list);
+        } else {
+          const paragraph = document.createElement("p");
+          paragraph.textContent = text.replace(/\*\*(.*?)\*\*/g, "$1");
+          target.appendChild(paragraph);
+        }
+
+      }
+
+      const message = "Hello Eric, I'm interested in " + title +
+        ". Please share more details about the service and pricing.";
+
+      enquiryElement.href = "https://wa.me/254714818237?text=" +
+        encodeURIComponent(message);
+
+      enquiryElement.hidden = false;
+      status.remove();
+
+    } catch (error) {
+      titleElement.textContent = "Product unavailable";
+      descriptionElement.textContent = "We could not load this product's information.";
+      status.textContent = error.message +
+        " Please check your connection and the product files.";
+      enquiryElement.hidden = true;
+      console.error("Product loading error:", error);
+    }
+  }
+
+  loadProduct();
+</script>
+
+<script src="scroll-reveal.js"></script>
+</body>
+</html>

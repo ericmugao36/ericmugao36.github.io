@@ -1,0 +1,944 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10182f">
+  <title>Top Designs with Yuri Solutions | Eric Mugao</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Design showcase */
+    #design-showcase {
+      --design-bg: #f4f8ff;
+      --design-card: #ffffff;
+      --design-accent: #2459e0;
+      --design-text: #172b4d;
+      --design-muted: #5c6f8d;
+
+      color: var(--design-text);
+      background:
+        radial-gradient(
+          circle at 8% 12%,
+          rgba(75, 130, 245, 0.17) 0,
+          rgba(75, 130, 245, 0.17) 110px,
+          transparent 112px
+        ),
+        radial-gradient(
+          ellipse at 100% 18%,
+          rgba(110, 190, 255, 0.20) 0,
+          transparent 260px
+        ),
+        radial-gradient(
+          circle at 88% 88%,
+          rgba(110, 140, 255, 0.13) 0,
+          rgba(110, 140, 255, 0.13) 150px,
+          transparent 152px
+        ),
+        linear-gradient(
+          135deg,
+          #fbfdff 0%,
+          #edf4ff 55%,
+          #f7faff 100%
+        );
+
+      min-height: 100vh;
+      padding: 28px;
+      border-radius: 22px;
+      overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Light theme for the graphic design gallery */
+
+
+html[style*="color-scheme: light"] #design-showcase {
+  --design-bg: #f4f8ff;
+  --design-card: #ffffff;
+  --design-accent: #2459e0;
+  --design-text: #172b4d;
+  --design-muted: #5c6f8d;
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(75, 130, 245, 0.17) 0,
+      rgba(75, 130, 245, 0.17) 110px,
+      transparent 112px
+    ),
+    radial-gradient(
+      ellipse at 100% 18%,
+      rgba(110, 190, 255, 0.20) 0,
+      transparent 260px
+    ),
+    radial-gradient(
+      circle at 88% 88%,
+      rgba(110, 140, 255, 0.13) 0,
+      rgba(110, 140, 255, 0.13) 150px,
+      transparent 152px
+    ),
+    linear-gradient(
+      135deg,
+      #fbfdff 0%,
+      #edf4ff 55%,
+      #f7faff 100%
+    );
+}
+
+
+/* Keep text readable in light theme */
+html[style*="color-scheme: light"] #design-showcase .design-description {
+  background: rgba(255, 255, 255, 0.97);
+  color: #17233b;
+}
+
+html[style*="color-scheme: light"] #design-showcase .design-description p {
+  color: #36445c;
+}
+
+html[style*="color-scheme: light"] #design-showcase .showcase-footer h2 {
+  color: #17233b;
+}
+
+html[style*="color-scheme: light"] #design-showcase .info-button {
+  background: #ffffff;
+  color: #17233b;
+  border-color: #2459e0;
+}
+
+    #design-showcase * {
+      box-sizing: border-box;
+    }
+
+    #design-showcase .showcase-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 30px;
+      padding: 24px 12px 12px;
+    }
+
+    #design-showcase .eyebrow {
+      display: inline-block;
+      color: var(--design-accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    #design-showcase .showcase-header h1 {
+      color: var(--design-text);
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin: 0 0 16px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    #design-showcase .showcase-header p {
+      color: var(--design-muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 0 auto;
+      max-width: 620px;
+    }
+
+    #design-showcase .showcase-rule {
+      width: 76px;
+      height: 4px;
+      background: var(--design-accent);
+      border-radius: 10px;
+      margin: 22px auto 0;
+    }
+
+    #design-showcase .gallery-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    #design-showcase .gallery-label h2 {
+      color: var(--design-text);
+      font-size: 21px;
+      margin: 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+    }
+
+    #design-showcase .gallery-label span {
+      color: var(--design-muted);
+      font-size: 12px;
+    }
+
+    /* Varied-size collage layout */
+    #design-showcase .design-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-rows: 42px;
+      grid-auto-flow: dense;
+      gap: 15px;
+    }
+
+    #design-showcase .design-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--design-card);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 32px rgba(0,0,0,.24);
+      isolation: isolate;
+      animation: design-appear .7s both ease-out;
+      animation-delay: var(--delay, 0s);
+    }
+
+    #design-showcase .design-card:nth-child(1),
+    #design-showcase .design-card:nth-child(6) {
+      grid-column: span 7;
+      grid-row: span 8;
+    }
+
+    #design-showcase .design-card:nth-child(2),
+    #design-showcase .design-card:nth-child(5) {
+      grid-column: span 5;
+      grid-row: span 7;
+    }
+
+    #design-showcase .design-card:nth-child(3),
+    #design-showcase .design-card:nth-child(7) {
+      grid-column: span 5;
+      grid-row: span 6;
+    }
+
+    #design-showcase .design-card:nth-child(4),
+    #design-showcase .design-card:nth-child(8) {
+      grid-column: span 7;
+      grid-row: span 6;
+    }
+
+   #design-showcase .design-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  background: var(--design-card);
+  cursor: zoom-in;
+  transition: transform .3s ease;
+}
+
+    #design-showcase .design-card:hover img {
+      transform: scale(1.045);
+    }
+
+    /* Gentle floating motion */
+    #design-showcase .design-card:nth-child(3n) {
+      animation-name: design-appear, design-float;
+      animation-duration: .7s, 7s;
+      animation-delay: var(--delay, 0s), 1s;
+      animation-iteration-count: 1, infinite;
+      animation-direction: normal, alternate;
+    }
+
+    #design-showcase .design-card::after {
+      content: "";
+      position: absolute;
+      inset: 45% 0 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(8,13,29,.7)
+      );
+      pointer-events: none;
+    }
+
+    #design-showcase .design-card .design-name {
+      position: absolute;
+      z-index: 2;
+      left: 16px;
+      right: 58px;
+      bottom: 15px;
+      color: #fff;
+      font-size: clamp(14px, 2vw, 19px);
+      line-height: 1.3;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0,0,0,.5);
+      pointer-events: none;
+    }
+
+    #design-showcase .info-button {
+      position: absolute;
+      z-index: 5;
+      top: 12px;
+      right: 12px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%;
+      background: rgba(13,22,43,.85);
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,.22);
+      transition: background .2s, transform .2s;
+    }
+
+    #design-showcase .info-button:hover,
+    #design-showcase .info-button:focus-visible {
+      background: #167e7a;
+      transform: scale(1.08);
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+
+    /* Descriptions stay hidden until the info icon is clicked */
+    #design-showcase .design-description {
+      position: absolute;
+      z-index: 4;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: clamp(18px, 3vw, 30px);
+      background: rgba(12,20,42,.94);
+      color: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity .25s ease, transform .25s ease,
+                  visibility .25s;
+      overflow-y: auto;
+    }
+
+    #design-showcase .design-card.info-open .design-description {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #design-showcase .design-description h3 {
+      color: var(--design-accent);
+      font-size: clamp(17px, 2vw, 23px);
+      line-height: 1.3;
+      margin: 0 0 12px;
+    }
+
+    #design-showcase .design-description p {
+      color: #eef2ff;
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    #design-showcase .description-close {
+      margin-top: 18px;
+      background: transparent;
+      border: 1px solid var(--design-accent);
+      border-radius: 24px;
+      color: var(--design-accent);
+      padding: 8px 15px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    #design-showcase .description-close:hover {
+      background: rgba(110,231,210,.12);
+    }
+
+    #design-showcase .showcase-footer {
+      text-align: center;
+      margin-top: 35px;
+      padding: 28px 12px 12px;
+      border-top: 1px solid rgba(255,255,255,.13);
+    }
+
+    #design-showcase .showcase-footer h2 {
+      color: #fff;
+      font-size: clamp(21px, 3vw, 30px);
+      margin: 0 0 10px;
+    }
+
+    #design-showcase .showcase-footer p {
+      color: var(--design-muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #design-showcase .showcase-footer .brand-line {
+      color: var(--design-accent);
+      font-weight: 800;
+      margin-top: 15px;
+    }
+
+    @keyframes design-appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes design-float {
+      from { translate: 0 0; }
+      to { translate: 0 -5px; }
+    }
+
+    /* Tablet */
+    @media (max-width: 850px) {
+      #design-showcase {
+        padding: 20px;
+      }
+
+      #design-showcase .design-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-auto-rows: 38px;
+        gap: 12px;
+      }
+
+      #design-showcase .design-card:nth-child(n) {
+        grid-column: span 3;
+        grid-row: span 6;
+      }
+
+      #design-showcase .design-card:nth-child(1),
+      #design-showcase .design-card:nth-child(4),
+      #design-showcase .design-card:nth-child(6) {
+        grid-column: span 6;
+        grid-row: span 7;
+      }
+    }
+
+    /* Phone */
+    @media (max-width: 520px) {
+      #design-showcase {
+        padding: 14px;
+        border-radius: 14px;
+      }
+
+      #design-showcase .showcase-header {
+        padding: 20px 2px 8px;
+        margin-bottom: 20px;
+      }
+
+      #design-showcase .showcase-header h1 {
+        letter-spacing: -.7px;
+      }
+
+      #design-showcase .showcase-header p {
+        font-size: 14px;
+      }
+
+      #design-showcase .design-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 32px;
+        gap: 10px;
+      }
+
+      #design-showcase .design-card:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 5;
+      }
+
+      #design-showcase .design-card:nth-child(1),
+      #design-showcase .design-card:nth-child(4),
+      #design-showcase .design-card:nth-child(6) {
+        grid-column: span 2;
+        grid-row: span 6;
+      }
+
+      #design-showcase .design-card img {
+        min-height: 180px;
+      }
+
+      #design-showcase .design-card .design-name {
+        left: 10px;
+        right: 43px;
+        bottom: 10px;
+        font-size: 13px;
+      }
+
+      #design-showcase .info-button {
+        top: 8px;
+        right: 8px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      #design-showcase .design-description {
+        padding: 13px;
+      }
+
+      #design-showcase .design-description h3 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      #design-showcase .design-description p {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      #design-showcase .description-close {
+        margin-top: 10px;
+        padding: 7px 10px;
+      }
+    }
+
+    /* Respect visitors who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      #design-showcase .design-card,
+      #design-showcase .design-card:nth-child(3n) {
+        animation: none;
+      }
+
+      #design-showcase .design-card img,
+      #design-showcase .info-button,
+      #design-showcase .design-description {
+        transition: none;
+      }
+    }
+
+    /* Full-screen image viewer */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, .94);
+}
+
+.image-lightbox.is-open {
+  display: flex;
+}
+
+.image-lightbox img {
+  display: block;
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-out;
+}
+
+.image-lightbox .lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background: #18213a;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .image-lightbox {
+    padding: 10px;
+  }
+
+  .image-lightbox img {
+    max-width: 96vw;
+    max-height: 85vh;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+<div class="app" id="app">
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="index.html#dashboard" aria-label="Eric Mugao home">
+      <img class="brand-mark"
+           src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg"
+           alt="Eric Mugao">
+      <div>
+        <div class="brand-name">Eric Mugao</div>
+        <div class="brand-sub">Communication - AI - Developer</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html#dashboard">
+        <span class="ico">ðŸ </span>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="projects.html">
+        <span class="ico">ðŸ’»</span>
+        <span class="nav-label">Projects</span>
+      </a>
+      <a href="about.html">
+        <span class="ico">ðŸ‘¤</span>
+        <span class="nav-label">About me</span>
+      </a>
+      <a href="skills.html">
+        <span class="ico">ðŸ› ï¸</span>
+        <span class="nav-label">Skills</span>
+      </a>
+      <a href="cv.html">
+        <span class="ico">ðŸ›ï¸</span>
+        <span class="nav-label">Shop</span>
+      </a>
+      <a class="active" href="learning.html">
+  <span class="ico">ðŸŽ¨</span>
+  <span class="nav-label">Graphic &amp; Design</span>
+</a>
+      <a href="blog.html">
+        <span class="ico">âœï¸</span>
+        <span class="nav-label">Blog</span>
+      </a>
+      <a href="contact.html">
+        <span class="ico">ðŸ“ž</span>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">Building a Block At a Time.</div>
+  </aside>
+
+  <main class="main" id="learning">
+
+    <header class="topbar">
+      <div class="top-left">
+        <button
+          class="icon-btn theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+          aria-pressed="false"
+        >ðŸŒ™</button>
+      </div>
+    </header>
+
+    <section id="design-showcase">
+
+      <header class="showcase-header">
+        <span class="eyebrow">Creative work Â· Digital solutions</span>
+        <h1>Yuri Advertising Designs</h1>
+        <p>
+  Explore advertising graphics designed to capture attention,
+  communicate ideas, and showcase products and services.
+</p>
+        <div class="showcase-rule"></div>
+      </header>
+
+      <div class="gallery-label">
+        <h2>Graphic Design Portfolio</h2>
+      </div>
+
+      <section class="design-grid" aria-label="Advertising design gallery">
+
+        <!-- 1. EduTrack -->
+        <article class="design-card" style="--delay: 0s">
+          <img src="images/edutrack-ad.jpg"
+               alt="EduTrack school dashboard advertisement"
+               loading="eager">
+          <button class="info-button" type="button"
+                  aria-label="More about EduTrack School Dashboard"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <p>
+              A school technology solution that helps schools manage
+              student results and keep parents informed.
+              Packages start from KSh 15,000.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 2. Media and content -->
+        <article class="design-card" style="--delay: .08s">
+          <img src="images/media-ad.jpg"
+               alt="Media coverage and content creation advertisement"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about Media and Content services"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Media &amp; Content Creation</h3>
+            <p>
+              Support for media coverage, content development and
+              communicating your story to the right audience.
+              Contact for pricing.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 3. Report writing -->
+        <article class="design-card" style="--delay: .16s">
+          <img src="images/report-writing-ad.jpg"
+               alt="Professional report writing services advertisement"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about Report Writing services"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Report Writing Services</h3>
+            <p>
+              Turn research, information and findings into clear,
+              organized reports tailored to your intended audience.
+              Contact for pricing.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 4. Code customization -->
+        <article class="design-card" style="--delay: .24s">
+          <img src="images/customize-ad.jpg"
+               alt="Website and software customization advertisement"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about Code Editing and Customization"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Code Editing &amp; Customization</h3>
+            <p>
+              Update website branding, school details, dashboards and
+              software settings to suit your needs.
+              Services start from KSh 10,000.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 5. Data reports option 1 -->
+        <article class="design-card" style="--delay: .32s">
+          <img src="images/data-report2.jpg"
+               alt="Data reporting and analysis design"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about Data Reports and Analysis"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Data Reports &amp; Analysis</h3>
+            <p>
+              Transform spreadsheets and raw data into organized
+              reports that are easier to understand and use.
+              Services start from KSh 2,500.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 6. Python automation option 1 -->
+        <article class="design-card" style="--delay: .4s">
+          <img src="images/python-ad2.jpg"
+               alt="Python automation services advertisement"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about Python Automation"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Python Automation</h3>
+            <p>
+              Practical Python scripts and tools that help reduce
+              repetitive manual work. Services start from KSh 3,000.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 7. Data reports option 2 -->
+        <article class="design-card" style="--delay: .48s">
+          <img src="images/data-report-ad.jpg"
+               alt="Alternative data analysis advertising design"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about this data reporting design"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Clearer Data, Better Understanding</h3>
+            <p>
+              A second advertising concept for presenting data analysis
+              and reporting services to businesses and professionals.
+              Services start from KSh 2,500.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+        <!-- 8. Python automation option 2 -->
+        <article class="design-card" style="--delay: .56s">
+          <img src="images/python-ad.jpg"
+               alt="Alternative Python automation advertising design"
+               loading="lazy">
+          <button class="info-button" type="button"
+                  aria-label="More about this Python automation design"
+                  aria-expanded="false">â“˜</button>
+          <div class="design-description" aria-hidden="true">
+            <h3>Practical Python Tools</h3>
+            <p>
+              An alternative promotional concept showing how Python
+              scripts can help simplify repetitive tasks.
+              Services start from KSh 3,000.
+            </p>
+            <button class="description-close" type="button">Close details</button>
+          </div>
+        </article>
+
+      </section>
+
+      <footer class="showcase-footer">
+        <h2>Let's Bring Your Brand to Life</h2>
+        <p>
+  Need an eye-catching advertisement for your business,
+  product, event, or service? Let's create visuals that
+  communicate your message and make your brand stand out.
+</p>
+        <p class="brand-line">Yuri Solutions Â· Advertising &amp; Graphic Design</p>
+      </footer>
+
+    </section>
+
+    <footer class="footer">
+      <span>Â© <span id="year"></span> Yuri Solutions. All rights reserved.</span>
+    </footer>
+
+  </main>
+</div>
+
+<div class="image-lightbox" id="imageLightbox"
+     role="dialog" aria-modal="true"
+     aria-label="Full-size advertisement">
+  <button class="lightbox-close" type="button"
+          aria-label="Close full-size image">Ã—</button>
+  <img id="lightboxImage" src="" alt="">
+</div>
+
+<script>
+  // Theme button: uses the same saved theme preference as other pages.
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('eric-portfolio-theme');
+
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    document.documentElement.style.colorScheme = savedTheme;
+  }
+
+  function updateThemeButton() {
+    const dark =
+      document.documentElement.style.colorScheme === 'dark';
+
+    themeToggle.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
+    themeToggle.setAttribute(
+      'aria-label',
+      dark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+    themeToggle.setAttribute('aria-pressed', String(dark));
+  }
+
+  updateThemeButton();
+
+  themeToggle.addEventListener('click', () => {
+    const dark =
+      document.documentElement.style.colorScheme !== 'dark';
+
+    document.documentElement.style.colorScheme =
+      dark ? 'dark' : 'light';
+
+    localStorage.setItem(
+      'eric-portfolio-theme',
+      dark ? 'dark' : 'light'
+    );
+
+    updateThemeButton();
+  });
+
+  // Open advertisements in a full-screen viewer.
+const lightbox = document.getElementById('imageLightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  lightboxImage.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('#design-showcase .design-card img')
+  .forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    });
+  });
+
+lightboxClose.addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', event => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+    closeLightbox();
+  }
+});
+  // Show and hide each design's description when its info icon is clicked.
+  document.querySelectorAll('#design-showcase .design-card')
+    .forEach(card => {
+      const infoButton = card.querySelector('.info-button');
+      const description = card.querySelector('.design-description');
+      const closeButton = card.querySelector('.description-close');
+
+      function setDescription(open) {
+        card.classList.toggle('info-open', open);
+        infoButton.setAttribute('aria-expanded', String(open));
+        description.setAttribute('aria-hidden', String(!open));
+      }
+
+      infoButton.addEventListener('click', () => {
+        const isOpen = card.classList.contains('info-open');
+        setDescription(!isOpen);
+      });
+
+      closeButton.addEventListener('click', () => {
+        setDescription(false);
+        infoButton.focus();
+      });
+    });
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
+
+<script src="scroll-reveal.js"></script>
+</body>
+</html>
