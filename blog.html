@@ -23,35 +23,35 @@
 
     <nav class="nav">
       <a href="index.html">
-        <span class="ico">ðŸ </span>
+        <span class="ico">🏠</span>
         <span class="nav-label">Home</span>
       </a>
       <a href="projects.html">
-        <span class="ico">ðŸ’»</span>
+        <span class="ico">💻</span>
         <span class="nav-label">Projects</span>
       </a>
       <a href="about.html">
-        <span class="ico">ðŸ‘¤</span>
+        <span class="ico">👤</span>
         <span class="nav-label">About me</span>
       </a>
       <a href="skills.html">
-        <span class="ico">ðŸ› ï¸</span>
+        <span class="ico">🛠️</span>
         <span class="nav-label">Skills</span>
       </a>
       <a href="cv.html">
-  <span class="ico">ðŸ›ï¸</span>
+  <span class="ico">🛍️</span>
   <span class="nav-label">Shop</span>
-  </a>
+  </a>  
       <a href="learning.html">
-  <span class="ico">ðŸŽ¨</span>
+  <span class="ico">🎨</span>
   <span class="nav-label">Graphic &amp; Design</span>
 </a>
       <a class="active" href="blog.html">
-        <span class="ico">âœï¸</span>
+        <span class="ico">✍️</span>
         <span class="nav-label">Blog</span>
       </a>
       <a href="contact.html">
-        <span class="ico">ðŸ“ž</span>
+        <span class="ico">📞</span>
         <span class="nav-label">Contact</span>
       </a>
     </nav>
@@ -67,7 +67,7 @@
           id="themeToggle"
           aria-label="Toggle theme"
           title="Toggle theme"
-        >ðŸŒ™</button>
+        >🌙</button>
       </div>
     </header>
 
@@ -81,7 +81,7 @@
       </div>
     </section>
 
-
+ 
 <section class="panel">
   <div class="eyebrow">Blog</div>
   <h2 style="font-size:26px;margin:8px 0">Never Stop Wondering</h2>
@@ -89,12 +89,12 @@
     Culture -- Politics -- Technology -- Curiosity.
   </p>
   <div id="published-blog-articles" class="milestone-list">
-    <p class="cv-note">Loading published articlesâ€¦</p>
+    <p class="cv-note">Loading published articles…</p>
   </div>
 </section>
 
     <footer class="footer">
-      <span>Â© <span id="year"></span> Yuri Printers. All rights reserved.</span>
+      <span>© <span id="year"></span> Yuri Printers. All rights reserved.</span>
     </footer>
   </main>
 </div>
@@ -111,7 +111,7 @@
     const dark =
       document.documentElement.style.colorScheme === 'dark';
 
-    themeToggle.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
+    themeToggle.textContent = dark ? '☀️' : '🌙';
     themeToggle.setAttribute(
       'aria-label',
       dark ? 'Switch to light mode' : 'Switch to dark mode'
@@ -248,7 +248,7 @@ if (requestedPost) {
 };
 
       const title = getField("title") || file.name.replace(/\\.md$/, "");
-
+     
       const date = getField("date");
       const description = getField("description");
 
@@ -272,7 +272,7 @@ article.setAttribute("aria-expanded", "false");
 
       const mark = document.createElement("div");
       mark.className = "milestone-mark";
-      mark.textContent = "âœ";
+      mark.textContent = "✍";
 
       const content = document.createElement("div");
 
@@ -383,9 +383,9 @@ const toggleArticle = () => {
 
   fullArticle.prepend(featuredImage);
 }
-
+    
     // Add the Charcha comments section beneath this article.
-
+    
     // Add a separate Charcha thread for this article.
     let commentsSection = fullArticle.querySelector("[data-charcha]");
 
@@ -397,8 +397,8 @@ const toggleArticle = () => {
       fullArticle.appendChild(commentsSection);
     }
 
-
-
+    
+ 
         // Load Charcha for this newly opened article.
     const charchaScript = document.createElement("script");
 
@@ -446,7 +446,7 @@ article.addEventListener("keydown", (event) => {
 titleButton.addEventListener("click", (event) => {
   event.stopPropagation();
   toggleArticle();
-});
+});  
 
       const dateElement = document.createElement("p");
       if (isRequestedPost) {
@@ -458,9 +458,9 @@ titleButton.addEventListener("click", (event) => {
       const descriptionElement = document.createElement("p");
       descriptionElement.textContent = description;
 
-      content.append(heading, dateElement, descriptionElement);
+      content.append(heading, dateElement, descriptionElement); 
       content.appendChild(fullArticle);
-
+      
 article.dataset.defaultOrder = String(
   container.querySelectorAll(".milestone").length
 );

@@ -1,0 +1,182 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Eric Mugao's portfolio showcasing Python development, AI, automation, and practical digital projects.">
+  <title>Eric Mugao | Python Developer & AI Enthusiast</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="app" id="app">
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="index.html" aria-label="Eric Mugao home">
+      <img
+        class="brand-mark"
+        src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg"
+        alt="Eric Mugao"
+      >
+      <div>
+        <div class="brand-name">Eric Mugao</div>
+        <div class="brand-sub">Communication - AI - Developer</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a class="active" href="index.html" aria-current="page">
+        <span class="ico">ðŸ </span>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="projects.html">
+        <span class="ico">ðŸ’»</span>
+        <span class="nav-label">Projects</span>
+      </a>
+      <a href="about.html">
+        <span class="ico">ðŸ‘¤</span>
+        <span class="nav-label">About me</span>
+      </a>
+      <a href="skills.html">
+        <span class="ico">ðŸ› ï¸</span>
+        <span class="nav-label">Skills</span>
+      </a>
+      <a href="cv.html">
+  <span class="ico">ðŸ›ï¸</span>
+  <span class="nav-label">Shop</span>
+  </a>
+      <a href="learning.html">
+  <span class="ico">ðŸŽ¨</span>
+  <span class="nav-label">Graphic &amp; Design</span>
+</a>
+      <a href="blog.html">
+        <span class="ico">âœï¸</span>
+        <span class="nav-label">Blog</span>
+      </a>
+      <a href="contact.html">
+        <span class="ico">ðŸ“ž</span>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">Building a Block At a Time.</div>
+  </aside>
+
+  <main class="main" id="dashboard">
+
+    <header class="topbar">
+      <div class="top-left">
+        <button
+          class="icon-btn theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >ðŸŒ™</button>
+      </div>
+    </header>
+
+    <section
+      class="intro"
+      id="portfolio-showcase"
+      aria-label="Featured introduction and projects"
+    >
+      <div class="intro-copy">
+  <div class="mini-label" id="showcase-label" hidden></div>
+
+        <h2 id="showcase-title">
+          I turn ideas into practical digital solutions.
+        </h2>
+
+        <p id="showcase-description">
+          A Python programmer, Communication Analyst, and AI enthusiast
+          focused on building useful technology for real-world problems.
+          My work includes school assessment systems, web applications,
+          and automation tools designed to make work easier.
+        </p>
+
+        <div class="intro-actions">
+          <a class="btn btn-light" id="showcase-primary" href="projects.html">
+            Dive In <span>â†—</span>
+          </a>
+
+          <a class="btn btn-outline" id="showcase-secondary" href="about.html">
+            About Me <span>â†’</span>
+          </a>
+        </div>
+
+        <div class="showcase-controls" aria-label="Showcase navigation">
+          <button type="button" id="showcase-prev" aria-label="Previous slide">â†</button>
+          <button type="button" id="showcase-next" aria-label="Next slide">â†’</button>
+        </div>
+      </div>
+
+      <div class="hero-symbol" id="showcase-symbol" aria-hidden="true">ðŸ‘¨â€ðŸ’»</div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <div>
+          <h2>Quick overview</h2>
+          <p>Explore My Work</p>
+        </div>
+      </div>
+
+      <div class="widget-grid">
+        <a class="widget" href="projects.html">
+          <div class="widget-top">
+            <div class="widget-icon">ðŸ</div>
+            <span class="widget-arrow">â†—</span>
+          </div>
+          <div>
+            <h3>Python</h3>
+            <p>I develop Python scripts and custom tools to help solve problems and improve efficiency.</p>
+          </div>
+        </a>
+
+        <a class="widget" href="projects.html">
+          <div class="widget-top">
+            <div class="widget-icon">âŒ˜</div>
+            <span class="widget-arrow">â†—</span>
+          </div>
+          <div>
+            <h3>Web development</h3>
+            <p>I build responsive websites and web applications to showcase services and manage information.</p>
+          </div>
+        </a>
+
+        <a class="widget" href="projects.html">
+          <div class="widget-top">
+            <div class="widget-icon">âš™</div>
+            <span class="widget-arrow">â†—</span>
+          </div>
+          <div>
+            <h3>Automation</h3>
+            <p>I explore ways to streamline repetitive tasks, workflows, and reporting.</p>
+          </div>
+        </a>
+
+        <a class="widget" href="projects.html">
+          <div class="widget-top">
+            <div class="widget-icon">â–£</div>
+            <span class="widget-arrow">â†—</span>
+          </div>
+          <div>
+            <h3>AI</h3>
+            <p>I explore AI-powered tools that help people process information and solve practical problems.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Â© <span id="year"></span> Yuri Printers. All rights reserved.
+    </footer>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

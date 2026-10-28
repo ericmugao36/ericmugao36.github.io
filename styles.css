@@ -2113,7 +2113,7 @@ html[style*="color-scheme: dark"] #cv .catalog-contact {
   }
 }
 
-/* Dark theme â€” discounted offers popup */
+/* Dark theme discounted offers popup */
 html[style*="color-scheme: dark"] .discount-offers-popup {
   background: linear-gradient(135deg, #6b5200, #3d3000);
   color: #fff8cc;

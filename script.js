@@ -10,19 +10,19 @@
   const description = document.getElementById("showcase-description");
   const symbol = document.getElementById("showcase-symbol");
   const secondary = document.getElementById("showcase-secondary");
-
+  
   const previous = document.getElementById("showcase-prev");
   const next = document.getElementById("showcase-next");
   const primary = document.getElementById("showcase-primary");
   if (!label || !title || !description || !symbol ||     !primary || !secondary || !previous || !next) {   console.error("A portfolio showcase element is missing.");   return; }
 
-
+ 
 const projectsData = [
   {
     id: "edutrack",
-    name: "EduTrack Kenya â€” School Management Dashboard",
+    name: "EduTrack Kenya — School Management Dashboard",
     icon: "",
-    label: "EDUTRACK KENYA Â· SCHOOL TECHNOLOGY",
+    label: "EDUTRACK KENYA · SCHOOL TECHNOLOGY",
     title: "Every parent deserves to understand their child's progress.",
     description: "EduTrack Kenya helps teachers record assessment results and gives parents access to their children's reports and teachers' comments, making learning progress easier to follow.",
     cardDescription: "Helps schools record learner assessment results and gives parents access to reports and teachers' comments.",
@@ -36,7 +36,7 @@ const projectsData = [
     id: "smp",
     name: "SMP Performance Coach",
     icon: "",
-    label: "SMP PERFORMANCE COACH Â· MACHINE LEARNING",
+    label: "SMP PERFORMANCE COACH · MACHINE LEARNING",
     title: "Turn activity data into useful predictions.",
     description: "SMP Performance Coach is a Python machine-learning practice project exploring whether daily activity data can help predict achievement of a 10,000-step goal.",
     cardDescription: "A machine-learning practice project that explores step-goal predictions.",
@@ -50,7 +50,7 @@ const projectsData = [
     id: "tools",
     name: "Python Business Tools",
     icon: "",
-    label: "PYTHON BUSINESS TOOLS Â· AUTOMATION",
+    label: "PYTHON BUSINESS TOOLS · AUTOMATION",
     title: "Make everyday tasks simpler with Python.",
     description: "Python Business Tools is a collection of small scripts, reusable functions, and calculators designed to simplify routine tasks and explore practical business automation.",
     cardDescription: "Small Python calculators and scripts for everyday tasks and business automation.",
@@ -83,20 +83,20 @@ const projectsData = [
           ${project.repository ? `
             <a href="${project.repository}" target="_blank"
                rel="noopener noreferrer"
-               style="color:var(--site-primary)">View Repository â†—</a>
+               style="color:var(--site-primary)">View Repository ↗</a>
           ` : ""}
           ${project.demo ? `
             <a href="${project.demo}" target="_blank"
                rel="noopener noreferrer"
-               style="color:var(--site-primary)">Live Demo â†—</a>
+               style="color:var(--site-primary)">Live Demo ↗</a>
           ` : ""}
           ${project.id === "edutrack" ? `
             <a href="mailto:ericmugao36@gmail.com?subject=EduTrack%20Kenya%20Demo%20Request"
-               style="color:var(--site-primary)">Request a Demo â†—</a>
+               style="color:var(--site-primary)">Request a Demo ↗</a>
           ` : ""}
         </div>
       </div>
-      <span class="open">â†—</span>
+      <span class="open">↗</span>
     </div>
   `).join("");
 
@@ -112,7 +112,7 @@ const projectsData = [
 const slides = [
   {
     type: "about",
-    label: "ABOUT ME Â· ERIC MUGAO",
+    label: "ABOUT ME · ERIC MUGAO",
     title: "I turn ideas into practical digital solutions.",
     description: "I am a Python programmer and AI enthusiast focused on building useful technology for real-world problems. My work includes school assessment systems, web applications, and automation tools designed to make everyday tasks easier.",
     symbol: "",
@@ -143,11 +143,11 @@ let current = 0;
     const slide = slides[current];
 showcase.classList.toggle("project-background", slide.type === "project");
 showcase.dataset.slide = slide.id || "about";
-
+    
     label.textContent = slide.label;
     title.textContent = slide.title;
     description.textContent = slide.description;
-
+   
 symbol.textContent = slide.symbol;
 
 primary.href = slide.projectLink || "#projects";
@@ -161,7 +161,7 @@ primary.onclick = function (event) {
   window.location.hash = destination;
 };
 
-secondary.textContent = slide.linkText + " â†’";
+secondary.textContent = slide.linkText + " →";
 secondary.href = slide.link;
 
   }
@@ -202,4 +202,4 @@ document.querySelectorAll('.nav a').forEach(link => {
   });
 });
 
-const themeToggle=document.getElementById('themeToggle');const savedTheme=localStorage.getItem('eric-portfolio-theme');if(savedTheme==='dark'||savedTheme==='light'){document.documentElement.style.colorScheme=savedTheme}function updateThemeButton(){const dark=document.documentElement.style.colorScheme==='dark';themeToggle.textContent=dark?'â˜€ï¸':'ðŸŒ™';themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');themeToggle.setAttribute('aria-pressed',String(dark))}updateThemeButton();themeToggle.addEventListener('click',()=>{const dark=document.documentElement.style.colorScheme!=='dark';document.documentElement.style.colorScheme=dark?'dark':'light';localStorage.setItem('eric-portfolio-theme',dark?'dark':'light');updateThemeButton()});document.getElementById('year').textContent=new Date().getFullYear();
+const themeToggle=document.getElementById('themeToggle');const savedTheme=localStorage.getItem('eric-portfolio-theme');if(savedTheme==='dark'||savedTheme==='light'){document.documentElement.style.colorScheme=savedTheme}function updateThemeButton(){const dark=document.documentElement.style.colorScheme==='dark';themeToggle.textContent=dark?'☀️':'🌙';themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');themeToggle.setAttribute('aria-pressed',String(dark))}updateThemeButton();themeToggle.addEventListener('click',()=>{const dark=document.documentElement.style.colorScheme!=='dark';document.documentElement.style.colorScheme=dark?'dark':'light';localStorage.setItem('eric-portfolio-theme',dark?'dark':'light');updateThemeButton()});document.getElementById('year').textContent=new Date().getFullYear();
