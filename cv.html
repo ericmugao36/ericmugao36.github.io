@@ -544,7 +544,10 @@ async function loadMarkdownProducts() {
 
       if (!product) continue;
 
-      const fileResponse = await fetch('products/' + product.file);
+      const fileResponse = await fetch(
+  'https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/products/' +
+  product.file
+);
 
       if (!fileResponse.ok) {
         throw new Error('Could not load ' + product.file);
