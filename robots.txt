@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ericmugao36.github.io/sitemap.xml
+Sitemap: https://ericmugao.co.ke/sitemap.xml
