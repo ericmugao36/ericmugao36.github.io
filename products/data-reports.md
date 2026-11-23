@@ -2,7 +2,7 @@
 ---
 id: data-reports
 title: Data Reports and Analysis
-price: "Contact for pricing"
+price: "Starting from KSh 5,000"
 description: "Clear reports and practical data analysis that help individuals and businesses understand their information."
 image: ""
 category: reporting
@@ -10,7 +10,8 @@ category: reporting
 
 ## Turn raw data into useful information
 
-Data becomes more valuable when it is organized, checked and presented in a way that helps people understand what is happening.
+Data becomes more valuable when it is organized, checked and presented in a way that helps people understand what is happening.  
+**Pricing:** Data analysis and reporting projects start from KSh 5,000. The final quotation depends on the dataset, scope and reporting requirements.
 
 ### What I can help with
 
