@@ -1,4 +1,3 @@
-﻿
 {
   "flashSale": {
     "enabled": false,
@@ -14,7 +13,7 @@
     {
       "id": "edutrack",
       "file": "edutrack.md",
-      "icon": "ðŸŽ“",
+      "icon": "🎓",
       "category": "school",
       "categoryLabel": "School Technology",
       "price": "Packages from KSh 15,000",
@@ -23,10 +22,10 @@
     {
       "id": "websites",
       "file": "websites.md",
-      "icon": "ðŸŒ",
+      "icon": "🌐",
       "category": "websites",
       "categoryLabel": "Websites & Blogs",
-      "price": "Packages from KSh 6,000",
+      "price": "Starting from KSh 6,000",
       "showPackages": false
     },
     {
@@ -50,26 +49,25 @@
     {
       "id": "code-customization",
       "file": "code-customization.md",
-      "icon": "ðŸ› ï¸",
+      "icon": "🛠️",
       "category": "digital",
       "categoryLabel": "Code Editing & Customization",
-      "price": "Starting at KSh 10,000",
+      "price": "Starting from KSh 10,000",
       "showPackages": false
     },
     {
       "id": "report-writing",
       "file": "report-writing.md",
-      "icon": "ðŸ“",
+      "icon": "📝",
       "category": "writing",
       "categoryLabel": "Report Writing",
       "price": "Contact for pricing",
       "showPackages": false
     },
-
     {
       "id": "media-coverage",
       "file": "media-coverage.md",
-      "icon": "ðŸ“°",
+      "icon": "📰",
       "category": "media",
       "categoryLabel": "Media Coverage & Content Creation",
       "price": "Contact for pricing",
@@ -78,7 +76,7 @@
     {
       "id": "social-media-management",
       "file": "social-media-management.md",
-      "icon": "ðŸ“±",
+      "icon": "📱",
       "category": "social-media",
       "categoryLabel": "Social Media Management",
       "price": "Packages from KSh 8,000/month",
