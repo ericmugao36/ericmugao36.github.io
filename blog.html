@@ -94,7 +94,7 @@
 </section>
 
     <footer class="footer">
-      <span>© <span id="year"></span> Yuri Printers. All rights reserved.</span>
+      <span>© <span id="year"></span> Yuri Solutions. All rights reserved.</span>
     </footer>
   </main>
 </div>
@@ -311,7 +311,7 @@ const restoreBlogOrder = () => {
 
 
 
-const toggleArticle = () => {
+const toggleArticle = async () => {
   fullArticle.hidden = !fullArticle.hidden;
 
   if (!fullArticle.hidden) {
@@ -359,6 +359,9 @@ const toggleArticle = () => {
   );
 
   if (!fullArticle.hidden && !fullArticle.dataset.loaded) {
+    await ensureBlogLibrariesLoaded().catch(error => {
+     console.error("Markdown libraries could not load:", error);
+    });
     const body = markdown.replace(/^---\s*[\r\n]+[\s\S]*?[\r\n]+---\s*/, "");
 
     const articleText = document.createElement("div");
@@ -476,18 +479,9 @@ container.appendChild(article);
   }
 }
 
-ensureBlogLibrariesLoaded()
-  .then(() => loadPublishedBlogArticles())
-  .catch(error => {
-    const container = document.getElementById("published-blog-articles");
-
-    if (container) {
-      container.textContent =
-        "Articles could not be loaded. Please try again later.";
-    }
-
-    console.error("Could not load Blog resources:", error);
-  });
+// Start loading the articles immediately.
+// Markdown libraries can load separately when an article is opened.
+loadPublishedBlogArticles();
 </script>
 <script src="scroll-reveal.js"></script>
 </body>
