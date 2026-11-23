@@ -383,12 +383,13 @@ def update_blog_index(blog_path: Path, posts: list[Post]) -> None:
 
     generated_region = (
         "\n\n"
+        '<div class="blog-articles-grid">\n'
         + cards
-        + "\n\n"
+        + "\n</div>\n\n"
         + render_legacy_redirect(posts)
         + "\n\n"
     )
-    updated = current[:start] + generated_region + current[end:]
+        updated = current[:start] + generated_region + current[end:]
 
     # The old client-side loader fetches Markdown from GitHub and replaces this
     # server-rendered list. Remove that loader so the static HTML remains visible
