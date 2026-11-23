@@ -512,7 +512,12 @@ def render_article_page(post: Post) -> str:
   <meta name="twitter:description" content="{description}">
   <script type="application/ld+json">{schema_json}</script>
   <style>
-    .article-panel {{ max-width: 920px; }}
+    .article-panel {{
+      max-width: 920px;
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }}
     .article-heading {{ margin: 8px 0 12px; line-height: 1.2; overflow-wrap: anywhere; }}
     .article-meta {{ margin: 0 0 22px; }}
     .article-featured-image {{
