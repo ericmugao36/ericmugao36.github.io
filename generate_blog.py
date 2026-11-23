@@ -714,6 +714,24 @@ def update_sitemap(sitemap_path: Path, posts: list[Post]) -> None:
             loc_node.text = location
 
         clean_locations.add(location)
+    # Ensure all main website pages are included.
+    required_pages = [
+        f"{SITE_URL}/",
+        f"{SITE_URL}/projects",
+        f"{SITE_URL}/about",
+        f"{SITE_URL}/skills",
+        f"{SITE_URL}/cv",
+        f"{SITE_URL}/learning",
+        f"{SITE_URL}/blog",
+        f"{SITE_URL}/contact",
+    ]
+
+    for location in required_pages:
+        if location not in clean_locations:
+            url_node = ET.SubElement(root, url_tag)
+            loc_node = ET.SubElement(url_node, loc_tag)
+            loc_node.text = location
+            clean_locations.add(location)
 
     # Add every published article using its clean canonical URL.
     for post in posts:
