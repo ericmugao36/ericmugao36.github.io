@@ -332,17 +332,18 @@ def render_blog_card(post: Post) -> str:
             f'object-fit:cover; border-radius:10px;">'
         )
 
-    return f"""
-    <article class="milestone blog-card">
-      <div class="milestone-mark" aria-hidden="true">✍</div>
-      <div class="blog-card-content">
-        {image_html}
-        <h3><a href="{href}">{title}</a></h3>
-        <p class="cv-note"><time datetime="{html.escape(post.published_iso, quote=True)}">{date_label}</time></p>
-        <p>{description}</p>
-        <p><a class="blog-read-more" href="{href}" aria-label="Read {title}">Read article →</a></p>
-      </div>
-    </article>""".strip()
+        return f"""
+        <article class="milestone blog-card">
+          <a class="blog-card-link" href="{href}" aria-label="Read {title}">
+            <div class="milestone-mark" aria-hidden="true">✍</div>
+            <div class="blog-card-content">
+              {image_html}
+              <h3>{title}</h3>
+              <p class="cv-note"><time datetime="{html.escape(post.published_iso, quote=True)}">{date_label}</time></p>
+              <p>{description}</p>
+            </div>
+          </a>
+        </article>""".strip()
 
 
 def render_legacy_redirect(posts: list[Post]) -> str:
@@ -460,7 +461,7 @@ def render_more_articles(current_post: Post, posts: list[Post]) -> str:
     """.strip()
 
 
-def render_article_page(post: Post) -> str:
+def render_article_page(post: Post, posts: list[Post]) -> str:
     title = html.escape(post.title)
     description = html.escape(meta_description(post.description), quote=True)
     canonical = html.escape(post.canonical_url, quote=True)
@@ -622,8 +623,10 @@ def render_article_page(post: Post) -> str:
         <h2>Join the conversation</h2>
         <div data-charcha data-thread="post-{html.escape(post.slug, quote=True)}"></div>
       </div>
+
+      {render_more_articles(post, posts)}
+
       <p><a class="article-back-link" href="../blog.html">← Back to all articles</a></p>
-    </section>
 
     <footer class="footer">
       <span>© <span id="year"></span> Yuri Solutions. All rights reserved.</span>
@@ -733,7 +736,7 @@ def build(root: Path) -> int:
     articles_dir.mkdir(parents=True, exist_ok=True)
     for post in posts:
         output_path = articles_dir / f"{post.slug}.html"
-        atomic_write(output_path, render_article_page(post))
+        atomic_write(output_path, render_article_page(post, posts))
         LOGGER.info("Generated %s", output_path.relative_to(root))
 
     update_blog_index(blog_path, posts)
