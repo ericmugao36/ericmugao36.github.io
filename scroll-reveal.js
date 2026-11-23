@@ -1,7 +1,6 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const selectors = [
-    "main section",
+    "main section:not(.article-panel)",
     ".shop-card",
     ".project-card",
     ".skill-card",
