@@ -2,7 +2,7 @@
 ---
 id: python-automation
 title: Python Automation
-price: "Contact for pricing"
+price: "Starting from KSh 12,000"
 description: "Practical Python scripts that automate repetitive tasks and reduce manual work."
 image: ""
 category: automation
@@ -10,7 +10,8 @@ category: automation
 
 ## Spend less time repeating tasks
 
-Python automation can help you handle routine work faster, more consistently and with fewer manual steps.
+Python automation can help you handle routine work faster, more consistently and with fewer manual steps.  
+**Pricing:** Projects start from KSh 12,000. The final quotation depends on the complexity and requirements of the task.
 
 ### What I can help automate
 
