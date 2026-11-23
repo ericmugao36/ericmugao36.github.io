@@ -1,7 +1,7 @@
 ---
 id: websites
 title: Website Development for Businesses and Professionals
-price: "Starting from KSh 6,000"
+price: "Starting from KSh 20,000"
 description: "Affordable website development in Kenya for small businesses, freelancers and professionals who need a clear, mobile-friendly online presence."
 image: ""
 category: websites
