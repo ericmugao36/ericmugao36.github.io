@@ -32,20 +32,20 @@
     {
       "id": "python-automation",
       "file": "python-automation.md",
-      "icon": "âš™ï¸",
+      "icon": "⚙️",
       "category": "automation",
       "categoryLabel": "Automation",
-      "price": "Packages from KSh 12,000",
+      "price": "Starting from KSh 12,000",
       "showPackages": false
     },
     {
       "id": "data-reports",
       "file": "data-reports.md",
-      "icon": "ðŸ“Š",
+      "icon": "📊",
       "category": "reporting",
       "categoryLabel": "Data & Reporting",
-      "price": "Starting from as low as KSh 5,000",
-        "showPackages": false
+      "price": "Starting from KSh 5,000",
+      "showPackages": false
     },
     {
       "id": "code-customization",
