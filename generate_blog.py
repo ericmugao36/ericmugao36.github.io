@@ -426,14 +426,14 @@ def update_blog_index(blog_path: Path, posts: list[Post]) -> None:
 
 def article_navigation() -> str:
     links = [
-        ("index.html", "🏠", "Home"),
-        ("projects.html", "💻", "Projects"),
-        ("about.html", "👤", "About me"),
-        ("skills.html", "🛠️", "Skills"),
-        ("cv.html", "🛍️", "Shop"),
-        ("learning.html", "🎨", "Graphic Design"),
-        ("blog.html", "✍️", "Blog"),
-        ("contact.html", "📞", "Contact"),
+        ("/index", "🏠", "Home"),
+        ("/projects", "💻", "Projects"),
+        ("/about", "👤", "About me"),
+        ("/skills", "🛠️", "Skills"),
+        ("/cv", "🛍️", "Shop"),
+        ("/learning", "🎨", "Graphic Design"),
+        ("/blog", "✍️", "Blog"),
+        ("/contact", "📞", "Contact"),
     ]
     rendered = []
     for href, icon, label in links:
