@@ -437,6 +437,28 @@ def article_navigation() -> str:
         )
     return "\n".join(rendered)
 
+def render_more_articles(current_post: Post, posts: list[Post]) -> str:
+    other_posts = [
+        post for post in posts
+        if post.slug != current_post.slug
+    ][:3]
+
+    if not other_posts:
+        return ""
+
+    cards = "\n\n".join(
+        render_blog_card(post) for post in other_posts
+    )
+
+    return f"""
+    <section class="more-articles">
+      <h2>More articles to read</h2>
+      <div class="blog-articles-grid">
+        {cards}
+      </div>
+    </section>
+    """.strip()
+
 
 def render_article_page(post: Post) -> str:
     title = html.escape(post.title)
