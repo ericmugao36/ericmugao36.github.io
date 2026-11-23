@@ -927,6 +927,15 @@ a {
   transform: translateY(0);
 }
 
+/* Keep blog article cards visible during loading */
+.blog-card,
+.blog-card.scroll-reveal,
+.blog-card.scroll-reveal.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
 /* ---------- Desktop layout ---------- */
 @media (min-width: 651px) {
   .app {
