@@ -316,6 +316,7 @@ def json_for_script(value: Any) -> str:
     )
 
 
+
 def render_blog_card(post: Post) -> str:
     title = html.escape(post.title)
     description = html.escape(meta_description(post.description, 220))
@@ -332,18 +333,23 @@ def render_blog_card(post: Post) -> str:
             f'object-fit:cover; border-radius:10px;">'
         )
 
-        return f"""
-        <article class="milestone blog-card">
-          <a class="blog-card-link" href="{href}" aria-label="Read {title}">
-            <div class="milestone-mark" aria-hidden="true">✍</div>
-            <div class="blog-card-content">
-              {image_html}
-              <h3>{title}</h3>
-              <p class="cv-note"><time datetime="{html.escape(post.published_iso, quote=True)}">{date_label}</time></p>
-              <p>{description}</p>
-            </div>
-          </a>
-        </article>""".strip()
+    return f"""
+    <article class="milestone blog-card">
+      <a class="blog-card-link" href="{href}"
+         aria-label="Read {title}"
+         style="display:block; height:100%; color:inherit; text-decoration:none;">
+        <div class="milestone-mark" aria-hidden="true">✍</div>
+        <div class="blog-card-content">
+          {image_html}
+          <h3>{title}</h3>
+          <p class="cv-note">
+            <time datetime="{html.escape(post.published_iso, quote=True)}">{date_label}</time>
+          </p>
+          <p>{description}</p>
+        </div>
+      </a>
+    </article>""".strip()
+
 
 
 def render_legacy_redirect(posts: list[Post]) -> str:
