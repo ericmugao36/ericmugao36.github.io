@@ -675,46 +675,19 @@ def render_article_page(post: Post, posts: list[Post]) -> str:
 """
 
 
+
 def update_sitemap(sitemap_path: Path, posts: list[Post]) -> None:
-    if not sitemap_path.exists():
-        LOGGER.warning("No sitemap.xml found; skipping sitemap update.")
-        return
+    """Rebuild the sitemap using only canonical pages and published articles."""
 
-    try:
-        tree = ET.parse(sitemap_path)
-    except ET.ParseError as exc:
-        raise ValueError(f"{sitemap_path} is not valid XML: {exc}") from exc
+    namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
 
-    root = tree.getroot()
-    namespace_match = re.match(r"\{([^}]+)\}", root.tag)
-    namespace = namespace_match.group(1) if namespace_match else ""
-    ns = f"{{{namespace}}}" if namespace else ""
-    loc_tag = f"{ns}loc"
-    url_tag = f"{ns}url"
+    ET.register_namespace("", namespace)
 
-    article_prefix = f"{SITE_URL}/{ARTICLES_DIRECTORY}/"
-    clean_locations = set()
+    ns = f"{{{namespace}}}"
 
-    # Convert existing HTML page URLs to clean URLs.
-    # Remove old article entries so they can be regenerated below.
-    for url_node in list(root.findall(url_tag)):
-        loc_node = url_node.find(loc_tag)
+    root = ET.Element(f"{ns}urlset")
 
-        if loc_node is None or not loc_node.text:
-            continue
-
-        location = loc_node.text.strip()
-
-        if location.startswith(article_prefix):
-            root.remove(url_node)
-            continue
-
-        if location.startswith(SITE_URL) and location.endswith(".html"):
-            location = location[:-5]
-            loc_node.text = location
-
-        clean_locations.add(location)
-    # Ensure all main website pages are included.
+    # All permanent public website pages.
     required_pages = [
         f"{SITE_URL}/",
         f"{SITE_URL}/projects",
@@ -726,41 +699,35 @@ def update_sitemap(sitemap_path: Path, posts: list[Post]) -> None:
         f"{SITE_URL}/contact",
     ]
 
-    for location in required_pages:
-        if location not in clean_locations:
-            url_node = ET.SubElement(root, url_tag)
-            loc_node = ET.SubElement(url_node, loc_tag)
-            loc_node.text = location
-            clean_locations.add(location)
+    # Combine main pages and published articles.
+    locations = required_pages + [
+        post.canonical_url for post in posts
+    ]
 
-    # Add every published article using its clean canonical URL.
-    for post in posts:
-        location = post.canonical_url
+    # Remove duplicates while preserving order.
+    unique_locations = list(dict.fromkeys(locations))
 
-        if location in clean_locations:
-            continue
-
-        url_node = ET.SubElement(root, url_tag)
-        loc_node = ET.SubElement(url_node, loc_tag)
+    for location in unique_locations:
+        url_node = ET.SubElement(root, f"{ns}url")
+        loc_node = ET.SubElement(url_node, f"{ns}loc")
         loc_node.text = location
-        clean_locations.add(location)
-
-    if namespace:
-        ET.register_namespace("", namespace)
 
     xml_bytes = ET.tostring(
         root,
         encoding="utf-8",
-        xml_declaration=True
+        xml_declaration=True,
     )
+
     xml_text = xml_bytes.decode("utf-8") + "\n"
 
     atomic_write(sitemap_path, xml_text)
+
     LOGGER.info(
-        "Updated %s with clean URLs and %d article URLs",
-        sitemap_path,
-        len(posts)
+        "Rebuilt sitemap: %d main pages and %d published articles.",
+        len(required_pages),
+        len(posts),
     )
+
 
 
 def build(root: Path) -> int:
