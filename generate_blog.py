@@ -327,7 +327,9 @@ def render_blog_card(post: Post) -> str:
         image_url = html.escape(post.image, quote=True)
         image_html = (
             f'<img class="blog-card-image" src="{image_url}" '
-            f'alt="{title}" loading="lazy" decoding="async">'
+            f'alt="{title}" loading="lazy" decoding="async" '
+            f'style="width:100%; max-width:260px; height:140px; '
+            f'object-fit:cover; border-radius:10px;">'
         )
 
     return f"""
