@@ -634,7 +634,7 @@ def render_article_page(post: Post) -> str:
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 <script src="{CHARCHA_EMBED_URL}" defer></script>
-<script src="../scroll-reveal.js" defer></script>
+<!-- Scroll reveal temporarily disabled while testing disappearing articles -->
 </body>
 </html>
 """
