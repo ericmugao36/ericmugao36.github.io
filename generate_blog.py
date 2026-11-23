@@ -36,6 +36,7 @@ import logging
 import os
 import re
 import tempfile
+import unicodedata
 import xml.etree.ElementTree as ET
 
 from dataclasses import dataclass
@@ -265,10 +266,18 @@ def load_post(path: Path) -> Post:
         metadata.get("image") or metadata.get("cover_image"), path
     )
 
-    slug = path.stem
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", slug):
+    # Convert the source filename into a URL-safe slug. This keeps existing
+    # ASCII filenames unchanged while handling curly apostrophes, accented
+    # characters, spaces, and other punctuation safely.
+    original_stem = path.stem
+    normalized_stem = unicodedata.normalize("NFKD", original_stem)
+    ascii_stem = normalized_stem.encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^A-Za-z0-9._-]+", "-", ascii_stem)
+    slug = re.sub(r"-+", "-", slug).strip("._-")
+
+    if not slug or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", slug):
         raise ValueError(
-            f"{path}: filename contains characters unsafe for a URL slug."
+            f"{path}: filename cannot be converted into a safe URL slug."
         )
 
     body_html = render_markdown(body)
