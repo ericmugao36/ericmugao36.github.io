@@ -118,11 +118,10 @@ class Post:
     @property
     def published_date(self) -> str:
         return self.published.strftime("%B %d, %Y").replace(" 0", " ")
-
+    
     @property
     def canonical_url(self) -> str:
-        return f"{SITE_URL}/{ARTICLES_DIRECTORY}/{self.slug}.html"
-
+        return f"{SITE_URL}/{ARTICLES_DIRECTORY}/{self.slug}"
 
 def atomic_write(path: Path, content: str) -> None:
     """Write a UTF-8 file safely, avoiding half-written output."""
@@ -353,7 +352,7 @@ def render_blog_card(post: Post) -> str:
 
 
 def render_legacy_redirect(posts: list[Post]) -> str:
-    routes = {post.slug: f"/{ARTICLES_DIRECTORY}/{post.slug}.html" for post in posts}
+    routes = {post.slug: f"/{ARTICLES_DIRECTORY}/{post.slug}" for post in posts}
     routes_json = json_for_script(routes)
     return f"""
 <script>
@@ -426,7 +425,7 @@ def update_blog_index(blog_path: Path, posts: list[Post]) -> None:
 
 def article_navigation() -> str:
     links = [
-        ("/index", "🏠", "Home"),
+        ("/", "🏠", "Home"),
         ("/projects", "💻", "Projects"),
         ("/about", "👤", "About me"),
         ("/skills", "🛠️", "Skills"),
@@ -435,13 +434,15 @@ def article_navigation() -> str:
         ("/blog", "✍️", "Blog"),
         ("/contact", "📞", "Contact"),
     ]
+
     rendered = []
     for href, icon, label in links:
-        active = ' class="active"' if href == "blog.html" else ""
+        active = ' class="active"' if href == "/blog" else ""
         rendered.append(
-            f'<a{active} href="../{href}"><span class="ico">{icon}</span>'
+            f'<a{active} href="{href}"><span class="ico">{icon}</span>'
             f'<span class="nav-label">{label}</span></a>'
         )
+
     return "\n".join(rendered)
 
 def render_more_articles(current_post: Post, posts: list[Post]) -> str:
@@ -585,7 +586,7 @@ def render_article_page(post: Post, posts: list[Post]) -> str:
 <body>
 <div class="app" id="app">
   <aside class="sidebar" aria-label="Main navigation">
-    <a class="brand" href="../index.html#dashboard" aria-label="{SITE_NAME} home">
+    <a class="brand" href="/#dashboard" aria-label="{SITE_NAME} home">
       <img class="brand-mark"
            src="https://raw.githubusercontent.com/ericmugao36/ericmugao36.github.io/main/images/passport.jpg"
            alt="{SITE_NAME}">
@@ -617,7 +618,7 @@ def render_article_page(post: Post, posts: list[Post]) -> str:
     </section>
 
     <section class="panel article-panel">
-      <a class="article-back-link" href="../blog.html">← Back to all articles</a>
+      <a class="article-back-link" href="/blog">← Back to all articles</a>
       {image_html}
       <p class="cv-note article-meta">
         <time datetime="{published_iso}">{published_label}</time>
@@ -633,7 +634,7 @@ def render_article_page(post: Post, posts: list[Post]) -> str:
       {render_more_articles(post, posts)}
 
       <p><a class="article-back-link" href="/blog">← Back to all articles</a></p>
-
+</section>
     <footer class="footer">
       <span>© <span id="year"></span> Yuri Solutions. All rights reserved.</span>
     </footer>
@@ -691,28 +692,57 @@ def update_sitemap(sitemap_path: Path, posts: list[Post]) -> None:
     loc_tag = f"{ns}loc"
     url_tag = f"{ns}url"
 
-    existing_locations = {}
-    for url_node in root.findall(url_tag):
-        loc_node = url_node.find(loc_tag)
-        if loc_node is not None and loc_node.text:
-            existing_locations[loc_node.text.strip()] = url_node
-
-    # Remove only URLs generated under this script's /articles/ path.
     article_prefix = f"{SITE_URL}/{ARTICLES_DIRECTORY}/"
-    for location, node in list(existing_locations.items()):
-        if location.startswith(article_prefix) and location.endswith(".html"):
-            root.remove(node)
+    clean_locations = set()
 
+    # Convert existing HTML page URLs to clean URLs.
+    # Remove old article entries so they can be regenerated below.
+    for url_node in list(root.findall(url_tag)):
+        loc_node = url_node.find(loc_tag)
+
+        if loc_node is None or not loc_node.text:
+            continue
+
+        location = loc_node.text.strip()
+
+        if location.startswith(article_prefix):
+            root.remove(url_node)
+            continue
+
+        if location.startswith(SITE_URL) and location.endswith(".html"):
+            location = location[:-5]
+            loc_node.text = location
+
+        clean_locations.add(location)
+
+    # Add every published article using its clean canonical URL.
     for post in posts:
+        location = post.canonical_url
+
+        if location in clean_locations:
+            continue
+
         url_node = ET.SubElement(root, url_tag)
         loc_node = ET.SubElement(url_node, loc_tag)
-        loc_node.text = post.canonical_url
+        loc_node.text = location
+        clean_locations.add(location)
 
-    ET.register_namespace("", namespace) if namespace else None
-    xml_bytes = ET.tostring(root, encoding="utf-8", xml_declaration=True)
+    if namespace:
+        ET.register_namespace("", namespace)
+
+    xml_bytes = ET.tostring(
+        root,
+        encoding="utf-8",
+        xml_declaration=True
+    )
     xml_text = xml_bytes.decode("utf-8") + "\n"
+
     atomic_write(sitemap_path, xml_text)
-    LOGGER.info("Updated %s with %d article URLs", sitemap_path, len(posts))
+    LOGGER.info(
+        "Updated %s with clean URLs and %d article URLs",
+        sitemap_path,
+        len(posts)
+    )
 
 
 def build(root: Path) -> int:
