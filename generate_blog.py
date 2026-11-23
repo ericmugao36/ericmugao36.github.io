@@ -321,7 +321,7 @@ def render_blog_card(post: Post) -> str:
     title = html.escape(post.title)
     description = html.escape(meta_description(post.description, 220))
     date_label = html.escape(post.published_date)
-    href = f"/{ARTICLES_DIRECTORY}/{post.slug}.html"
+    href = f"/{ARTICLES_DIRECTORY}/{post.slug}"
 
     image_html = ""
     if post.image:
