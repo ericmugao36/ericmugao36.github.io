@@ -1,21 +1,22 @@
 
-
 ---
 id: social-media-management
-title: Social Media Management for Small Businesses
-price: "KSh 8,000–25,000 per month"
-description: "Affordable social media planning, content creation, captions and posting support for small businesses in Kenya."
+title: Social Media Management for Small Businesses in Kenya
+price: "Packages from KSh 8,000 per month"
+description: "Social media management for small businesses in Kenya, including content planning, branded graphics, captions, post scheduling and monthly performance summaries."
 image: ""
 category: social-media
 ---
 
 # Build a Consistent Social Media Presence
 
-Your business deserves a professional and consistent online presence. I help small businesses plan content, prepare posts and maintain their social media pages so they can focus more on serving their customers.
+Your business needs more than an occasional post to maintain a professional online presence.
 
-Whether you are starting from scratch or trying to become more consistent, we can agree on a practical package that fits your goals and budget.
+I help small businesses plan content, prepare branded posts and manage agreed social media activities so that communication with customers can become more organized and consistent.
 
-### What the Service Can Include
+Whether you are establishing your online presence or improving an existing page, we can agree on a practical monthly package that suits your business and available budget.
+
+## What the service can include
 
 - Social media content planning.
 - Branded graphics and promotional posts.
@@ -24,17 +25,19 @@ Whether you are starting from scratch or trying to become more consistent, we ca
 - Scheduling and publishing approved posts.
 - Basic page engagement and comment monitoring.
 - Monthly performance summaries.
-- Suggestions for improving content and audience engagement.
+- Suggestions for improving future content.
 
-The exact deliverables depend on the package selected and the agreed scope of work.
+The exact deliverables depend on the selected package and agreed scope.
 
-## Available Packages
+## Available monthly packages
 
-### Starter — Establish Your Presence
+### Starter — KSh 8,000 per month
 
-**Price: KSh 8,000 per month**
+**Establish your online presence**
 
 For a small business that needs a more consistent social media presence.
+
+Includes:
 
 - One social media platform.
 - Up to 8 posts per month.
@@ -42,11 +45,13 @@ For a small business that needs a more consistent social media presence.
 - A simple monthly content calendar.
 - Basic performance summary.
 
-### Growth — Stay Active and Engaged
+### Growth — KSh 15,000 per month
 
-**Price: KSh 15,000 per month**
+**Stay active and engaged**
 
-For a business that wants more regular content and a stronger presence.
+For a business that wants more regular content across its social media platforms.
+
+Includes:
 
 - Up to 2 social media platforms.
 - Up to 12 posts per month across both platforms.
@@ -56,11 +61,13 @@ For a business that wants more regular content and a stronger presence.
 - Basic comment monitoring.
 - Monthly performance summary.
 
-### Business — A More Complete Presence
+### Business — KSh 25,000 per month
 
-**Price: KSh 25,000 per month**
+**Build a more complete presence**
 
-For a business that needs more structured content and support.
+For a business that needs more structured content and regular support.
+
+Includes:
 
 - Up to 3 social media platforms.
 - Up to 16 posts per month across the selected platforms.
@@ -68,11 +75,11 @@ For a business that needs more structured content and support.
 - Caption writing and publishing.
 - Basic audience engagement support.
 - Monthly performance review.
-- Recommendations for the next month's content.
+- Recommendations for the following month's content.
 
-## Optional Services
+## Optional services
 
-Additional services can be quoted separately:
+Additional work can be quoted separately:
 
 - Social media profile setup or refresh.
 - Promotional campaign planning.
@@ -82,25 +89,27 @@ Additional services can be quoted separately:
 
 Advertising budgets, influencer fees, professional photography and video shoots are not included in the monthly packages unless specifically agreed.
 
-## How It Works
+## How the service works
 
-1. We discuss your business, audience and goals.
-2. We choose the platforms and package that fit your needs.
+1. We discuss your business, target audience and communication goals.
+2. We select the appropriate platforms and monthly package.
 3. We agree on the content plan, deliverables and approval process.
-4. Content is prepared and published according to the agreed schedule.
-5. We review performance and identify possible improvements.
+4. Content is prepared and submitted for approval.
+5. Approved content is published according to the agreed schedule.
+6. We review available performance information and identify possible improvements.
 
-## Important Notes
+## Important package information
 
-- Prices are starting package prices and may change depending on the agreed scope.
-- Content quantities refer to posts across the selected platforms, not the same quantity on every platform.
+- Package prices are monthly starting prices.
+- Post quantities refer to the total number of posts across the selected platforms, not the same quantity on each platform.
 - The client provides accurate business information, offers, photographs and brand assets where required.
 - Content is submitted for approval according to the agreed workflow.
-- Paid advertising spend is separate and is paid by the client directly to the advertising platform.
-- Additional work requires a separate quotation.
+- Paid advertising expenditure is separate and is paid directly to the advertising platform.
+- Additional work outside the agreed package requires a separate quotation.
+- Social media performance depends on several factors, including audience, content, competition and platform algorithms. Specific reach, follower or sales results are not guaranteed.
 
-## Interested?
+## Discuss a social media package
 
-Let's discuss your business and build a social media plan that fits your needs.
+Tell me about your business, the platforms you currently use and the type of customers you want to reach.
 
 Contact Eric to confirm availability, package deliverables and the final price before work begins.
